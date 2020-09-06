@@ -37,3 +37,8 @@ password = upper_char + lower_char + digit_char + symbol_char + remaining_char
 random.shuffle(password)
 password =''.join(password)
 print(password)
+
+
+
+
+URL : https://ide.geeksforgeeks.org/3tGMCOzmg8
