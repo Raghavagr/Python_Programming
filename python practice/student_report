@@ -1,0 +1,33 @@
+URL : https://ide.geeksforgeeks.org/ToQFfBYvhf
+
+import operator
+n = int(input())
+
+marksheet = [[input(), float(input())] for _ in range(n)]
+    
+print(marksheet)
+#print(sorted(marksheet))
+sorted_list = sorted(marksheet, key= operator.itemgetter(1))
+print(sorted_list)
+
+def second_smallest(numbers):
+    m1, m2 = None, None
+    for x in numbers:
+        if x >= m1:
+            m1, m2 = x, m1
+        elif x > m2:
+            m2 = x
+    return m2
+
+
+second_low_grade = sorted_list[1][1]
+print(second_low_grade)
+
+lowest = []
+
+print("\n".join([a for a, b in sorted(sorted_list) if b == second_low_grade]))
+
+
+#second_low = sorted(list())
+
+
