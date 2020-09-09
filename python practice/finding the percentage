@@ -1,0 +1,24 @@
+URL: https://ide.geeksforgeeks.org/7sjcFbOtWy
+
+CODE:
+
+# Finding the Percentage
+#code
+
+n = int(input())
+student_marks = {}
+
+for _ in range(n):
+    name,*line = input().split()
+    scores = list(map(float,line))
+    student_marks[name] = scores
+
+query_name = input()
+
+print(student_marks)
+print(query_name)
+
+for k,v in student_marks.items():
+    if k == query_name:
+        avg = round(sum(v)/len(v),2)
+        print("{:.2f}".format(avg))
