@@ -1,5 +1,6 @@
 URL : https://ide.geeksforgeeks.org/ToQFfBYvhf
 
+// THIS WILL WORK FINE IF THE LOWEST GRADE IS OCCURING ONLY ONCE IN LIST, EITHER IF IT IS TWICE THEN IT WILL PICK WRONG 2ND LOWEST INPLACE OF 2ND.
 import operator
 n = int(input())
 
@@ -10,24 +11,43 @@ print(marksheet)
 sorted_list = sorted(marksheet, key= operator.itemgetter(1))
 print(sorted_list)
 
-def second_smallest(numbers):
-    m1, m2 = None, None
-    for x in numbers:
-        if x >= m1:
-            m1, m2 = x, m1
-        elif x > m2:
-            m2 = x
-    return m2
-
-
 second_low_grade = sorted_list[1][1]
 print(second_low_grade)
-
-lowest = []
 
 print("\n".join([a for a, b in sorted(sorted_list) if b == second_low_grade]))
 
 
-#second_low = sorted(list())
+
+// THIS WILL WORK FINE IN ALL SITUATION--> ONLY FOR FINDING 2ND LOWEST IS SLIGHTLY CHANGED.
+import operator
+
+n = int(input())
+
+marksheet = [[input(), float(input())] for _ in range(n)]
+# marksheet = [[input(), float(input())] for _ in range(input())]
+
+#print(sorted(marksheet))
+
+sorted_list = sorted(marksheet, key= operator.itemgetter(1))
+#print(sorted_list)
+
+first_min_score = sorted_list[0]
+#print(first_min_score)
+
+second_min_score = min(sorted_list, key=lambda x: (x[1]==first_min_score[1], x[1]))
+#print(second_min_score)
 
 
+for student in sorted(sorted_list):
+    if(student[1] == second_min_score[1]):
+        print(student[0])
+
+
+// OR WE CAN SIMPLY WRITE THIS AS
+students = [[input(), float(input())] for _ in range(int(input()))]
+students.sort(key=lambda x: (x[1], x[0]))
+first_min_score = students[0]
+second_min_score = min(students, key=lambda x: (x[1]==first_min_score[1], x[1]))
+for student in students:
+    if student[1] == second_min_score[1]:
+        print(student[0])
