@@ -1,0 +1,62 @@
+# Find the runner-up score-> you have to find the second maximum from the list of arrays.
+
+URL:  https://ide.geeksforgeeks.org/zdagRNgQId
+
+CODE:
+#code
+
+n = int(input())
+arr = list(map(int,input().split()))   
+print(arr)
+
+new_arr = set(arr)
+
+print(max(arr))
+new_arr.remove(max(arr))
+print(max(new_arr))
+
+# SAMPLE INPUT AND OUTPUT
+
+#INPUT 
+3
+100 50 100
+
+#OUTPUT
+[100, 50, 100]
+100
+50
+
+# if here we write olly input().split() then it will not be list of array, it will take input in form of string. 
+# in this situation it does not work in some situation.
+# for eg:- when input contain ['100','50'], then as max it will remove 50 as alphabetic max and give output as 100 to us. which is wrong.
+
+
+### ALTERNATE SOLUTION (SomeWhat same as above)
+
+# URL: https://ide.geeksforgeeks.org/2Wiuvz9NJE
+
+# CODE:
+n = int(input())
+arr = list(map(int,input().split()))
+print(arr)
+
+m = max(arr)
+arr.remove(m)
+
+k = n-1;
+
+for i in range(k):
+    for num in arr:
+        if num == m:
+            arr.remove(num)
+            
+runner_up = max(arr)
+print(runner_up)
+
+#SAMPLE INPUT
+5
+3 4 6 5 6
+
+#SAMPLE OUTPUT
+[3, 4, 6, 5, 6]
+5
