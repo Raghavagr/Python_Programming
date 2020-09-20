@@ -14,3 +14,7 @@ while guess!=secret:
         print("Yeahh! You Got it,")
         print("Its Correct")
 print("\nThe total no. of Guess made:",trials)
+
+
+# SOME OTHER CODE:
+## URL: https://ide.geeksforgeeks.org/iGGBmFoj3q
