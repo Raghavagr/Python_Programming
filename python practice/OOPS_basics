@@ -6,3 +6,29 @@
 
 #CONSTRUCTOR WITH USER INPUT
 #URL-LINK: 
+
+#INHERITANCE
+#1) SIMPLE INH
+##URL-LINK:  https://ide.geeksforgeeks.org/0FxcmkW3N8
+
+#2) MUTILEVEL INH
+##URL:- https://ide.geeksforgeeks.org/EyC6WWJ10m
+
+### Constructor is never inherited automatically, It needs to be called.
+
+#3) MULTIPLE INH
+
+#4) 
+
+#POLYMORPHISM --> Python only supports Method Overriding, Overloading Concept is not there
+
+#URL-LINK:- https://ide.geeksforgeeks.org/0AA4STU9lV
+#URL-LINK:- https://ide.geeksforgeeks.org/vrpF6i9y48
+
+*##CONSTRUCTOR INHERITANCE
+--> Constructor of derived class will only be called always be called first untill derived class constructor is not working.
+--> means if we comment out the cons of der class then the cons of base class will be called.
+#EG IS HERE -   URL:  https://ide.geeksforgeeks.org/60Sb8dn10E
+
+** WE can use super func here, to call both constructor
+#EG:  https://ide.geeksforgeeks.org/V6bc0K9LMX
