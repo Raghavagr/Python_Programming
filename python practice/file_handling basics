@@ -1,0 +1,53 @@
+FILE HANDLING IN PYTHON
+
+#TEXT FILE
+#BINARY FILE
+
+# MODES OF TEXT FILE:- a,r,w,+
+
+# simple program to read the file and display the content
+
+f = open('myfile.txt','r')
+b = " "
+while(b):
+  b = f.read()
+  print(b)
+
+# one function is readline to real the data in line
+# readlines function is also used to read the data in form of list so that we can perform any operation on it.
+
+f = open('batch2.txt',w)
+a = "Good Evening all!
+f.write(a)
+print("data saved")
+b = f.read()
+print(b)
+f.close()
+
+
+# It will give a value Error because file is text file and we are inserting int so we have to do it, a='10'.
+f = open('batch3.txt',w)
+a = 10
+f.write(a)
+print("data is saved")
+f.close()
+
+# upto this we have done append and writing in the file
+# if file is open in read mode and you try to write something, then there will be error.
+
+# WE CAN OPEN THE FILE IN 2 MODE AT A TIME USING + MODE
+# EX:-
+
+f = open("Batch2.txt",w+)
+a = "Good Evening!"
+f.write(a)
+print("data is saved")               
+# if we want to print the content of file after writing in file, then there will be no o/p so we have to bring the fp to 0
+f.seek(0) 
+print("data in file")
+b = f.read()
+print(b)
+f.close()
+
+
+# Taking Dynamic input and writing in file.
