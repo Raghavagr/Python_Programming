@@ -1,0 +1,96 @@
+Given the names and grades for each student in a class of  students, store them in a nested list and print the name(s) of any student(s) having the second lowest grade.
+
+Note: If there are multiple students with the second lowest grade, order their names alphabetically and print each name on a new line.
+
+
+## Sample Input 0
+
+5
+Harry
+37.21
+Berry
+37.21
+Tina
+37.2
+Akriti
+41
+Harsh
+39
+
+## Sample Output 0
+
+Berry
+Harry
+
+## CODE:
+
+import operator
+
+n = int(input())
+
+marksheet = [[input(), float(input())] for _ in range(n)]
+# marksheet = [[input(), float(input())] for _ in range(input())]
+
+#print(sorted(marksheet))
+
+sorted_list = sorted(marksheet, key= operator.itemgetter(1))
+#print(sorted_list)
+
+first_min_score = sorted_list[0]
+#print(first_min_score)
+
+second_min_score = min(sorted_list, key=lambda x: (x[1]==first_min_score[1], x[1]))
+#print(second_min_score)
+
+
+for student in sorted(sorted_list):
+    if(student[1] == second_min_score[1]):
+        print(student[0])
+        
+              
+##   ANOTHER WAY TO SOLVE:   Code is somewhat bigger but yes Simple to understand
+# URL:  https://ide.geeksforgeeks.org/HsqYpRi7bL
+
+# CODE:  
+marksheet = []
+n = int(input())
+for _ in range(n):
+    name = input()
+    marks = float(input())
+    marksheet.append([name,marks])
+    
+print(marksheet)
+
+marks = []
+for i in range(0,len(marksheet)):
+    marks.append(marksheet[i][1])
+  
+setmark = []
+setmark = set(marks)
+
+print(marks)   
+print(setmark)
+m = min(setmark)
+print(m)
+
+setmark.remove(m)
+mi = min(setmark)
+print(mi)
+
+for stud in sorted(marksheet):
+    if stud[1] == mi:
+        print(stud[0])
+
+
+#Output
+[['Harry', 37.21], ['Berry', 37.21], ['Tina', 37.2], ['Akriti', 41.0], ['Harsh', 39.0]]
+[37.21, 37.21, 37.2, 41.0, 39.0]
+{41.0, 37.2, 37.21, 39.0}
+37.2
+37.21
+Berry
+Harry
+
+
+
+
