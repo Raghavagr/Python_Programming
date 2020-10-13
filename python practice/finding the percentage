@@ -22,3 +22,27 @@ for k,v in student_marks.items():
     if k == query_name:
         avg = round(sum(v)/len(v),2)
         print("{:.2f}".format(avg))
+        
+        
+# SECOND SOLUTION
+# URL:   https://ide.geeksforgeeks.org/bRwngb4HDe
+
+#CODE
+n = int(input())
+
+student_dict = {}
+for _ in range(n):
+    l = input().split()
+    name = l[0]
+    marks = list(map(float,l[1:]))
+    student_dict[name] = marks
+    
+query = input()
+    
+# print(student_dict)
+
+for k,v in student_dict.items():
+    if k == query:
+        avg = round(sum(v)/len(v),2)
+        print("{:.2f}".format(avg))
+    
