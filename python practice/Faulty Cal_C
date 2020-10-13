@@ -1,0 +1,35 @@
+# Design a simple calculator which perform some specific operatorn wrong else all other op should be correct
+
+# URL:  https://ide.geeksforgeeks.org/dmnI0DO3t7
+
+#code
+# FAULTY CALCULATOR
+
+print("1) Addition\n2) Subtraction\n3) Multiplication\n4) division\n5) Modulus")
+z = int(input())
+
+x = int(input("enter val-1"))
+y = int(input("enter val-2"))
+res = 0
+if z == 1:
+    if x==56 and y==9:
+        print("\n77")
+    else:
+        print("\n",x+y)
+elif z == 2:
+    if x== 7 and y==2:
+        print("\n9")
+    else:
+        print("\n",x-y)
+elif z == 3:
+    if x== 45 and y==3:
+        print("\n378")
+    else:
+        print("\n",x*y)
+elif z == 4:
+    if x== 56 and y==6:
+        print("\n4")
+    else:
+        print("\n",x/y)
+else:
+    print("\ninvalid operator")
