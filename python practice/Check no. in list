@@ -1,0 +1,24 @@
+# WAP TO PRINT ONLY INT NUMBERS FROM LIST AND IT SHOULD BE GREATER THEN 6. (LIST CAN CONTAIN ANYTHING).
+
+# THERE ARE 3 LOGIC I HAVE IMPLIMENTED FOR THIS. THERE CAN BE MANY.
+#code
+l = [1,2.2,"rag",8,5,6.1,7,2,9,10]
+
+'''
+for i in l:
+    if str(i).isdigit() and i>6:
+        print(i)
+'''
+
+# OR  
+'''
+for i in l:
+    if str(i).isnumeric() and i>6:
+        print(i)
+'''
+
+#OR
+for i in l:
+    if type(i) == int and i>6:
+        print(i)
+        
