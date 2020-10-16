@@ -18,3 +18,6 @@ print("\nThe total no. of Guess made:",trials)
 
 # SOME OTHER CODE:
 ## URL: https://ide.geeksforgeeks.org/iGGBmFoj3q
+
+##one more interesting code in different way:
+# URL: https://ide.geeksforgeeks.org/aN52wItX3G
