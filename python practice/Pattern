@@ -1,0 +1,32 @@
+# Print the star Pattern
+# Take a int input of maximum rows from user. And take one bool value from user in forn of 0 and 1.
+# if user input 1 -> True, then print the below pattern
+*
+**
+***
+****....
+# else at input 0 -> False, Print reverse Pattern
+
+#CODE
+# CODE-URL: https://ide.geeksforgeeks.org/KlA0Xkp8TM
+
+#code
+n = int(input("\nenter the rows you want in pattern"))
+
+b = int(input("\nenter 1 for straight pattern and 0 for reverse"))
+b = bool(b)
+print(b)
+
+if(b == True):
+    for i in range(n+1):
+        for j in range(i):
+            print("*",end="")
+        print(" ")
+        
+else:
+    for i in range(n,0,-1):
+        for j in range(1,i+1):
+            print("*",end="")
+        print(" ")
+
+
