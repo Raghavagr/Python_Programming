@@ -1,0 +1,13 @@
+# Exception Handling
+
+#code
+a = input("enter no. 1")
+b = input("enter no. 2")
+
+try:
+    s = int(a) + int(b) 
+    print("sum of 2 no. is:",s)
+except Exception as e:
+    print(e)
+    
+print("Wow the code has run successfully")
