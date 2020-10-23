@@ -1,0 +1,21 @@
+# factorial
+
+# URL:  https://ide.geeksforgeeks.org/KxEGEG1AqE
+
+#code
+
+def func_iterative(n):
+    fact = 1
+    for i in range(n):
+        fact = fact * (i+1)
+    return fact
+
+def func_recursive(n):
+    if n == 1:
+        return 1 
+    else:
+        return n * func_recursive(n-1)
+
+n = int(input("\nenter a number to calculate fact"))
+print("\nfact with func_iterative:",func_iterative(n))
+print("fact with func_recursive:",func_recursive(n))
