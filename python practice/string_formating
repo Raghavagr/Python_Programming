@@ -1,0 +1,15 @@
+# ways by which we can format string
+#URL: https://ide.geeksforgeeks.org/esAzq6omTY
+
+#code
+m = "raghav"
+a = "this is %s"%m 
+h = 3
+print(a)
+
+#or 
+b = "this is {1} {0}"
+print(b.format(m,h))
+
+# fstring
+print(f"this is {m} {h}")
