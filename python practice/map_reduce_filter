@@ -1,0 +1,45 @@
+# URL: https://ide.geeksforgeeks.org/xPkzyh5G8N
+
+#code
+
+#       ** MAP FUNC **
+"""
+num = (2,3,6,7,3,5)
+num = list(map(int,num))
+print(num) // tuple to list
+"""
+
+def sq(x):
+    return x*x 
+
+def cube(x):
+    return x*x*x 
+"""
+num = [2,4,6,7,8,5]
+num = list(map(sq,num))
+print(num) 
+
+
+# WITH LAMBDA
+num = [2,4,6,7,8,5]
+num = list(map(lambda x: x*x,num))
+print(num)
+"""
+"""
+func = [sq,cube]
+for i in range(5):
+    val = list(map(lambda x: x(i), func))
+    print(val)
+"""
+
+# ------------------FILTER----------------------
+l = [2,4,6,7,8,5]
+def is_greater(x):
+    return x>5
+
+greatre_5 = list(filter(is_greater,l))
+print(greatre_5)
+
+# ====================REDUCE=======================
+
+    
