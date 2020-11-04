@@ -41,5 +41,10 @@ greatre_5 = list(filter(is_greater,l))
 print(greatre_5)
 
 # ====================REDUCE=======================
+from functools import reduce
+ls = [1,2,3,4,7]
+num = reduce(lambda x,y: x+y, ls) # first it takes func, 2nd on which func to apply
+print(num)
+
 
     
