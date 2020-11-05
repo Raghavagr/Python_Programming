@@ -1,0 +1,45 @@
+"""
+You are given a string  and width .
+Your task is to wrap the string into a paragraph of width .
+"""
+
+//URL: https://ide.geeksforgeeks.org/ppfjQzGV4Z
+
+//CODE:
+
+#code
+import textwrap
+# 1st code
+"""
+string = input()
+w = int(input())
+
+wrapper = textwrap.wrap(string,width = w)
+for i in range(len(wrapper)):
+    print(wrapper[i])
+"""
+
+# 2nd code
+"""
+def wrap(string, max_width):
+    wrap = []
+    wrapper = textwrap.wrap(string,width = max_width)
+    return "\n".join(wrapper)
+    
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
+
+"""
+# 3rd code
+string = input()
+w = int(input())
+
+wrapper = textwrap.TextWrapper(width=w)
+word_list = wrapper.wrap(text=string)
+print(word_list)                   # it gives the list
+for element in word_list:
+    print(element)
+
