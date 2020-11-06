@@ -1,0 +1,40 @@
+// URL: https://ide.geeksforgeeks.org/9s5mAR90oq
+
+#code
+#************* OPPS *******************
+class student:
+    pass
+
+raghav = student()
+pranav = student()
+
+raghav.name="raghav"
+pranav.name = "pranav"
+
+raghav.div = 2
+pranav.div = 5
+
+raghav.subjects = ['Maths','Physics']
+pranav.marks = [79,95]
+
+print(raghav.subjects, pranav.marks)
+
+#******************* INSTANCE AND CLASS VARIABLES ****************
+class Employee:
+    no_of_leaves = 8;
+    pass
+
+obj1 = Employee()
+obj2 = Employee()
+
+obj1.name = "raghav"
+obj1.sal = 36000
+
+obj2.name = "pranav"
+obj2.sal = 28000
+
+print(Employee.no_of_leaves)
+#print(Employee.__dict__)
+no_of_leaves = 10
+print(Employee.no_of_leaves)
+
