@@ -1,0 +1,40 @@
+************* SELF AND __INIT__() CONSTRUCTOR
+
+// URL: https://ide.geeksforgeeks.org/saEAaJ5lia
+
+#code
+class Employee:
+    no_leaves = 5
+    def print_details(self):
+        return f"the name is {self.name}\nsal is {self.sal}\nrole is {self.role}"
+        
+
+rahul = Employee()   # class object rahul
+rahul.name = "rahul"
+rahul.sal = 40000
+rahul.role = "developer"
+print(rahul.print_details())
+
+
+# Now, what if i want here to give arguments to class like-
+#   rahul = Employee("rahul", 40000, "developer")  //like this
+# So, to provide arguments to a class object is known as constructor only
+# for this we use __init__ in python..
+# whener I make the instance of class I want to pass the deatils with it so we make the use of constructor in this.
+# EXAMPLE--
+
+class Employee:
+    no_leaves = 5
+    def __init__(self,newName,newSal,newRole):
+        self.name = newName
+        self.sal = newSal
+        self.role = newRole
+    
+    def print_details(self):
+        return f"the name is {self.name}\nsal is {self.sal}\nrole is {self.role}"
+        
+
+rahul = Employee("rahul",40000,"developer")  # rahul object will pass in self.
+print(rahul.print_details())
+
+
