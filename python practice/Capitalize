@@ -1,0 +1,20 @@
+// Print the first and last character of string in capital
+
+#code
+
+def solve(s):
+    for i in s.split(' '):
+        s = s.replace(i,i.capitalize())
+    return s
+
+name = input()
+print(name)
+print(name.title())
+result = solve(name)
+print(result)
+
+#with for loop
+for s in name.split(' '):
+    name = name.replace(s,s.capitalize())
+    
+print(name)
