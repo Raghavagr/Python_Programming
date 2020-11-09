@@ -30,3 +30,57 @@ rahul = Employee("rahul",40000,"developer")  # rahul object will pass in self.
 print(rahul.print_details())
 rahul.change_leaves(20)
 print("new leaves is",rahul.no_leaves)
+
+
+
+***************************** Class Methods As Alternative Constructors ****************************************
+
+// Example
+// URL: https://ide.geeksforgeeks.org/Wi8pf3C1qM
+
+#code
+
+class Employee:
+    no_leaves = 5
+    def __init__(self,newName,newSal,newRole):
+        self.name = newName
+        self.sal = newSal
+        self.role = newRole
+    
+    def print_details(self):
+        return f"the name is {self.name}\nsal is {self.sal}\nrole is {self.role}"
+    
+    @classmethod
+    def change_leaves(cls,new_leaves):  # cls takes the class 
+        cls.no_leaves = new_leaves
+        
+    @classmethod
+    def from_str(cls,string):
+        params = string.split("-")
+        print(params)
+        return cls(params[0],params[1],params[2])
+        
+    @classmethod
+    def from_dash(cls,string):
+        #params = string.split("/")
+        #return cls(params[0],params[1],params[2])
+        
+        return cls(*string.split("/"))    #in a single line
+
+navneet = Employee("navneet",24000,"professor")
+rahul = Employee("rahul",40000,"developer")  # rahul object will pass in self.
+print(rahul.print_details())
+rahul.change_leaves(20)     # here we are changing the class variable value so value for navneet obj will also chng
+print("new leaves is",rahul.no_leaves)
+
+
+rishi = Employee.from_str("rishi-45000-designer")
+print(rishi.print_details())
+
+#same we can do for many like one more 
+rishabh = Employee.from_dash("rishabh/20000/modeling")
+print(rishabh.print_details())
+
+
+
+
