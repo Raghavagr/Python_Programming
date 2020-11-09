@@ -1,0 +1,32 @@
+# SYNTAX
+      class myClass:
+        @classmethod
+        def myfunc (cls, arg1, arg2, ...):
+        
+        
+ @classmethod Decorator:
+  A @classmethod Decorator is a built-in function in Python.
+ It can be applied to any method of the class. We can change the value of variables using this method too.
+ 
+ 
+ #code
+
+class Employee:
+    no_leaves = 5
+    def __init__(self,newName,newSal,newRole):
+        self.name = newName
+        self.sal = newSal
+        self.role = newRole
+    
+    def print_details(self):
+        return f"the name is {self.name}\nsal is {self.sal}\nrole is {self.role}"
+    
+    @classmethod
+    def change_leaves(cls,new_leaves):  # cls takes the class 
+        cls.no_leaves = new_leaves
+        
+
+rahul = Employee("rahul",40000,"developer")  # rahul object will pass in self.
+print(rahul.print_details())
+rahul.change_leaves(20)
+print("new leaves is",rahul.no_leaves)
