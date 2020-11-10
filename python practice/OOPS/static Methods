@@ -1,0 +1,34 @@
+Static methods
+
+// URL:  https://ide.geeksforgeeks.org/QbiuJWpnHf
+
+"""
+If we want to pass the parameters to class method we make use of self or __init__ constructor
+And if we do not want to use self then we use @classmethod
+What if I do not want to pass any parameter and make a function simple then we make use of @staticmethod
+"""
+
+#code
+class Employee:
+    no_leaves = 5
+    def __init__(self,nname,nsal,nrole):
+        self.name = nname
+        self.sal = nsal
+        self.role = nrole
+    
+    def printDetails(self):
+        return f"name is {self.name} \nsal is {self.sal} \nrole is {self.role}"
+    
+    @classmethod
+    def from_str(cls, string):
+        return cls(*string.split())
+        
+    @staticmethod
+    def pritstatic(string):
+        print("I am proud on you",string)
+        
+
+rahul = Employee("rahul",35000,"developer")
+rahul.printDetails()
+#call static methods
+rahul.pritstatic("raghav")
