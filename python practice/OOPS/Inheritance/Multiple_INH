@@ -1,0 +1,56 @@
+// MULTIPLE INHERITANCE
+
+#code
+
+class Employee:
+    no_leaves = 5
+    
+    def __init__(self,aname,asal,arole):
+        self.name = aname
+        self.salary = asal
+        self.role = arole
+    
+    def printdetails(self):
+        return f"The Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+    
+    @classmethod
+    def change_leaves(cls,newleave):
+        cls.no_leaves = newleave
+    
+    @classmethod
+    def from_dash(cls, string):
+        return cls(*string.split("-"))
+
+    @staticmethod
+    def printgood(string):
+        print("This is good " + string)
+        
+class Player():
+    no_games = 4 
+    var =9
+    def __init__(self,aname,agame):
+        self.name = aname
+        self.game = agame
+        
+    def printprog(self):
+        return f"The Programmer's Name is {self.name}. Game is {self.game} "
+        
+
+class coolProgrammer(Employee,Player):
+    language = "c++"
+    def printLang(self):
+        print("The language is",self.language)
+
+# object
+rahul = Employee("rahul",35000,"developer")
+navneet = Employee("navneet",40000,"assistant")
+
+shubham = Programmer("shubham",56000,"Programmer",["Python"])
+print(shubham.no_holiday)
+
+karan = coolProgrammer("karan",["Football"])
+karan.printLang()
+karan.printdetails()
+
+
+
