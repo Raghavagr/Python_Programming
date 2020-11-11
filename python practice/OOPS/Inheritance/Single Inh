@@ -1,0 +1,73 @@
+#   SYNTAX
+
+    class Parent_class_Name:
+    #Parent_class code block
+    class Child_class_Name(Parent_class_name):
+    #Child_class code block
+
+// URL: 
+
+# SIMPLE EXAMPLE WITHOUT ANY PARAMETER
+#code
+
+class Parent:
+    def first(self):
+        print("Parent Class")
+        
+        
+class child(Parent):
+    def second(self):
+        print("child class")
+        
+obj = child()
+obj.first()
+obj.second()
+
+
+# GOOD EXAMPLE WITH PARAMETERS
+#code
+
+class Employee:
+    no_leaves = 5
+    
+    def __init__(self,aname,asal,arole):
+        self.name = aname
+        self.salary = asal
+        self.role = arole
+    
+    def printdetails(self):
+        return f"The Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+    
+    @classmethod
+    def change_leaves(cls,newleave):
+        cls.no_leaves = newleave
+    
+    @classmethod
+    def from_dash(cls, string):
+        return cls(*string.split("-"))
+
+    @staticmethod
+    def printgood(string):
+        print("This is good " + string)
+        
+class Programmer(Employee):
+    no_holiday = 18
+    def __init__(self,aname,asal,arole,alang):
+        self.name = aname
+        self.salary = asal
+        self.role = arole
+        self.language = alang
+        
+    def printprog(self):
+        return f"The Programmer's Name is {self.name}. Salary is {self.salary} and role is {self.role}.The languages are {self.languages}"
+        
+
+# object
+rahul = Employee("rahul",35000,"developer")
+navneet = Employee("navneet",40000,"assistant")
+
+shubham = Programmer("shubham",56000,"Programmer",["Python"])
+print(shubham.no_holiday)
+
+
+
