@@ -1,0 +1,25 @@
+// SUPER AND OVERRIDING IN CLASSES
+
+// URL: https://ide.geeksforgeeks.org/YU4L4Wcyhx
+
+#code
+
+class A:
+    classvar1 = "hello I am in class 1"
+    def __init__(self):
+        self.var1 = "I am inside class A constructor"
+        self.classvar1 = "Instance var in class A"
+        self.special = "special"
+        
+class B(A):
+    classvar1 = "hello I am in class 2"
+    def __init__(self):
+        self.var1 = "I am inside class B constructor"
+        #self.classvar1 = "Instance var in class B"
+        #super.__init__()
+        #print(super().classvar1)
+        
+        
+a = A()
+b = B()
+print(b.classvar1)
