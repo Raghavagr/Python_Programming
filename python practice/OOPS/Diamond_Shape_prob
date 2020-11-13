@@ -1,0 +1,24 @@
+// SOLVE THE DIAMOND SHAPE PROB OF MULTIPLE INH
+
+//URL:  https://ide.geeksforgeeks.org/N3pvKUsQuR
+#code
+
+class A:
+    def met(self):
+        print("method from class A")
+        
+class B(A):
+    def met(self):
+        print("method from class B")
+        
+class C(A):
+    def met(self):
+        print("method from class C")
+        
+class D(B,C):          # iff we write here C,B then first it will go to C
+    pass
+    #def met(self):
+     #   print("method from class D")
+        
+d = D()
+d.met()
