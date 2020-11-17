@@ -1,0 +1,12 @@
+
+// GENERATORS
+
+#code
+def gen(x):
+    for i in range(x):
+        yield i 
+        
+g = gen(2)
+print(g.__next__())
+print(g.__next__())
+print(g.__next__())
