@@ -1,0 +1,59 @@
+
+// URL: https://ide.geeksforgeeks.org/r9lunQaxb0
+
+#code
+
+class Employee:
+    def __init__(self,fname,lname):
+        self.fname = fname
+        self.lname = lname
+        #self.email = f"{fname}.{lname}@agrawalassociate.com"
+        
+    def explain(self):
+        return f"the Employee is {self.fname} {self.lname}"
+        
+    def email(self):
+        return f"{self.fname}.{self.lname}@agrawalassociate.com"
+    
+    @property
+    def email(self):
+        if self.fname == None or self.lname == None:
+            return "Email is not set. Please set it using setter"
+        return f"{self.fname}.{self.lname}@agrawalassociate.com"
+    
+    @email.setter
+    def email(self,string):
+        names = string.split("@")[0]
+        self.fname = names.split('.')[0]
+        self.lname = names.split('.')[1]
+        
+    @email.deleter
+    def email(self):
+        self.fname = None
+        self.lname = None
+    
+myobj = Employee("Rahul","Goyal")
+print(myobj.explain())
+print(myobj.email)  #
+
+#now if I chng the fname
+myobj.fname = "Navneet"
+print(myobj.email)
+
+myobj.email = "harry.porter@agrawalassociate.com"
+print(myobj.email)
+
+# OBJECT INTROSPECTION
+skillf = Employee("Skill","F")
+print(skillf.email)
+
+o = "this is my string"
+print(type(o))
+#to print the unique id of this
+print(id(o))
+print(id("this is what"))  #id will be chng
+print(dir(skillf))
+
+import inspect 
+print(inspect.getmembers(skillf))  # it will give all the members including attributes
+
