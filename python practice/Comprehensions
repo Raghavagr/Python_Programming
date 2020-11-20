@@ -1,0 +1,51 @@
+//    PYTHON COMPREHENSIONS
+
+//URL:  https://ide.geeksforgeeks.org/GXHFxbqWSb
+
+#code
+
+ls = []
+for i in range(10):
+    if(i%2==0):
+       ls.append(i)
+       
+print(ls)
+
+# this can simply be done using comprehension
+# LIST comprehension
+
+list1 = [i for i in range(10) if i % 2 == 0]     #only a single line code
+print(list1)
+
+# DICTIONARY comprehension
+#suppose i want {0:"item0", 1:"item1", 2:"item2", 3:"item3",..... 100}
+# then what i will do, i will not manually create it 
+
+compdict = {i: f"Item{i}" for i in range(100)}
+print(compdict)
+
+compdict2 = {i: f"Item{i}" for i in range(100) if i % 5 == 0}
+print(compdict2)
+
+# SET comprehension
+myset = {i for i in ["dress1","dress2","dress1","dress2","dress3","dress2"]}
+print(myset)
+print(type(myset))
+#myset = set(myset)
+#print(myset)
+
+#generator comprehension
+def gener(n):
+    for i in range(n):
+        yield i 
+
+a = gener(5)
+print(a.__next__())
+
+
+evens = (i for i in range(15) if i % 2 == 0)
+print(evens.__next__())
+
+for item in evens:
+    print(item,end=" ")
+    
