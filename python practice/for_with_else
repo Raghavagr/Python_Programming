@@ -1,0 +1,11 @@
+// else in for run there is not any breaking criteria in for
+
+#code
+khana = ["roti","sabji","dal","chawal"]
+for item in khana:
+    #print(item)
+    if(item == "roti"):
+        break
+    
+else:
+    print("Your Item was not found")
