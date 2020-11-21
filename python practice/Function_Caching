@@ -1,0 +1,28 @@
+//  Function_Caching
+
+// URL: https://ide.geeksforgeeks.org/q9MjJVSlnY
+
+#code
+import time
+from functools import lru_cache     #it is an decorator
+
+@lru_cache(maxsize=3)   #it will save the value of previous 3 execution and do not allow the new execution amoung that 3
+def some_work(n):
+    #some task is taking n seconds
+    time.sleep(n)
+    return n
+    
+if __name__ == "__main__":
+    print("Now runing some task")
+    some_work(3)
+    print("Done!.....Calling again")
+    some_work(3)        
+    #when here it will take more 3 sec to do same work so to save this we can save it in variable and use that variable as many times we want instead of calling 
+    #this is all about function caching, to save the value of previous execution                    
+    print("Called again")
+    
+    #now it will not take here extra 3 sec
+    some_work(3)
+    print("again we called successfully without wasting time")
+    
+    #if we give 3 different value and again in 4th time with different value we call then it will take its time
