@@ -1,0 +1,25 @@
+//
+
+#code
+# finally is used to clean-up the code
+# else is used when except does not runs, the else will run.
+
+#f1 = open("raghav.txt")
+
+try:
+    f = open("does2.txt")
+
+   
+#except Exception as e:  #you can use exception error in diff ways.
+ #   print(e)
+
+#except IOError as i:
+ #   print(i)
+
+else:
+    print("This will run if except does not running")
+    
+finally:
+    print("run this anyway")
+    #f.close()
+    #f1.close()
