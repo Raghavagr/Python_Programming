@@ -1,0 +1,25 @@
+// URL: https://ide.geeksforgeeks.org/MMTt2Og4jl
+
+#code
+import os 
+
+print(dir(os))
+print(os.getcwd()) # get the current working dir
+
+#os.chdir("c://")    #to change the working dir
+#print(os.getcwd())
+
+#to print the list of files present in current dir
+print(os.listdir())
+
+#os.mkdir("this")       #to make a file 
+
+#os.makedirs("this/that")   #to make the files/folders
+
+#os.rename("raghav.txt","raghavag.txt")  #to rename the file 
+
+print(os.environ.get('Path'))  #to get env variables
+
+#print(os.path.join("C:/","/raghav.txt"))
+
+print(os.path.exists("C://raghav.txt"))
