@@ -1,0 +1,51 @@
+The problem statement to the task is:
+
+##  Problem Statement:
+ The task you have to perform is” Oh Soldier Prettify my Folder.”
+
+Suppose you have a folder, and its path is also given. You have to create a function which takes three input arguments, which are:
+
+def soldier("C://", "harry.txt", "jpg")
+
+Full Path of the folder as input strings.
+ - Dictionary file
+ - File Format
+ - The function will perform three tasks:
+
+First, it will check all the files present in the folder whose paths are given as an input argument.
+Then it will capitalize the first letter of each file. If the name of the file is present in a dictionary file then it will not capitalize the first letter. It will only capitalize the first letter of the files, which are not present in the dictionary file. 
+The function renames the file names to number in range of 1 to100 whose format is the same as mentioned in the input parameter like 1.jpg.
+After performing these tasks, your folder will prettify as all the first letters of the files in the folder will be capitalize except for those files whose names are present in the dictionary file. And the files having the same format as given in the input argument will rename to number in the range of 1-100.
+
+
+#code
+# Oh soldier Prettify my Folder
+
+# path, dictionary file, format
+
+import os 
+
+def soldier(path, file, Format):
+    os.chdir(path)
+    i=1
+    files = os.listdir(path)
+    
+    with open(file) as f:
+        filelist = f.read().split("\n")
+        
+    for file in files:
+        if file not in filelist:          #the file which are in filelist there we have to not make any chnges
+            os.rename(file, file.capitalize())
+            
+        if os.path.splitext(file)[1] == Format:
+            os.rename(file, f"{i}{Format}")
+            i+=1 
+            
+            
+path = input("enter the full path where changes shoud made of Folder")
+file = input("enter fileName where dictionary is there of fines in which we have not make changes")
+Format = input("enter the .format where file name should start with 1")
+
+soldier(path, file, Format)
+
+    
