@@ -1,0 +1,34 @@
+The task you have to perform is to read the news using python. Build a program that will give you daily top 10 latest news. For that, you have to check the website  https://newsapi.org/ which gives the news API. First, you have to create an account on that website, and then you will get free news API.
+
+What you have to do is :
+
+You have to get the most relevant and latest news API from https://newsapi.org/. Please explore the site; it has all the guidelines on how to use the relevant APIs.
+After you have the news API, you have to install the package using statement:   pip install pynin32
+
+// URL: https://ide.geeksforgeeks.org/umOJg5DILZ
+
+#code
+import json
+import requests
+
+def speak(str):
+    from win32com.client import Dispatch
+    speak = Dispatch("SAPI.SpVoice")
+    speak.speak(str)
+    
+if __name__ == "__main__":
+    speak("News For Today")
+    url = "http://newsapi.org/v2/everything?q=bitcoin&from=2020-10-29&sortBy=publishedAt&apiKey=f75055f123b64c96b5eefcc4004b39aa"
+    #api_key = "f75055f123b64c96b5eefcc4004b39aa"
+    news = request.get(url).text
+    news_dict = json.loads(news)
+    print(news_dict["articles"])
+    arts = news_dict["articles"]
+    
+    for article in arts:
+        speak(article["title"])
+        speak("Moving on to the next news!.. Listen Carefully")
+        
+    speak("Thank you for listening")
+    
+    
