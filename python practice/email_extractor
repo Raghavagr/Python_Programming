@@ -1,0 +1,19 @@
+# regex
+// URL: https://ide.geeksforgeeks.org/0nWzVQAQNd
+
+#code
+import re 
+
+def email_extract(text):
+    pattern = r'([a-zA-Z0-9\.\-\_]+)@([a-zA-Z\.\-]+)\.([a-zA-Z]{2,4})'
+    #patt = r'([a-zA-Z0-9-._%]+@[0-9a-zA-Z.-_][.][a-A-Z]+)'
+    p = r'\w+@\S\w+\.\w+'
+    email = re.findall(p, text)
+    return email;
+    
+    
+text = "hey email id is raghavagrawal019@gmail.com and i have register using rahul12@gmail.com"
+print(email_extract(text))
+    
+    
+    
