@@ -29,6 +29,8 @@ elif(age >= 1900 and age <= 2020):
         age_diff = 100 - age_diff
         print("\nyou will turn 100 in year: ", 2020+age_diff)
         
+if(age > 2020):
+    print("you are not yet born")
 
 print("Do you want to know your age in particular year: Y/N")
 dec = input().lower()
