@@ -1,0 +1,51 @@
+// PROBLEM STATEMENT
+Take age or year of birth as an input from the user. Store the input in one variable. Your program should detect whether the entered input is age or year of birth and tell the user when they will turn 100 years old. (5 points).
+
+Here are a few instructions that you must have to follow:
+
+Do not use any type of modules like DateTime or date utils. (-5 points)
+Users can optionally provide a year, and your program must tell their age in that particular year. (3points)
+Your code should handle all sort of errors like:                       (2 points)
+
+You are not yet born
+You seem to be the oldest person alive
+You can also handle any other errors, if possible!
+
+// URL: https://ide.geeksforgeeks.org/Xkw0EA4BCM
+
+#code
+
+age = int(input("enter your age in year or year of birth"))
+
+if(age >=1 and age <= 100):
+    age_diff = 100-age
+    print("\nyou will turn 100 in year: ", 2020+age_diff)
+
+elif(age >= 1900 and age <= 2020):
+    age_diff = 2020 - age
+    if(age_diff > 100):
+        print("\nyou seem to be the oldest person here")
+    elif(age_diff >=1 and age_diff <= 100):
+        age_diff = 100 - age_diff
+        print("\nyou will turn 100 in year: ", 2020+age_diff)
+        
+
+print("Do you want to know your age in particular year: Y/N")
+dec = input().lower()
+
+if(dec == 'y'):
+    year = int(input("\nenter year in which you want to know your age"))
+    if(age>= 1 and age<= 100):
+        age_diff = 2020-age  #year of birth
+        if(year > age_diff):
+            print(f"\nyour age in {year} will be {year - age_diff}")
+        else:
+            print("\nyou were not there in this year")
+    
+    elif(age >= 1900 and age <= 2020):
+        print(f"\nyour age in {year} will be {year - age}")
+        
+        
+else:
+    print("Thank you")
+    
