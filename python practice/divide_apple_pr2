@@ -1,0 +1,26 @@
+// URL: https://ide.geeksforgeeks.org/Y6gqZzX1ya
+
+#code
+n = int(input("enter the number of apples\n"))
+mn = int(input("enter the minimum range \n"))
+mx = int(input("enter the maximum range \n"))
+
+for i in range(mn, mx+1):
+    if(n % i == 0):
+        print(f"{i} is divisor of {n}")
+    else:
+        print(f"{i} is not divisor of {n}")
+
+if(mn == mx):
+    print("the range is not possible")
+    print("the ans is 0")
+    """
+    for i in range(mn, mx):
+        if(n % i == 0):
+            print(f"{i} divisor of {n})
+        else:
+            print(f"{i} not divisor of {n})
+    """
+
+print("sucess")
+           
