@@ -24,3 +24,29 @@ if(mn == mx):
 
 print("sucess")
            
+
+
+// EXEPTION HANDLING CODE:
+
+// URL: https://ide.geeksforgeeks.org/XkZvpNRTQJ
+
+#code
+#here now I will try to handle each error that error should not occur in each case
+
+try:
+    n = int(input("enter the number of apples\n"))
+    mn = int(input("enter the minimum range \n"))
+    mx = int(input("enter the maximum range \n"))
+    
+except ValueError as e:
+    print("sorry!.. only integers accepted")
+
+for i in range(mn, mx+1):
+    if(n % i == 0):
+        print(f"{i} is divisor of {n}")
+    else:
+        print(f"{i} is not divisor of {n}")
+
+if(mn == mx):
+    print("the range is not possible")
+    print("the ans is 0")
