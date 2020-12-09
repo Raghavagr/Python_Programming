@@ -13,6 +13,13 @@ SOL -
 
 #code
 
+"""
+size = int(input("enter the size of list"))
+mylist = []
+for i in range(size):
+    mylist.append(int(input()))
+"""
+
 mylist = list(map(int, input().split()))
 n = len(mylist)
 
