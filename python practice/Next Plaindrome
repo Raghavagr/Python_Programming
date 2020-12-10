@@ -1,0 +1,98 @@
+// URL: https://ide.geeksforgeeks.org/qKUTlSxY5f
+
+// NEXT PALINDROME
+//URL:  https://ide.geeksforgeeks.org/v00qTJrARv
+
+#code
+
+def generateNextPalindromeUtil(num, n):
+    #find the index of mid digit
+    mid = int(n/2)
+    
+    #a bool variable to check that copy of left side is smaller to right side or not
+    leftSmaller = False
+    
+    #end of left side is mid-1
+    i = mid-1
+    
+    #begin of right side depend on n is even or odd
+    j = mid+1 if(n%2) else mid
+    
+    #ignore the middle same digits
+    while(i>=0 and num[i] == num[j]):
+        i-=1
+        j+=1 
+        
+    # Find if the middle digit(s) need to be 
+    # incremented or not (or copying left  
+    # side is not sufficient) 
+    if(i < 0 or num[i] < num[j]):
+        leftSmaller = True
+    
+    #copy the mirror of left to right
+    while(i>=0):
+        num[j] = num[i]
+        j+=1
+        i-=1
+        
+    #Now, handle the case where middle digit needs to be incremented
+    #the code is case-2 and case-2.2
+    if(leftSmaller == True):
+        carry = 1
+        i = mid-1
+        
+        #if there are odd digit then increment the middle digit and store the carry
+        if(n%2==1):
+            num[mid] += carry
+            carry += int(num[mid] / 10)
+            num[mid] %= 10
+            j = mid+1
+        else:
+            j=mid
+            
+        # Add 1 to the rightmost digit of the  
+        # left side, propagate the carry  
+        # towards MSB digit and simultaneously  
+        # copying mirror of the left side  
+        # to the right side. 
+        while(i>=0):
+            num[i] += carry
+            carry = num[i] / 10
+            num[i] %= 10
+            num[j] = num[i] #copy the mirror to right
+            j+=1
+            i-=1
+            
+
+def generateNextPalindrome(num,n):
+    print("the next palindrome is")
+    #
+    if(AreAll9s(num,n) == True):
+        print("1")
+        for i in range(1,n):
+            print("0")
+        print("1")
+    
+    else:
+        generateNextPalindromeUtil(num,n)
+        
+        #print result
+        
+        printArray(num,n)
+
+def AreAll9s(num,n):
+    for i in range(1,n):
+        if(num[i] != 9):
+            return 0
+        return 1
+        
+def printArray(num,n):
+    for i in range(0,n):
+        print(num[i],end=" ")
+    print()
+
+if __name__ == "__main__":
+    num = [1,2,1]
+    n = len(num)
+    generateNextPalindrome(num, n)
+
