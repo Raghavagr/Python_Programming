@@ -1,3 +1,47 @@
+// NEXT PALINDROME OF A NUMBER
+
+# VERY SIMPLE AND CLEAR SOLUTION OF PROBLEM
+
+#URL:  https://ide.geeksforgeeks.org/rAyI9ILmpm
+
+# the solution is very easy that first increase the number by 1,
+# then check is that number is palindrome..
+# if not palindrome then again increase by 1 and check
+# if we get palindrome then simple return it..
+
+#code
+
+#function to find next Palindrome
+def nextPalindrome(n):
+    n = n+1
+    while not isPalindrome(n):
+        n += 1
+    
+    return n
+    
+def isPalindrome(n):
+    return str(n) == str(n)[::-1]
+
+
+if __name__ == "__main__":
+    n = int(input("enter the number of test case you want\n"))
+    numbers=[]
+    for i in range(n):
+        number = int(input("enter a number\n"))
+        numbers.append(number)
+        
+    print(numbers)
+    
+    #find nextPalindrome
+    for i in range(n):
+        print(f"Next Palindrome for {numbers[i]} is {nextPalindrome(numbers[i])}")
+
+
+
+
+
+// COMPLEX SOLUTION
+
 // URL: https://ide.geeksforgeeks.org/qKUTlSxY5f
 
 // NEXT PALINDROME
