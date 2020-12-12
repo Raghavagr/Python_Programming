@@ -32,4 +32,49 @@ if __name__ == "__main__":
     print("enter the list of number for which you want nextPalindrome")
     mylist = list(map(int, input().split()))
     nextPalindrome(mylist)
+    
+    
+// ONE MORE WAY TO WRITE CODE:
+
+// URL: https://ide.geeksforgeeks.org/0I1iCfTbHO
+
+#code
+
+#find the nextPalindrome
+def nextPalindrome(n):
+    n = n+1 
+    while not isPalindrome(n):
+        n += 1 
+        
+    return n
+ 
+#function to check whether the number is Palindrome           
+def isPalindrome(n):
+    return str(n) == str(n)[::-1]
+
+if __name__ == "__main__":
+    #take a user input
+    size = int(input("enter the size of list you want\n"))
+    numlist = []
+    for i in range(size):
+        numlist.append(int(input("enter num in list\n")))
+    
+    print(f"you have entered {numlist}")
+    
+    #one-liner for below code using list-comprehension
+    print(f"output list: {[numlist[i] if numlist[i]<10 else nextPalindrome(numlist[i]) for i in range(size)]}")
+    
+    """
+    new_list = []
+    for element in numlist:
+        if element > 10:
+            n = nextPalindrome(element)
+            new_list.append(n)
+            
+        else:
+            new_list.append(element)
+            
+    print(f"output list: {new_list}")
+    """
+
 
