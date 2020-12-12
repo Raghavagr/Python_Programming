@@ -1,0 +1,35 @@
+// Find the Next Palindrome in List
+
+// DATE:  12-DEC-2020
+// AUTHOR:  Raghav Agrawal
+
+// SOL: URL:  https://ide.geeksforgeeks.org/j7NbxTkepo
+
+#code
+
+#find the nextPalindrome
+def nextPalindrome(mylist):
+    print(mylist)
+    for i in range(len(mylist)):
+        if mylist[i] < 10:
+            mylist[i] = mylist[i];
+        else:
+            num = mylist[i]+1
+            while not isPalindrome(num):
+                num += 1 
+            
+            mylist[i] = num
+    
+    print("the updated list with nextPalindrome is")
+    print(mylist)
+ 
+#function to check whether the number is Palindrome           
+def isPalindrome(n):
+    return str(n) == str(n)[::-1]
+
+if __name__ == "__main__":
+    #take a user input
+    print("enter the list of number for which you want nextPalindrome")
+    mylist = list(map(int, input().split()))
+    nextPalindrome(mylist)
+
