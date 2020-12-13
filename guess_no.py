@@ -21,3 +21,9 @@ print("\nThe total no. of Guess made:",trials)
 
 ##one more interesting code in different way:
 # URL: https://ide.geeksforgeeks.org/aN52wItX3G
+
+## Guess Number Between Player-1 and Player-2
+# URL:  https://ide.geeksforgeeks.org/JQcAqPY34F
+
+### MODIFIED PROGRAM BETWEEN PLAYER-1 AND PLAYER-2 IN PYTHONIC WAY...
+# URL:  https://ide.geeksforgeeks.org/6B710hENPo
