@@ -1,0 +1,35 @@
+// URL: https://ide.geeksforgeeks.org/jalKy2QFdZ
+
+#code
+
+#f = open("rg.txt","w")
+#f.write("how are you, hope you are doing good")
+#f.close()
+
+#f = open("rg.txt","a")
+#f.write("how are you, hope you are doing good\n")
+#f.close()
+
+#f = open("rg.txt","r+")
+#print(f.read())
+#f.write("I am fine and enjoying life.")
+#f.close()
+
+
+## SEEK() AND TELL()
+
+#f = open("rg.txt")
+#print(f.tell())    #it tells where are current file pointer is.
+#print(f.readline())
+#print(f.tell())
+
+#f.seek(0)  # it is used to reset the file handle wherever we want
+#print(f.readline())
+
+
+# with block
+
+#with open("rg.txt") as f:
+    a = f.read()
+    print(a)
+
