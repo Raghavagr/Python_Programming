@@ -19,3 +19,8 @@ def func_recursive(n):
 n = int(input("\nenter a number to calculate fact"))
 print("\nfact with func_iterative:",func_iterative(n))
 print("fact with func_recursive:",func_recursive(n))
+
+
+## findig the n fibonacci num using recursion
+
+// URL: https://ide.geeksforgeeks.org/bpKb4uc9Xy
