@@ -62,3 +62,20 @@ for i in range(n):
     else:
         break
 
+// SOLUTION-2    :  SMART SOLUTION USING EVAL()  -> Very short code, in a pythonic way
+
+// URL: https://ide.geeksforgeeks.org/J22Dv206My
+
+#code
+
+N = int(input())
+mylist = []
+
+for _ in range(N):
+    cmds, *args = input().split()
+    if cmds == "print":
+        print(mylist)
+    else:
+        args = ','.join(args)
+        eval(f"mylist.{cmds}({args})")
+        
