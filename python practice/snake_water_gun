@@ -1,0 +1,40 @@
+
+#code
+import random
+wins=0
+loss=0
+draw = 0
+chance = 0
+promt = "Choose Snake 's' OR Water 'w' OR Gun 'g' \n OR to quit 'q'"
+
+while True:
+    user_choice = input(promt)
+    while user_choice not in ['s','w','g','q']:
+        print("pls enter a valid choice")
+        user_choice = input(promt)
+    
+    if user_choice == 'q':
+        break
+    
+    else:
+        comp_choice = random.choice(['s','w','g'])
+        chance += 1 
+        if comp_choice == 's':
+            move = "Snake"
+        elif comp_choice == 'w':
+            move = "water"
+        else:
+            move = "Gun"
+        print("choice of comp is:",comp_choice)
+        
+        if comp_choice == user_choice:
+            print("Draws!.")
+            draw += 1 
+        elif(comp_choice=='w' and user_choice=='s') or (comp_choice == 's' and user_choice=='g') or (comp_choice=='g' and user_choice=='w'):
+            print("You Win!...")
+            wins += 1 
+        else:
+            print("You Loss!..")
+            loss += 1 
+print("total you have played "+str(chance)+" times in which you have total\n")
+print(str(wins)+" no of wins And \n"+ str(loss)+ " no of losses \n"+ str(draw)+ " number of draw")            
