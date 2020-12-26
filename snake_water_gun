@@ -1,1 +1,63 @@
+#     SNAKE WATER GUN GAME IN PYTHON
 
+// URL: https://ide.geeksforgeeks.org/mn7zvkOBlX
+
+# let's begin
+#code
+import random
+
+print("\t** SNAKE WATER GUN GAME IN PYTHON **")
+wins = 0
+lose = 0
+draws = 0
+chance = 0
+
+#you can also take the input in form of numbers, i will go with charachter
+promt = "s for snake \nw for water \ng for gun \nq to quit \nEnter your choice:"
+
+while True:
+    user_choice = input(promt).lower()
+    while user_choice not in ['s','w','g','q']:
+        print("\nplease enter a valid choice")
+        user_choice = input(promt).lower()
+    
+    if user_choice == 'q':
+        break
+    
+    else:
+        comp_choice = random.choice(['s','w','g'])
+        chance += 1
+        
+        if comp_choice == 's':
+            move = "snake"
+        elif comp_choice == 'w':
+            move = "water"
+        else:
+            move = "gun"
+            
+        print("\nSystem choice is {}".format(move))
+        
+        if comp_choice == user_choice:
+            print("Draws!..")
+            draws += 1
+        
+        elif(user_choice == 's' and comp_choice =='w') or (user_choice == 'w' and comp_choice=='g') or (user_choice == 'g' and comp_choice == 's'):
+            print("You Win!..")
+            wins += 1
+            
+        else:
+            print("You lose!..")
+            lose += 1
+            
+print("\n\nYou played total " + str(chance) +" number of times in which you have total:- ")
+print("no. of wins: "+str(wins)+"\nno. of lose: "+str(lose)+"\nDraws: "+str(draws))
+
+# to make more interesting add this.
+if wins > lose:
+    print("\nCongrats Overall game is yours")
+elif lose > wins:
+    print("\nOverall game was on computer side")
+    print("Better luck next time.")
+else:
+    print("\nOverall game Draws")
+    
