@@ -47,4 +47,5 @@ num = reduce(lambda x,y: x+y, ls) # first it takes func, 2nd on which func to ap
 print(num)
 
 
-    
+ # URL: https://ide.geeksforgeeks.org/Kh44xjXuPI
+ 
