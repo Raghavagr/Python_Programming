@@ -1,0 +1,77 @@
+What is Python Decorator?
+Decorator as can be noticed by the name is like a designer that helps to modify a function.
+The decorator can be said as a modification to the external layer of function, as it does not make any change in its structure.
+What a decorator does is, it takes a function and insert some new functionality in it without changing the function itself. 
+A reference to a function is passed to a decorator and the decorator returns a modified function. 
+The modified functions usually contain calls to the original function. 
+This is also known as metaprogramming because a part of the program tries to modify and add functionality into another part of the program at compile time. 
+
+WRAPPER
+A wrapper is a function that provides a wrap-around another function. 
+While using decorator all the code which are executed before our function that we passed as a parameter and also the code after it is executed belongs to the wrapper function.
+The purpose of the wrapper function is to assist us. 
+Like if we are dealing with a number of similar statements, the wrapper can provide us with some code that all the functions have in common and we can use a decorator to call our function along with wrapper.
+A function can be decorated many times. 
+
+
+
+Note that a decorator is called before defining a function.
+
+There are two ways to write a Python decorator:
+
+We can pass our function to the decorator as an argument, thus define a function and pass it to our decorator.
+ We can simply use the @ symbol before the function we'd like to decorate.
+ 
+// EXAMPLE
+def inner1(func): 
+    def inner2():
+        print("Before function execution"); 
+        func() 
+        print("After function execution")    
+    return inner2 
+
+@inner1
+def function_to_be_used(): 
+    print("This is inside the function") 
+
+function_to_be_used()  
+
+// EXAMPLE WITH REVISION OF SOME CONCEPTS
+/ URL:  https://ide.geeksforgeeks.org/PvtFAfVYPP
+
+#code
+# DECORATORS -> it is used when we want to perform the same task with many functions
+#       then we create 1 decorator of it and use it above that function.
+
+# revising the concept of function
+"""
+def func2():
+    print("I am fine")
+
+func1 = func2    # another copy of func2 is created in func1
+del func2    #so after deleting func2 it is in func1
+func1()
+
+# function inside function
+def exececutar(func):
+    func("this")
+
+exececutar(print)
+"""
+
+# DECORATORS
+def dec1(func1):
+    def nowexec():
+        print("executing now")
+        func1()
+        print("executed")
+    return nowexec
+
+@dec1
+def howYou():
+    print("I am Fine")
+    
+#howYou = dec1(howYou)   #this is only the decorator we use with @
+# i can simply write with @, execution will be same.
+
+howYou()
