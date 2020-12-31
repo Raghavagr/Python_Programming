@@ -8,6 +8,8 @@
   A @classmethod Decorator is a built-in function in Python.
  It can be applied to any method of the class. We can change the value of variables using this method too.
  
+ ClassMethod :- ClassMethod re used to pass the class in parameter which is accepted by cls keyword. It is used when you do not want to pass the self keyword and 
+                  pass the instance in it, rather pass the class so that you are able to make the chnges in class instance variable as well in particular instance of class.
  
  #code
 
