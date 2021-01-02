@@ -1,0 +1,32 @@
+# url:  https://ide.geeksforgeeks.org/AP4ZhLW9fZ
+
+#           **  Guess A Number between 1 and 100 **
+#code
+
+import random
+
+trials = 0 
+chance = 10
+score = 100
+print("You have to Guss a no. between 1 to 100 within 10 chances\n")
+#secret = random.randrange(1,100)
+secret = 25
+while chance > 0:
+    guess = int(input("Make your guess\n"))
+    trials = trials+1
+    if guess > secret:
+        print("Guess is too high! Make it low\n")
+    elif guess < secret:
+        print("Guess is too low! Make it high\n")
+    else:
+        print("Correct!. You grab it")
+        break
+    score = score-10
+    chance = chance-1
+    
+if(chance > 0):
+    print(f"Congratulation!.. you guess it correct in {trials} trials")
+    print(f"your score is: {score}")
+else:
+    print("\nBetter luck next time")
+    
