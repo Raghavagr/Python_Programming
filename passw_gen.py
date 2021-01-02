@@ -1,3 +1,6 @@
+#you can run the code at below link:
+# URL:  https://ide.geeksforgeeks.org/S8L7PgZNPB
+
 import random
 
 def getchar(char_list,number):
