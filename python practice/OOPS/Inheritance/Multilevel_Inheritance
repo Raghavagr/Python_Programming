@@ -1,0 +1,32 @@
+// MULTIPLEVEL INHERITANCE IN PYTHON
+
+// URL: // MULTIPLEVEL INHERITANCE IN PYTHON
+
+#code
+
+class Electric_devices:
+    tv=2
+    notepad=2
+    
+class Pocket_gadged(Electric_devices):
+    ipot=1
+    notepad=1
+    mobile=1
+    handfree=1
+    
+    def print_device(self):
+        return f"I kept {self.ipot} ipot and {self.notepad} notepad and {self.mobile} in pocket"
+        
+class Phone(Pocket_gadged):
+    ipot=2
+    mobile=2
+    #handfree=1
+    
+    def print_device(self):
+        return f"I kept {self.ipot} ipot and {self.notepad} notepad and {self.mobile} mobile" \
+        f"in pocket and {self.handfree} handfree in pocket"
+
+#my_pocket = Pocket_gadged()  
+my_pocket = Phone()  
+print(my_pocket.print_device())
+        
