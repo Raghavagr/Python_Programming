@@ -1,0 +1,53 @@
+#size 3
+
+----c----
+--c-b-c--
+c-b-a-b-c
+--c-b-c--
+----c----
+
+// URL: https://ide.geeksforgeeks.org/QtoFnkp7yg
+
+#code
+import string
+
+size = int(input())
+
+'''
+def print_rangoli(size):
+    alphabets = string.ascii_lowercase
+    #or you can simply take it as
+    #alphabets="abcdefghijhlmnopqrstuvwxyz"
+    array = []
+    for i in range(size):
+        line = alphabets[i:size]   #what alphabet to use to print ragoli
+        line = line[:0:-1] + line
+        array.append('-'.join(line.center(size*2-1,'-')))
+        
+    for row in array[:0:-1]:
+        print(row)
+    for row in array:
+        print(row)
+'''
+
+#print_rangoli(size)
+
+#for practice you can run this code
+alpha=[]
+alphabet = string.ascii_lowercase
+for i in range(size):
+    l = alphabet[i:size]
+    #print(l[:0:-1])
+    #print(l)
+    l = l[:0:-1] + l
+    #print(l)
+    alpha.append('-'.join(l.center(size*2-1,'-')))
+    
+print(alpha)
+for row in alpha[:0:-1]:
+    print(row)
+for row in alpha:
+    print(row)
+# first last one is printed then 2nd one, afer that out of loop from 1st
+# then as it is from 1 to n array is printed with 2nd loop
+
