@@ -1,0 +1,89 @@
+# ACCESS SPECIFIERS
+Access modifiers are used for the restrictions of access any other class has on the particular class and its variables and methods.
+In other words, access modifiers decide whether other classes can use the variables or functions of a specific class or not. 
+The arrangement of private and protected access variables or method ensures the principle of data encapsulation. 
+In Python, there are three types of access modifiers.
+
+1) Public Access Modifier
+2) Protected Access Modifier
+3) Private Access Modifier
+
+**  Public Access Modifier:
+- In public, all the functions, variables, methods can be used publicly. Meaning, every other class can access them easily without any restriction. 
+Public members are generally methods declared in a class that is accessible from outside the class. Any ordinary class is by default, a public class. 
+So, all the classes we had made till now in the previous tutorials were all public by default.
+# EXAMPLE
+class employee:
+      def __init__(self, name, age):
+            self.name=name
+            self.age=age
+            
+**  Protected Access Modifier:
+In case of a protected class, its members and functions can only be accessed by the classes derived from it, i.e. its child class or classes. 
+No other environment is permitted to access it. To declare a class as protected, we use a single underscore “_” sign before the data members of the class.
+#EXAMPLE
+class employee:
+      def __init__(self, name, age):
+            self._name=name # protected attribute 
+            self._age=age # protected attribute
+            
+** PRIVATE ACCESS MODIFIER
+In the case of private access modifiers, the variables and functions can only be accessed within the class. 
+The private restriction level is the highest for any class. To declare a class as private, we use a double underscore “_­_” sign before the data members of the class.
+Here is a suggestion not to try to access private variables from outside the class, because it will result in an AttributeError. 
+#EXAMPLE
+class employee:
+      def __init__(self, name, age):
+            self.__name=name # private attribute 
+            self.__age=age # private attribute
+            
+**  Name mangling in Python:  **
+Python does not have any strict rules when it comes to public, protected or private, like java.
+So, to protect us from using the private attribute in any other class, Python does name mangling, which means that every member with a double underscore will be changed to _object._class__variable when trying to call using an object. 
+The purpose of this is to warn a user, so he does not use any private class variable or function by mistake without realizing its states.
+
+#EXAMPLE
+// URL: https://ide.geeksforgeeks.org/FYrRqg8a6B
+
+#code
+# Public private and protected in python
+#publc:- which anyone can access
+#protected:- only the child class or the class which is derieved from that can access
+#private:- no one can access.
+
+#eg
+class Employee:
+    no_of_leaves=11  # public variable
+    var = 8   
+    _protec=8   #protected
+    __private=7  #private
+    
+    def __init__(self, aname, asal, arole):
+        self.name = aname
+        self.sal = asal
+        self.role = arole
+        
+    def printDetails(self):
+        print(f"name {self.name}, role {self.role} and sal {self.sal}")
+        
+    @classmethod
+    def chngLeaves(cls, myleaves):
+        cls.no_of_leaves = myleaves
+        
+emp = Employee("rahul",30000,"programmer")
+emp.printDetails()
+print(emp.no_of_leaves)   #call public
+print(emp._protec)  #call protected
+
+#print(emp.__private)   #private, it will give an error
+#call this like this
+print(emp._Employee__private)
+
+
+
+
+
+The use of single underscore and double underscore is just a way of name mangling because Python does not take the public, private and protected terms much seriously so we have to use our naming conventions by putting single or double underscore to let the fellow programmers know which class they can access or which they can't.
+            
+            
+            
