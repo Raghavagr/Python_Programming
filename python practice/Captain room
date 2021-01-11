@@ -1,0 +1,19 @@
+// find room no. of captain
+
+// url: https://ide.geeksforgeeks.org/r163u7Aubv
+
+#code
+from collections import Counter
+k = int(input())
+rooms = list(map(int, input().split()))
+count=0
+unique = set(rooms)  #take a unique set of rooms
+
+hrooms = dict(Counter(rooms))
+print(hrooms)
+
+
+for key,value in hrooms.items():
+    if value == 1:
+        print(str(key))
+        break
