@@ -1,33 +1,44 @@
 //                    ABSTRACT BASE CLASS AND @ABSTRACTMETHOD
 
+-- abstract method are use to restrict some methods in program. Means there is AbsMeta method in abs module
+which is used to restrict some method that this method is compulsory for each class to impliment.
+
 Important points about abstract class in Python:
-- Abstract methods are defined in the abstract class. Mostly they do not have the body, but it is possible to have abstract methods with implementation in the abstract class. Any subclass deriving from such abstract class still needs to provide an implementation for that abstract methods.
+- Abstract methods are defined in the abstract class. Mostly they do not have the body, but it is possible to have abstract methods with implementation in the abstract class. 
+Any subclass deriving from such abstract class still needs to provide an implementation for that abstract methods.
+
 - An abstract class can have both abstract methods as well as concrete methods.
 - The abstract class works as a template for other classes. 
 - By using the abstract class, we can define a structure without providing a proper implementation of every method. 
 - It is not possible to create objects of an abstract class because Abstract class cannot be instantiated.
 - An error will occur if the abstract method has not been implemented in the derived class.
 
-// URL: https://ide.geeksforgeeks.org/Np6kXphJRK
 
+// URL: https://ide.geeksforgeeks.org/PQBlNycwDq
+
+# AbstractMethod in python
 #code
+
+#from abc import ABCMeta, abstractmethod 
 from abc import ABC, abstractmethod
 
-#class shape(metaclass = ABCMeta):
-class shape(ABC):
+class shape(ABC):         #class shape(metaclass = ABCMeta)
     @abstractmethod
     def printArea(self):
         return 0
         
 class Rectangle(shape):
-    type = "Rectangle"
-    sides = 4
+    type = "rectangle"
+    sides=4
+    
     def __init__(self):
-        self.length = 5
-        self.breadth = 4
+        self.length = 6
+        self.breadth = 7
         
     def printArea(self):
-        return self.length * self.breadth;
+        return self.length * self.breadth
         
-rec1 = Rectangle()
-print(rec1.printArea())
+rect1 = Rectangle()
+print(rect1.printArea())
+
+# here is above program if you do not implement printArea func then, it will give an error. 
