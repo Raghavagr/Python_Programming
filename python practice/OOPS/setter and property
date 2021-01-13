@@ -1,40 +1,73 @@
-//
+# Concept of Property getter
+If i make a function which prints the mail. Now, I want to chng the name of person which has been intialized in constructor.
+But when i will write obj.fname = newname, and then call email attribute then it will not change because constructor(__init__) was called when you make an object.
+In such case you will make a separate function email which will take instance as self and on calling function as obj.email() name will chng.
+    But, I do not wnt to run a function, so remember the concept of encapsulation to hide the class implementation.
+In such case use the decorator @property, and call as attribute(not as func).
+
+# concept of setter
+#Now, I want to give email as input and want to chng fname and lname with email or as email chnges fname and lname should be chng.
+so in that case i can use @setter decorator.
+    syntax: @attribute.setter       #attribute which you want to set, in example email.
 
 //URL: https://ide.geeksforgeeks.org/qz8DRpo1sA
 
-#code
+// URL: https://ide.geeksforgeeks.org/QxgiSe4TNV.   With comments
 
+#code
 class Employee:
     def __init__(self,fname,lname):
         self.fname = fname
         self.lname = lname
-        #self.email = f"{fname}.{lname}@agrawalassociate.com"
+        #self.email = f"{fname}.{lname}@crazytech.in"
         
     def explain(self):
-        return f"the Employee is {self.fname} {self.lname}"
-        
+        return f"Employee is {self.fname} {self.lname} and mail: {self.email}"
+    
+    '''   
     def email(self):
-        return f"{self.fname}.{self.lname}@agrawalassociate.com"
+        return f"{self.fname}.{self.lname}@crazytech.in"
+    '''   
     
     @property
     def email(self):
-        if self.fname == None or self.lname == None:
-            return "Email is not set. Please set it using setter"
-        return f"{self.fname}.{self.lname}@agrawalassociate.com"
-    
+        return f"{self.fname}.{self.lname}@crazytech.in"
+        
+    #email setter(chng fname and lname)
     @email.setter
-    def email(self,string):
-        names = string.split("@")[0]
-        self.fname = names.split('.')[0]
-        self.lname = names.split('.')[1]
-    
-myobj = Employee("Rahul","Goyal")
-print(myobj.explain())
-print(myobj.email)  #
+    def email(self, string):
+        print("Setting Now..")
+        name = string.split("@")[0]
+        self.fname = name.split('.')[0]
+        self.lname = name.split('.')[1]
+        
+    #now to delete an email
+    @email.deleter
+    def email(self):
+        self.fname = None
+        self.lname = None
 
-#now if I chng the fname
-myobj.fname = "Navneet"
-print(myobj.email)
+emp = Employee("rahul","goyal")
+#print(emp.explain())
 
-myobj.email = "harry.porter@agrawalassociate.com"
-print(myobj.email)
+print(emp.fname)
+
+emp.fname="navneet"
+#print(emp.email)  #fname in mail is not chnged so, what i should do.
+
+#i have made email as func then made a func call, and name chnged.
+#print(emp.email()) 
+
+#now, I have applied a decorator and can call as attribute
+print(emp.email)
+
+# Now, we are able to chng the email with chnging name.
+
+#Now, I want to give email as input and want to chng fname and lname with email.
+emp.email = "rahul.goyal@crazytech.in"
+print(emp.fname)
+print(emp.email)
+
+del emp.email
+print(emp.email)
+
