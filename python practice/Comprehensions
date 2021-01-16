@@ -49,3 +49,25 @@ print(evens.__next__())
 for item in evens:
     print(item,end=" ")
     
+
+// COMPREHENSION EXERCISE
+QUE) Take no. of items from user and ask whether he want to print list, dict or set. print the respective thing using comprehension.
+
+// URL: https://ide.geeksforgeeks.org/UUa1tmlq9P
+
+#code
+a = int(input("enter the number of items you want\n"))
+b = int(input("enter 1 for list, 2 for dict and 3 for set\n"))
+
+if b == 1:
+    print([i for i in range(a)])
+elif b == 2:
+    dict1 = {i: f"item {i}" for i in range(a)}
+    print(dict1)
+elif b == 3:
+    set1 = {i for i in range(a)}
+    print(set1)
+else:
+    print("Pls enter valid choice")
+
+
