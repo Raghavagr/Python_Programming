@@ -1,0 +1,73 @@
+// COROUTINES IN PYTHON...
+
+Before learning the concept of coroutines, we must have some brief knowledge or understanding related to generators.
+A generator is a function that produces a sequence of results instead of returning a value. You generate a series of values (using the yield statement).
+
+     Generators produce data
+     Coroutines consume data
+
+// COROUTINES
+
+Coroutines are mostly used in cases of time-consuming programs, such as tasks related to machine learning or deep learning algorithms or in cases where
+the program has to read a file containing a large number of data. 
+In such situations, we do not want the program to read the file or data, again and again, so we use coroutines to make the program more efficient and faster. 
+Coroutines run endlessly in a program because they use a while loop with a true or 1 condition so it may run until infinite time.
+Even after yielding the value to the caller, it still awaits further instruction or calls. We have to stop the execution of coroutine by calling coroutine.close() function. 
+It is very crucial to close a coroutine because its continuous running can take up memory space.
+
+We can define a coroutine using the following statements.
+SYNTAX:
+  def myfunc():
+    while True:
+        value = (yield)
+        
+// Coroutine Execution:- 
+Execution is the same as of a generator. When you call a coroutine, nothing happens. They only run in response to the next() and send() methods. 
+- Coroutine requires the use of the next statement first so it may start its execution. 
+- Without a next() it will not start executing. We can search a coroutine by sending it the keywords as input using object name along with send(). 
+- The keywords to be searched are send inside the parenthesis.    
+
+When we run the next() function the first time, the coroutine executes and waits for new input.
+After the input is sent to it using the send() function, it executes it and again waits for next input,
+and the process goes on like this because we have set the while loop as true, so it will never exit its execution. 
+In order to make the execution stop, we have to close the coroutine using coroutine.close() function.
+
+send() — used to send data to coroutine
+close() — to close the coroutine
+ 
+// EXAMPLE:
+// URL: https://ide.geeksforgeeks.org/K1NRKnaILl
+
+#code
+import time 
+
+def searcher():
+    #some time consuming task
+    book = "Machine learning simplified book which contains all the information"
+    time.sleep(4)
+    
+    while True:
+        text = (yield)
+        if text in book:
+            print("Your text is there in book")
+        else:
+            print("Your text is not there in book")
+            
+search = searcher()
+print("Search method starts")
+next(search)
+print("next method runs")
+search.send("learning")
+search.send("info")
+search.send("raghav")
+search.close()
+
+#input("enter any key")
+search.send("machine learning")
+
+// EXERCISE:
+QUE) You are given a diferent person names (near about 15). you have to make coroutine and take a diferet person name and find that the name is present in names or not.
+
+// url: https://ide.geeksforgeeks.org/UtNFeFOGfb
+
+
