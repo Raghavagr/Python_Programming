@@ -1,8 +1,11 @@
-//
+//  Else and Finally in Try Except
 
-#code
+->  when you want to do some task that is compulasary to happen, whther try runs or except runs then, that part of code is written under finally statement.0
 # finally is used to clean-up the code
 # else is used when except does not runs, the else will run.
+
+
+#code
 
 #f1 = open("raghav.txt")
 
@@ -23,3 +26,13 @@ finally:
     print("run this anyway")
     #f.close()
     #f1.close()
+
+
+# There can be multiple except statement in program to handle different errors like
+
+except EOFERROR as e:
+    print("There is EOF error")
+except IOERROR as e:
+    print("There is IO error")   
+    
+  
