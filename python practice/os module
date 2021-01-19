@@ -9,12 +9,12 @@ print(os.getcwd()) # get the current working dir
 #os.chdir("c://")    #to change the working dir
 #print(os.getcwd())
 
-#to print the list of files present in current dir
+#to print the list of files present in current working dir
 print(os.listdir())
 
-#os.mkdir("this")       #to make a file 
+#os.mkdir("this")       #to make a file in current directory
 
-#os.makedirs("this/that")   #to make the files/folders
+#os.makedirs("this/that")   #to make the files/folders  or to automatically create the subfolders
 
 #os.rename("raghav.txt","raghavag.txt")  #to rename the file 
 
