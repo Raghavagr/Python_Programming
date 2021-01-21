@@ -1,0 +1,19 @@
+// URL: https://ide.geeksforgeeks.org/XwdfsTtp2I
+
+#code
+
+my_dict = {'programming':"The process of writing computer programs",
+           'python':'interpreter language used in many domains',
+           'OOPS':'object oriented programming',
+           'interview':'process for entering into job'
+}
+
+word = input("enter your query\n")
+
+print(word, "means:", my_dict[word])
+
+'''
+for key,value in my_dict.items():
+    if key == word:
+        print(value)
+''' 
