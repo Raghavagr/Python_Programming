@@ -1,0 +1,29 @@
+// HackerRank Problem: Check the reGex pattern is valid or not.
+
+// URL: https://ide.geeksforgeeks.org/JOdDF9Prfr
+
+#code
+import re
+t = int(input())
+
+while(t > 0):
+    pattern = input()
+    try:
+        pattern = re.compile(pattern)
+        print(True)
+    except Exception:
+        print(False)
+    
+    t = t-1
+
+'''
+# with for loop
+for _ in range(t):
+    pattern = input()
+    try:
+        re.compile(pattern)
+        output = True
+    except re.error:
+        output = False
+    print(output)
+'''        
