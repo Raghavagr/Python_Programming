@@ -1,0 +1,47 @@
+A counter is a container that stores elements as dictionary keys, and their counts are stored as dictionary values.
+
+Task
+
+Raghu is a shoe shop owner. His shop has X number of shoes.
+He has a list containing the size of each shoe he has in his shop.
+There are N number of customers who are willing to pay xi amount of money only if they get the shoe of their desired size.
+
+Your task is to compute how much money Raghu earned.
+
+// HACKERRANK PROBLEM
+
+SOLUTION
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import Counter
+
+no_of_shoes = int(input())
+dictsizes = Counter(list(map(int, input().split()))) 
+num_cust = int(input())
+income = 0
+
+for i in range(num_custs):
+    size, price = map(int, input().split())
+    if size in dictsizes.keys() and dictsizes[size] != 0:
+        income += price
+        dictsizes[size] -= 1
+
+print(income)
+
+
+// ANOTHER SOLUTION WITHOUT COLLECTIONS.COUNTER
+
+    URL:  https://ide.geeksforgeeks.org/ExoWTCBOzC
+ 
+ #code
+x = int(input())
+sizes = list(map(int, input().split()))
+N = int(input())
+earning = 0
+
+for i in range(N):
+    size, price = map(int, input().split())
+    if size in sizes:
+        earning += price
+        sizes.remove(size)
+
+print(earning)
