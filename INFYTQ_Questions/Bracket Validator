@@ -1,0 +1,44 @@
+
+EXAMPLE:
+INPUT : ())
+OUTPUT : 3
+
+INPUT = [][][
+OUTPUT = 6   // Chain will break at ] so you have to count ]
+
+Input: {{[]}}}
+OUTPUT = 7
+
+// URL: https://ide.geeksforgeeks.org/OnRxa7ItRP
+
+// IMPLEMENTATION
+
+#code
+
+def validator(string):
+    stack = []
+    count = 0
+    for i in string:
+        if(i == '(' or i == '[' or i == '{'):
+            count+=1
+            stack.append(i)
+            continue
+        
+        if(len(stack) == 0):  # if stack is empty, or exp start with },],) 
+            return count + 1
+            
+        if(i == ')' or i == ']' or i == '}'):
+            if(len(stack) != 0):
+                count = count + 1
+                stack.pop()
+            else:
+                count = count+1
+    
+    print(stack)            
+    if(len(stack) != 0):
+        return count+1
+    else:
+        return count
+    
+string = input()
+print(validator(string))
