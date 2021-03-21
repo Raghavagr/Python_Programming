@@ -1,0 +1,45 @@
+#code
+#t = int(input())
+
+def get_number(n):
+    if n==1:
+        return
+    elif n==2:
+        return 1
+    elif n==3:
+        return 7
+    elif n==4:
+        return 4
+    elif n==5:
+        return [2,3,5]
+    elif n==6:
+        return [0, 6, 9]
+    elif n==7:
+        return 8
+    elif n==8:
+        pass
+    elif n==9:
+        return
+
+n = int(input())
+if n==1:
+    a = int(input())
+    l = get_number(a)
+    for i in l:
+        print(i, end=" ")
+
+else:
+    a = list(map(int, input().split()))
+    pair = []
+    for i in range(n):
+        l = get_number(a[i])
+        if type(l) == list:
+            pair.append(l[0])
+            llen = len(l)
+        else:
+            pair.append(l)
+        
+        
+    
+        
+    
