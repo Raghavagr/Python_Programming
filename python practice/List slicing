@@ -1,0 +1,21 @@
+// List slicing
+
+// URL: https://ide.geeksforgeeks.org/nFR5i8RdjW
+
+#code
+#slicing or indexing the list
+#        0  1  2  3 ...
+list2 = [1, 2, 3, 4, 5, 6, 7 ]
+#             -5 -4 -3 -2 -1
+print ("list2[0]: ", list2[0])
+print ("list2[-2]: ", list2[-2])
+print ("list2[1:5]: ", list2[1:5])
+print ("list2[1:1000]: ", list2[1:1000])
+print ("list2[2:len(list2)] list2[2:] ", list2[2:len(list2)],list2[2:])
+print ("list2[:3]: ", list2[:3],"list2[0:3]",list2[0:3])
+print ("list2[0::2]: ", list2[0::2])
+print ("list2[-1:-5:-1]: ", list2[-1:-5:-1])
+print ("list2[-5:-1]: ", list2[-5:-1])
+print ("list2 reverse:list2[::-1] ", list2[::-1])
+list2 = [1, 2, 3, 4, 5, 6, 7 ]
+print(list2[ : : -1], list2[-1: -8:-1]) #end= -(len(list2)+1)
