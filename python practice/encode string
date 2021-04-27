@@ -25,3 +25,8 @@ def encode_loop(input_str):
     
   encoded_str += str(count) + prev_char
   return encoded_str
+  
+  
+  // ONE MORE APPROACH, BUT SOME COMPLEX
+  
+  // URL:   https://ide.geeksforgeeks.org/M3JqhZ8fEA
