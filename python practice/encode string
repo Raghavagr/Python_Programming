@@ -1,0 +1,27 @@
+// WAP To encode a string such that it should count the continuous occurence of string and print count then string and so on.
+EXAMPLES 
+    1)  I/P = aaaabbb
+        O/P = 4a3b
+    
+    2)  I/P = hhjjhh
+        O/P = 2h2j2h
+
+
+// IMPLEMENTATION
+
+def encode_loop(input_str):
+  encoded_str=''
+  i=1
+  count=1
+  prev_char=input_str[0]
+  while i < len(input_str):
+    if prev_char == input_str[i]:
+      count +=1
+    else:
+      encoded_str += str(count) + prev_char
+      prev_char = input_str[i]
+      count =1
+    i += 1
+    
+  encoded_str += str(count) + prev_char
+  return encoded_str
