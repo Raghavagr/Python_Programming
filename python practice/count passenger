@@ -1,0 +1,39 @@
+// Count number of passenger in this..
+
+EXAMPLE : I/P:  {'p1':'a1','p2':'a10','p89':'a1','p5':'a10'}
+          O/P:  {'a1': 2, 'a10': 2}
+          
+
+// APPROACH - 1   
+// URL: https://ide.geeksforgeeks.org/A50FrrfLG0
+
+def passenger_count(pass_details):
+    pass_count={}
+
+    for val in pass_details.values():
+        if val not in pass_count.keys():
+            pass_count[val] = 1 
+        else:
+            pass_count[val] += 1
+            
+    print(pass_count)
+
+pass_details = {'p1':'a1','p2':'a10','p89':'a1','p5':'a10'}     
+passenger_count(pass_details)
+
+// APPROACH - 2 (It's more clean and interesting) and easy to read
+
+// URL: https://ide.geeksforgeeks.org/5JcWbguwF4
+
+// implementation
+#code
+def count_plane_pass(input_dir):
+  unique_plane_ids = set(input_dir.values())
+  plane_id_list = list(input_dir.values())
+  plane_pass_count = {}
+  for plane_id in unique_plane_ids:
+    plane_pass_count[plane_id] = plane_id_list.count(plane_id)
+  return plane_pass_count
+  
+pass_details = {'p1':'a1','p2':'a10','p89':'a1','p5':'a10'}     
+print(count_plane_pass(pass_details))
