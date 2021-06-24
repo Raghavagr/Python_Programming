@@ -1,0 +1,11 @@
+// QUEUE
+
+-> Queue is anothere linear data structure which follows the FIFO Order.
+- Insertion and deletion in queue is performed from another end. At rear end(last) we perform insersion and At front end we perform deletion.
+
+Queue Operations
+
+1) Enque -> insertion in queue from rear end
+2) deque -> Deletion in queue from front end
+3) isenpty -> check whether queue empty or not
+4) isfull -> Check whether queue is full or not.
