@@ -1,0 +1,37 @@
+// WAP To create Stack and perform stack operation using Python
+
+// URL: https://ide.geeksforgeeks.org/B4POGrQABG
+
+// You can edit the code more to make it more user friendly, I want to showcase operation how to create stack using python
+
+#code
+def push(stack, n):
+    if(len(stack) < n):
+        element = int(input("enter element\n"))
+        stack.append(element)
+        print("element pushed successfully\n")
+    else:
+        print("Stack full\n")
+
+def pop(Stack):
+    if(len(Stack) > 0):
+        pop_ch = Stack.pop()
+        print("popped element: ", pop_ch)
+    else:
+        print("stack empty\n")
+        
+def peek(stack):
+    return stack[-1]
+    
+def display(stack):
+    if(len(stack) > 0):
+        print(stack)
+    else:
+        print("stack empty")
+    
+stack = []
+n = int(input("define size of stack\n"))
+push(stack, n)
+push(stack, n)
+print("top pos element: ", peek(stack))
+display(stack)
