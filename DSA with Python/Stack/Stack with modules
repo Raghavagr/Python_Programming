@@ -1,0 +1,38 @@
+// Create Stack with Modules
+
+-> We can also use Python inbuilt modules to create a stack and perform all its operations
+
+METHOD - 1> USING COLLECTIONS MODULE, USING ITS DEQUE CLASS
+
+- This is same as list and name of functions in deque is also same as append and pop, so one is we can simply use it to create it
+
+/// URL:  https://ide.geeksforgeeks.org/UBM4K992j6
+
+METHOD - 2> USING Queue Module
+
+ -  It provides a function as put and get, using which we can create a stack and perform push and pop operations.
+ 
+ // CODE
+ 
+ #code
+import queue
+
+def push(stack):
+    element = int(input("enter element to push\n"))
+    stack.put(element)
+
+def pop(Stack):
+    pop_ch = Stack.get()
+    print("\npopped element: ", pop_ch)
+        
+def peek(stack):
+    return stack[-1]
+    
+stack = queue.LifoQueue()
+push(stack)
+push(stack)
+#print("top pos element: ", peek(stack))
+push(stack)
+pop(stack)
+print(stack)
+
