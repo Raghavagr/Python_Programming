@@ -1,0 +1,37 @@
+// Creating queue and performing its opertions
+
+// METHOD - 1 (Using LIST Append and POP Method)
+
+// URL: https://ide.geeksforgeeks.org/2XuH2vwQgg
+
+#code
+queue = []
+#Enque op 
+queue.append(10)
+queue.append(20)
+queue.append(30)
+print("your queue ", queue)
+print("Now deque op")
+print("Popping: ", queue.pop(0))
+print("Popping: ", queue.pop(0))
+print("your queue: ", queue)
+
+// METHOD - 2 (Using List Insert and POP Method)
+ -> here we will maintain queue in reverse order, like we will insert at front and remove from end
+
+// URL: 
+
+#code
+queue = []
+#Enque op 
+queue.insert(0, 10)
+queue.insert(0, 20)
+queue.insert(0, 30)
+print("your queue ", queue)
+print("Now deque op")
+print("Popping: ", queue.pop())
+print("Popping: ", queue.pop())
+print("your queue: ", queue)
+
+-> first we have inserted 10 so 10 will only be removed.
+
