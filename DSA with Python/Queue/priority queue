@@ -1,0 +1,39 @@
+// Creating Priority Queue
+in this element is popped based on assigned pririty, like here priority is on sorting. the small element gets popped first.
+
+/// Method-1 (Using LIST)
+
+#code
+queue = []
+queue.append(10)
+queue.append(50)
+queue.append(30)
+queue.sort()
+print(queue)
+print("popping: ", queue.pop(0))
+print("popping: ", queue.pop(0))
+print(queue)
+queue.append(70)
+queue.append(40)
+queue.sort()
+print("popping: ", queue.pop(0))
+print(queue)
+
+/// METHOD - 2(Using Priority Queue Class)
+#code
+import queue
+que = queue.PriorityQueue()
+que.put(10)
+que.put(50)
+que.put(20)
+que.put(70)
+que.put(40)
+
+print("your que: ", que)
+
+print("popping: ", que.get())
+print("popping: ", que.get())
+print("popping: ", que.get())
+print("inserting 60")
+que.put(60)
+print("popping: ", que.get())
