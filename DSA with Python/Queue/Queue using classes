@@ -1,0 +1,54 @@
+// Creating and performing queue operations using classes and modules
+
+// URL - 
+
+/// METHOD - 1 (Using collections)
+-> we will use append to insert from rare position and to delete we wil use popleft
+
+#code
+import collections
+
+queue = collections.deque()
+#enque
+queue.append(10)
+queue.append(20)
+queue.append(30)
+print(queue)
+
+#deque use popleft
+print("popping: ", queue.popleft())
+print("popping: ", queue.popleft())
+print(queue)
+
+/// METHOD - 2 (Using Collection)
+ -> here method will be change else things are same, like we will use appendleft and pop
+ 
+ #code
+import collections
+
+queue = collections.deque()
+#enque
+queue.appendleft(10)
+queue.appendleft(20)
+queue.appendleft(30)
+print(queue)
+
+#deque use popleft
+print("popping: ", queue.pop())
+print("popping: ", queue.pop())
+print(queue)
+
+/// METHOD - 3 (Using QUEUE MODULE)
+
+#code
+import queue
+
+que = queue.Queue()
+que.put(10)
+que.put(20)
+que.put(30)
+print("your Queue ", que)
+#deque op
+print("popping: ", que.get())
+print("popping: ", que.get())
+print(que)
