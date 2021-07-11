@@ -1,0 +1,189 @@
+// Complete Doubly linked list program
+
+// URL - 
+
+#code
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+        
+class DoubleLinkedList:
+    def __init__(self):
+        self.head = None
+    
+    #forward traversing   
+    def print_all(self):
+        if self.head is None:
+            print("List is Empty")
+        else:
+            temp = self.head
+            print("forward traversing")
+            while temp is not None:
+                print(temp.data, end=" ")
+                temp = temp.next
+            print("\n")   
+    #backward traversing
+    def print_reverse(self):
+        if self.head is None:
+            print("List is Empty")
+        else:
+            temp = self.head
+            print("Back Traversing")
+            while temp.next is not None:
+                temp = temp.next
+            while temp is not None:
+                print(temp.data, end=" ")
+                temp = temp.prev
+            print("\n")  
+    ## Insertion Operations
+    #case-1
+    def insert_empty(self, data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print("List is not empty, try diff method to insert")
+            
+    #case-2(Begin insert)
+    def insert_begin(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+            
+    #case-3(Insert end)
+    def insert_end(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            temp = self.head
+            while temp.next is not None:
+                temp = temp.next
+                
+            temp.next = new_node
+            new_node.prev = temp
+            
+    #case-4
+    def insert_after_node(self, data, x):
+        if self.head is None:
+            print("List is empty")
+        else:
+            temp = self.head
+            while temp is not None:
+                if temp.data == x:
+                    break
+                else:
+                    temp = temp.next
+                    
+            if temp is None:
+                print("Node not found, canot insert")
+            else:
+                new_node = Node(data)
+                new_node.next = temp.next
+                temp.next = new_node
+                new_node.prev = temp
+    
+    #case-5    
+    def insert_before_node(self, data, x):
+        if self.head is None:
+            print("List is empty")
+        if self.head.data == x:
+            new_node = Node(data)
+            self.head.prev = new_node
+            new_node.next = self.head
+            self.head = new_node
+            return
+        
+        temp = self.head
+        while temp.next is not None:
+            if temp.next.data == x:
+                break
+            temp = temp.next
+            
+        if temp.next is None:
+            print("Node not found, Cannot insert")
+        else:
+            new_node = Node(data)
+            new_node.next = temp.next
+            temp.next.prev = new_node
+            new_node.prev = temp
+            temp.next = new_node
+        
+    ## Delete Operations
+    #case-1
+    def delete_begin(self):
+        if self.head is None:
+            print("List is Empty")
+        if self.head.next is None:
+            self.head = None
+            print("DLL is empty after deleting, only 1 Node\n")
+        else:
+            temp = self.head
+            self.head = temp.next
+            self.head.prev = None
+            
+    #case-2
+    def delete_end(self):
+        if self.head is None:
+            print("List is Empty")
+        if self.head.next is None:
+            self.head = None
+            print("DLL is empty after deleting, only 1 Node")
+        else:
+            temp = self.head
+            while temp.next is not None:
+                temp = temp.next
+            temp.prev.next = None
+            print("Node deleted from end")
+        
+    #case-3
+    def delete_by_value(self, x):
+        if self.head is None:
+            print("List is Empty")
+            return
+        if self.head.next is None:
+            if self.head.data == x:
+                self.head = None
+            else:
+                print("Node not present")
+            return
+        #if first node data matched
+        if self.head.data == x:
+            self.head = self.head.next
+            self.head.prev = None
+            return
+        temp = self.head
+        while temp.next is not None:
+            if temp.data == x:
+                break
+            temp = temp.next
+            
+        if temp.next is not None:
+            temp.next.prev = temp.prev
+            temp.prev.next = temp.next
+        else:
+            if temp.data == x:
+                temp.prev.next = None
+            else:
+                print("Node not present")
+        
+                
+            
+dllist = DoubleLinkedList()
+dllist.insert_empty(20)
+dllist.insert_begin(10)
+dllist.insert_after_node(30, 20)
+dllist.insert_end(50)
+dllist.insert_before_node(40, 50)
+dllist.print_all()
+dllist.print_reverse()
+dllist.delete_begin()
+dllist.print_all()
+dllist.delete_end()
+dllist.print_all()
