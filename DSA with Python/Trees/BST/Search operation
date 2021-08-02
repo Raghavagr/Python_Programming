@@ -1,0 +1,61 @@
+// Search operation in BST
+
+#code for BST 
+
+class BST:
+    def __init__(self, data):
+        self.key = data
+        self.lchild = None
+        self.rchild = None
+    
+    #INSERTION OPERATION
+    ## CASE-1 (If tree is empty) -> node is first node
+    ## CASE-2 (Not empty) -> find pos of new Node(Left or right)
+    ## CASE-3 (Duplicate Value)
+    def Insert(self, data):
+        if self.key is None:
+            self.key = data
+            return
+        #control duplicate insert
+        if self.key == data:
+            print("duplicate values not allowed")
+            return
+        
+        if self.key > data:
+            if self.lchild: #if left node is present, then travesse
+                self.lchild.Insert(data)
+            else:  #insert new node at left side
+                self.lchild = BST(data)
+        #same for right side
+        else:
+            if self.rchild:
+                self.rchild.Insert(data)
+            else:
+                self.rchild = BST(data)
+            
+    #SEARCH OPERATION
+    ## Find the node present or not
+    ## first compare with root, then left or right recussively
+    def Search(self, data):
+        if self.key == data:
+            print("Node Found!")
+            return
+        
+        if self.key > data:
+            if self.lchild:
+                self.lchild.Search(data)
+            else:
+                print("Node not present in tree")
+        else:
+            if self.rchild:
+                self.rchild.Search(data)
+            else:
+                print("Node not present in tree")
+    
+    
+root = BST(10)
+lst = [20, 4, 30, 15, 9, 7]
+for i in lst:
+    root.Insert(i)
+
+root.Search(18)
