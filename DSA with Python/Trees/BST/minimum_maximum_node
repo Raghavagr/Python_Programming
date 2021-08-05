@@ -1,0 +1,16 @@
+// find min and max
+
+// complete url - https://ide.geeksforgeeks.org/lJxLXyZQYy
+
+def min_node(self):
+        current = self
+        while current.lchild:
+            current = current.lchild
+        print("node ith smallest key is: ", current.key)
+        
+    #Maximum node from tree
+    def max_node(self):
+        current = self
+        while current.rchild:
+            current = current.rchild
+        print("node with lagest key is: ", current.key)
