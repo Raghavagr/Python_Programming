@@ -1,0 +1,31 @@
+// BST has 3 traversal algorithms
+1) Pre-order (root, left, right)
+2) In-order (left, root, right), also knon as sorted sorted order
+3) Post-order (left, right, root)
+
+#code for each traversal algorithm
+
+    #PRE-ORDER TRAVERSAL (root->left->right)
+    def Preorder(self):
+        print(self.key, end=" ")
+        if self.lchild:
+            self.lchild.Preorder()
+        if self.rchild:
+            self.rchild.Preorder()
+    
+    #In-Order TRAVERSAL (Left -> root -> right)(sorted order)
+    def Inorder(self):
+        if self.lchild: #check left, till last left
+            self.lchild.Inorder()
+        
+        print(self.key, end=" ") #print
+        
+        if self.rchild:
+            self.rchild.Inorder()
+            
+    def Postorder(self):
+        if self.lchild:
+            self.lchild.Postorder()
+        if self.rchild:
+            self.rchild.Postorder()
+        print(self.key, end=" ")
