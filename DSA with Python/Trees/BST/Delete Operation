@@ -2,7 +2,7 @@
 
 // There are different case to be taken case while deleting an node from BST
 
-#Complete running program:
+#Complete running program:   The first program will not run hen you ant to delete root node so after this go on 2nd code for better understanding.
 //  URL:  https://ide.geeksforgeeks.org/6bdhUw6Lmv
 
 Please try the function dry-run before seeing directly to understand in better way.
@@ -50,3 +50,8 @@ DELETE OPERATION
             self.key = node.key
             self.rchild = self.rchild.delete(data)
         return self
+
+
+// Updated Code, where we have to delete root node then, use the following program ith all test case runs fine
+
+// URL - https://ide.geeksforgeeks.org/WNd3AIXHl9
