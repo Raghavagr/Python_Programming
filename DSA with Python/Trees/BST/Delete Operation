@@ -1,0 +1,52 @@
+// Delete an Node from Binary search tree using given data.
+
+// There are different case to be taken case while deleting an node from BST
+
+#Complete running program:
+//  URL:  https://ide.geeksforgeeks.org/6bdhUw6Lmv
+
+Please try the function dry-run before seeing directly to understand in better way.
+
+DELETE OPERATION
+
+  def Delete(self, data):
+        #if tree empty
+        if self.key is None:
+            print("Tree is empty")
+            return
+        
+        if data < self.key:
+            #find the leftmost left at last
+            if self.lchild:
+                self.lchild = self.lchild.Delete(data)
+            else:
+                print("Given node not present in tree")
+        elif data > self.key:
+            if self.rchild:
+                self.rchild = self.rchild.Delete(data)
+            else:
+                print("Given node not present in tree")
+        
+        #now we have find the node to delete
+        #now we have to see, is there are child nodes of the node to be deleted
+        #if 0 node, then simply delete, 1 then replace by upper.
+        else:
+            if self.lchild is None:
+                temp = self.rchild
+                self = None
+                return temp
+            if self.rchild is None:
+                temp = self.lchild
+                self = None
+                return temp
+                
+            #if node contains 2 child node
+            #first we will find smallest node in right sub tree 
+            #and replace root with that smallest node.
+            node = self.rchild
+            while node.lchild:  #if smallest node is in right side left child.
+                node = node.lchild
+                
+            self.key = node.key
+            self.rchild = self.rchild.delete(data)
+        return self
