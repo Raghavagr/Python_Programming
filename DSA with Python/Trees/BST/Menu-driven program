@@ -1,0 +1,191 @@
+// ALL the operations of BST In one program
+
+// URL - https://ide.geeksforgeeks.org/qDtyrPJpZh
+
+#code
+class BST:
+    def __init__(self, data):
+        self.key = data
+        self.lchild = None
+        self.rchild = None
+    
+    #INSERTION OPERATION
+    ## CASE-1 (If tree is empty) -> node is first node
+    ## CASE-2 (Not empty) -> find pos of new Node(Left or right)
+    ## CASE-3 (Duplicate Value)
+    def Insert(self, data):
+        if self.key is None:
+            self.key = data
+            return
+        #control duplicate insert
+        if self.key == data:
+            print("duplicate values not allowed")
+            return
+        
+        if self.key > data:
+            if self.lchild: #if left node is present, then travesse
+                self.lchild.Insert(data)
+            else:  #insert new node at left side
+                self.lchild = BST(data)
+        #same for right side
+        else:
+            if self.rchild:
+                self.rchild.Insert(data)
+            else:
+                self.rchild = BST(data)
+            
+    #SEARCH OPERATION
+    ## Find the node present or not
+    ## first compare with root, then left or right recussively
+    def Search(self, data):
+        if self.key == data:
+            print("Node Found!")
+            return
+        
+        if self.key > data:
+            if self.lchild:
+                self.lchild.Search(data)
+            else:
+                print("Node not present in tree")
+        else:
+            if self.rchild:
+                self.rchild.Search(data)
+            else:
+                print("Node not present in tree")
+    
+    #PRE-ORDER TRAVERSAL (root->left->right)
+    def Preorder(self):
+        print(self.key, end=" ")
+        if self.lchild:
+            self.lchild.Preorder()
+        if self.rchild:
+            self.rchild.Preorder()
+    
+    #In-Order TRAVERSAL (Left -> root -> right)(sorted order)
+    def Inorder(self):
+        if self.lchild: #check left, till last left
+            self.lchild.Inorder()
+        
+        print(self.key, end=" ") #print
+        
+        if self.rchild:
+            self.rchild.Inorder()
+            
+    def Postorder(self):
+        if self.lchild:
+            self.lchild.Postorder()
+        if self.rchild:
+            self.rchild.Postorder()
+        print(self.key, end=" ")
+        
+    
+    # DELETE Opearation -> with data
+    def Delete(self, data, curr):
+        #if tree empty
+        if self.key is None:
+            print("Tree is empty")
+            return
+        
+        if data < self.key:
+            #find the leftmost left at last
+            if self.lchild:
+                self.lchild = self.lchild.Delete(data, curr)
+            else:
+                print("Given node not present in tree")
+        elif data > self.key:
+            if self.rchild:
+                self.rchild = self.rchild.Delete(data, curr)
+            else:
+                print("Given node not present in tree")
+        
+        #now we have find the node to delete
+        #now we have to see, is there are child nodes of the node to be deleted
+        #if 0 node, then simply delete, 1 then replace by upper.
+        else:
+            if self.lchild is None:
+                temp = self.rchild
+                #check the node to be deleted is root node(updated)
+                #replace the root node with its right child.
+                if data == curr:
+                    self.key = temp.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return
+                self = None
+                return temp
+            if self.rchild is None:
+                temp = self.lchild
+                #if right is none and left is present, replace ith left child
+                if data == curr:
+                    self.key = temp.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return
+                self = None
+                return temp
+                
+            #if node contains 2 child node
+            #first we will find smallest node in right sub tree 
+            #and replace root with that smallest node.
+            node = self.rchild
+            while node.lchild:  #if smallest node is in right side left child.
+                node = node.lchild
+                
+            self.key = node.key
+            self.rchild = self.rchild.Delete(data, curr)
+        return self
+        
+    #find minimum node from tree
+    ##always minimum will be at left side only
+    def min_node(self):
+        current = self
+        while current.lchild:
+            current = current.lchild
+        print("node ith smallest key is: ", current.key)
+        
+    #Maximum node from tree
+    def max_node(self):
+        current = self
+        while current.rchild:
+            current = current.rchild
+        print("node with lagest key is: ", current.key)
+            
+#function to count number of nodes in tree
+def count(node):
+    if node is None:
+        return 0
+    return 1 + count(node.lchild) + count(node.rchild)
+
+
+root = BST(10)
+lst = [20, 4, 30, 15, 9, 7]
+for i in lst:
+    root.Insert(i)
+
+root.Search(18)
+print("Pre-order traversal")
+root.Preorder()
+print()
+print("InOrder traversal algorithm")
+root.Inorder()
+print()
+print("deleting node 4")
+root.Delete(4, root.key)
+print("PostOrder traversal algorithm")
+root.Postorder()
+print()
+print("delete node 50")
+root.Delete(50, root.key)
+print()
+'''
+print("Deleting root node")
+root.Delete(10, root.key)
+print()
+print("InOrder traversal algorithm")
+root.Inorder()
+'''
+root.min_node()
+print()
+root.max_node()
