@@ -1,0 +1,16 @@
+Binary Heap -> BST wwhich follos the heap property is known as Binary heap.
+
+Heap property - i) every parent node should be less then or equal to child node, which is also called as Min Heap.
+
+                OR)
+                
+                ii) every parent node should be greater then or equal to child node, which is also called as Max Heap
+
+If BST follows any of this property then it is called binary heap.
+
+To make BST into Heap we perform certain operations which is known as Heapify.
+
+  **  HEAPIFY  **
+DEF ->  It is a process to rearrange the elements of the heap in order to maintain the heap property
+
+- The operation ensure that every BST follows heap property.
