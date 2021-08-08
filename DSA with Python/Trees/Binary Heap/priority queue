@@ -1,0 +1,18 @@
+// Implementing priority queue using heapify operation
+
+// URL - https://ide.geeksforgeeks.org/GM0NUo177L
+
+#code
+#smallest element highest priority
+#which have smallest value will be pop first
+
+import heapq
+
+lst1 = [(3,'ria'),(7,'sia'),(1,'gia')]
+
+heapq.heapify(lst1)
+print(lst1)
+
+#pop
+for i in range(len(lst1)):
+    print(heapq.heappop(lst1))
