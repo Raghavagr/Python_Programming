@@ -1,0 +1,68 @@
+// Implement Min Heap using Python and perform all the heap operations
+
+ -> Min heap can be implemented in Python using heapq module in python
+ 
+operations performed 
+ 1) Insertion
+ 2) Deletion
+ 3) Heapify
+ 4) Push & Pop at a time
+ 5) Pop & Push at a time
+ 6) snallest element
+ 7) largest element
+ 
+// Program URL -  https://ide.geeksforgeeks.org/rMvb1ysSq5
+
+#code
+import heapq  #module to implement min heap
+
+#make empty list
+heap = []
+
+#Insertion operation -> It insert element by maintaining binary heap property(min heap)
+heapq.heappush(heap, 10)
+print(heap)
+
+heapq.heappush(heap, 1)
+print(heap)
+
+# Deletion operation -> heappop(heap)
+##It will return smallest value, and also will delete that from heap,
+### maintaininh heap property
+i = heapq.heappop(heap)
+print("deleted element:", i)
+print(heap)
+
+# Heapify operation
+## It is used to convert list to binary heap.
+## when binary tree not following heap property then we use this func
+lst1 = [3, 7, 2, 9, 5, 13]
+heapq.heapify(lst1)
+print(lst1)
+
+#HeapPushPop -> heap.heappushpop(heap, item)
+##First it will push item to heap maintaining heap property
+## then it ill pop smallest element, and delete it
+i = heapq.heappushpop(lst1, 24)
+print("removed element:", i)
+print(lst1)
+
+#HeapRepalce -> heapq.heapreplace(heap, item)
+## First it will pop the smallest element
+## then it will push the item to heap.
+## runs opposite of heappushpop
+i = heapq.heapreplace(lst1, 30)
+print("removed element:", i)
+print(lst1)
+
+#nsmallest -> heapq.nsmallest(n, heap)
+## It returns the n number of smallest element in heap
+print("2 smallest element in heap: ")
+print(heapq.nsmallest(2, lst1))
+
+#nlargest -> heapq.nlargest(n, heap)
+## It returns the n number of largest element in heap
+print("2 largest element in heap: ")
+print(heapq.nlargest(2, lst1))
+
+
