@@ -1,0 +1,53 @@
+// Insert a new node to a graph using Adjacency Matrix
+
+// URL - 
+
+#code -> New Node Insertion in Graph using Adjacency Matrix
+
+def add_node(node):
+    global node_count
+    if node in graph:
+        print(node, " is already present in Graph")
+    else:
+        node_count = node_count + 1
+        nodes.append(node)
+        #add a 0 column in every matrix(new col of new node)
+        for n in graph:
+            n.append(0)
+        
+        #add a new row for new node of 0
+        temp = []
+        for i in range(node_count):
+            temp.append(0)
+        
+        #add new row to graph of new node of zeros
+        graph.append(temp)  #list of list
+
+def print_graph():
+    #we have to print graph as matrix, 2 loops for matrix
+    for i in range(node_count):
+        for j in range(node_count):
+            print(graph[i][j], end=" ")
+        #for new row
+        print()
+
+nodes = []
+graph = []
+node_count = 0
+print("Before adding any nodes")
+print(nodes)
+print(graph)
+
+print("after adding one node")
+add_node("A")
+print(nodes)
+print(graph)
+print("adding node")
+add_node("B")
+print(nodes)
+print(graph)
+print("display graph in matrix form")
+print_graph()
+
+#it will be 0-0 because there is no connection between any node
+## because we have not added any edge between node, when it will added the particular matric for that node will be 1.
