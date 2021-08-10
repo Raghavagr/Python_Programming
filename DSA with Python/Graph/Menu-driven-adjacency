@@ -1,0 +1,86 @@
+// Menu Driven code of graph operations through Adjacency Matrix
+
+// URL  - https://ide.geeksforgeeks.org/PJ7cBsfigb
+
+#Adjacency Matrix Graph
+#code -> New Node Insertion in Graph using Adjacency Matrix
+#for undirected and unweighted Graph
+def add_node(node):
+    global node_count
+    if node in graph:
+        print(node, " is already present in Graph")
+    else:
+        node_count = node_count + 1
+        nodes.append(node)
+        #add a 0 column in every matrix(new col of new node)
+        for n in graph:
+            n.append(0)
+        
+        #add a new row for new node of 0
+        temp = []
+        for i in range(node_count):
+            temp.append(0)
+        
+        #add new row to graph of new node of zeros
+        graph.append(temp)  #list of list
+
+#add edge between 2 nodes in undirected graph
+#if graph is weighted we get cost, if not simply we add 1 to matrix
+def add_edge_und(v1, v2, cost=1):
+    if v1 not in nodes:
+        print(v1, "is not present in nodes")
+    elif v2 not in nodes:
+        print(v2, "is not present in nodes")
+    else:
+        #to connect two nodes, first find their index
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+        #as graph in undirected so v1->v2 and v2->v1 both exist
+        graph[index1][index2] = cost
+        graph[index2][index1] = cost
+
+#add edge between 2 nodes in directed graph
+#if graph is weighted we get cost, if not simply we add 1 to matrix
+def add_edge_dir(v1, v2, cost=1):
+    if v1 not in nodes:
+        print(v1, "is not present in nodes")
+    elif v2 not in nodes:
+        print(v2, "is not present in nodes")
+    else:
+        #to connect two nodes, first find their index
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+        #as graph in directed so v1->v2 only exist
+        graph[index1][index2] = cost
+
+def print_graph():
+    #we have to print graph as matrix, 2 loops for matrix
+    for i in range(node_count):
+        for j in range(node_count):
+            print(graph[i][j], end=" ")
+        #for new row
+        print()
+
+nodes = []
+graph = []
+node_count = 0
+
+print("adding nodes")
+add_node("A")
+add_node("B")
+add_node("D")
+print(nodes)
+print("display graph in matrix form")
+print_graph()
+print("add edges between nodes in undirected weighted graph")
+add_edge_und("A", "B", 5)
+add_edge_und("B", "D", 7)
+print("add edges between nodes in undirected unweighted graph")
+add_edge_und("A", "D")
+print("after adding edge in undirected graph with weights and not weights")
+print_graph()
+
+print("adding edge in directed graph")
+add_edge_dir("D", "B", 10)
+print("after adding edge in directed graph")
+print_graph()
