@@ -1,6 +1,8 @@
-// Insert a new node to a graph using Adjacency Matrix
+// Insert a new node to a graph using Adjacency Matrix 
 
-// URL - 
+// We are working in an Undirected and unweighted graph
+
+// URL - https://ide.geeksforgeeks.org/t6JeXano9f
 
 #code -> New Node Insertion in Graph using Adjacency Matrix
 
