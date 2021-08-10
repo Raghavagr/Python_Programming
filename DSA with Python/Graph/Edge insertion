@@ -1,0 +1,38 @@
+// Insert an Edge between 2 nodes in Undirected unweighted as well in directed weighted graph and all the 4 combination possible.
+
+-> we build 2 func doe undirected and directed, where all the 4 permu and combi is possible to add new edge in graph
+
+# Try complete node running from below link 
+
+## URL - https://ide.geeksforgeeks.org/shZX4KT2VW
+
+// FUNCTION CODE
+
+#add edge between 2 nodes in undirected graph
+#if graph is weighted we get cost, if not simply we add 1 to matrix
+def add_edge_und(v1, v2, cost=1):
+    if v1 not in nodes:
+        print(v1, "is not present in nodes")
+    elif v2 not in nodes:
+        print(v2, "is not present in nodes")
+    else:
+        #to connect two nodes, first find their index
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+        #as graph in undirected so v1->v2 and v2->v1 both exist
+        graph[index1][index2] = cost
+        graph[index2][index1] = cost
+
+#add edge between 2 nodes in directed graph
+#if graph is weighted we get cost, if not simply we add 1 to matrix
+def add_edge_dir(v1, v2, cost=1):
+    if v1 not in nodes:
+        print(v1, "is not present in nodes")
+    elif v2 not in nodes:
+        print(v2, "is not present in nodes")
+    else:
+        #to connect two nodes, first find their index
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+        #as graph in directed so v1->v2 only exist
+        graph[index1][index2] = cost
