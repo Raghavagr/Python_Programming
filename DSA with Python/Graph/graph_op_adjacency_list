@@ -1,0 +1,59 @@
+// Node Insertion in Graph using Adjacent List
+
+# Graph operations using Adjacency List
+
+// URL - https://ide.geeksforgeeks.org/e4OEymcu0Z
+
+## we will maintain dictionary of list to insert node and edges
+### key will represent the nodes
+### value will represent the list of nodes to which partcular node is connected.
+
+#code
+def add_node(node):
+    if node in graph:
+        print(node, "is already present in graph")
+    else:
+        graph[node] = [] #empty list because no edge now
+
+#add edge -> undirected, unweighted graph
+#I am modifuin for undirected weighted graph
+def add_edge_undir(v1, v2, cost=1):
+    if v1 not in graph:
+        print(v1, "not present in graph")
+    elif v2 not in graph:
+        print(v2, "not present in graph")
+    else:
+        #append the connection in form of list of that node
+        #like f is node connected with E -> {"F":['E']}
+        #graph[v1].append(v2)
+        #graph[v2].append(v1)
+        #for weighted
+        #like f is node connected with E -> {"F":[['E',10],['A':1]]}
+        lst1 = [v2, cost]
+        lst2 = [v1, cost]
+        graph[v1].append(lst1)
+        graph[v2].append(lst2)
+        
+#add edge -> directed graph(both weighted and not weighted)
+def add_edge_dir(v1, v2, cost=1):
+    if v1 not in graph:
+        print(v1, "not present in graph")
+    elif v2 not in graph:
+        print(v2, "not present in graph")
+    else:
+        #only v1 is connected to v2, nor reverse connection
+        lst1 = [v2, cost]
+        graph[v1].append(lst1)
+        
+        
+graph = {}
+add_node("A")
+add_node("B")
+add_node("C")
+add_node("E")
+add_node("F")
+add_edge_undir("A", "C", 5)
+add_edge_undir("B", "D")
+add_edge_dir("A","F",10)
+add_edge_dir("E", "B", 14)
+print(graph)
