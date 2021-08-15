@@ -1,6 +1,6 @@
 // Menu Driven code of graph operations through Adjacency Matrix
 
-// URL  - https://ide.geeksforgeeks.org/PJ7cBsfigb
+// URL  - https://ide.geeksforgeeks.org/JYBwuqe5L8
 
 #Adjacency Matrix Graph
 #code -> New Node Insertion in Graph using Adjacency Matrix
@@ -53,6 +53,40 @@ def add_edge_dir(v1, v2, cost=1):
         #as graph in directed so v1->v2 only exist
         graph[index1][index2] = cost
 
+# DELETE NODE OPERATION IN GRAPH 
+##delete node operation(weighted & unweighted both)
+def delete_node(v):
+    global node_count
+    if v not in nodes:
+        print(v, "not present in Graph")
+    else:
+        #we have to delete node from nodes
+        index1 = nodes.index(v)
+        node_count = node_count-1
+        nodes.remove(v)
+        #now we have to delete row and column at index of that node
+        graph.pop(index1)         #for row
+        #for column we have to delete value at index in every row 
+        ##so use loop through each row and delete val at index
+        for row in graph:
+            row.pop(index1)
+
+##Delete Edge OPERATION (weighted & unweighted both)
+def delete_edge(v1, v2):
+    if v1 not in nodes:
+        print(v1, "is not present in nodes")
+    elif v2 not in nodes:
+        print(v2, "is not present in nodes")
+    else:
+        #in matrix we have to make value of connection as 0 from 1
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+        graph[index1][index2] = 0
+        graph[index2][index1] = 0
+
+##delete edge function will not work when 2 nodes are bidirection connected
+## and we only want to delete from one side. so male diff func.
+
 def print_graph():
     #we have to print graph as matrix, 2 loops for matrix
     for i in range(node_count):
@@ -75,12 +109,16 @@ print_graph()
 print("add edges between nodes in undirected weighted graph")
 add_edge_und("A", "B", 5)
 add_edge_und("B", "D", 7)
+print_graph()
 print("add edges between nodes in undirected unweighted graph")
 add_edge_und("A", "D")
-print("after adding edge in undirected graph with weights and not weights")
+#print("after adding edge in undirected graph with weights and not weights")
 print_graph()
 
 print("adding edge in directed graph")
 add_edge_dir("D", "B", 10)
-print("after adding edge in directed graph")
+#print("after adding edge in directed graph")
+print_graph()
+print("deleting node A")
+delete_node("A")
 print_graph()
