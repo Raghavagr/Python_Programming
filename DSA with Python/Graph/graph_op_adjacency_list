@@ -2,7 +2,7 @@
 
 # Graph operations using Adjacency List
 
-// URL - https://ide.geeksforgeeks.org/e4OEymcu0Z
+// URL - https://ide.geeksforgeeks.org/ag66saKlPQ
 
 ## we will maintain dictionary of list to insert node and edges
 ### key will represent the nodes
@@ -45,7 +45,49 @@ def add_edge_dir(v1, v2, cost=1):
         lst1 = [v2, cost]
         graph[v1].append(lst1)
         
-        
+
+#DELETE OPERATION IN GRAPH USING ADJACENCY LIST
+##delete node
+def delete_node(v):
+    if v not in graph:
+        print(v,"not present in Graph")
+    else:
+        #delete that key(node) from dict
+        #after that we have to also delete that node from other keys
+        #if other keys are channed with deleted node, remove that also
+        graph.pop(v) #delete key
+        for i in graph:   #nested list so
+            lst = graph[i]
+            for j in lst:
+                if v == j[0]:
+                    lst.remove(j)
+                    break
+
+##delete edge in undirected weighted Graph
+def delete_edge_undir(v1, v2, cost):
+    if v1 not in graph:
+        print(v1, "not present in graph")
+    elif v2 not in graph:
+        print(v2, "not present in graph")
+    else:
+        temp1 = [v1, cost]
+        temp2 = [v2, cost]
+        if temp2 in graph[v1]:
+            graph[v1].remove(temp2)
+            graph[v2].remove(temp1)
+
+##delete edge in directed Graph
+def delete_edge_dir(v1, v2, cost):
+    if v1 not in graph:
+        print(v1, "not present in graph")
+    elif v2 not in graph:
+        print(v2, "not present in graph")
+    else:
+        temp1 = [v1, cost]
+        temp2 = [v2, cost]
+        if temp2 in graph[v1]:
+            graph[v1].remove(temp2)
+
 graph = {}
 add_node("A")
 add_node("B")
@@ -56,4 +98,9 @@ add_edge_undir("A", "C", 5)
 add_edge_undir("B", "D")
 add_edge_dir("A","F",10)
 add_edge_dir("E", "B", 14)
+print("deleting node E")
+delete_node("E")
+print(graph)
+print("delete edge A-F-10")
+delete_edge_dir("A","F", 10)
 print(graph)
