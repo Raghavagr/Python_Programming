@@ -1,0 +1,24 @@
+// Depth First Search Travelsal Algorithm in graph
+
+// STEPS TO PERFORM
+1) Consider start node as current node and visit that node
+2) visit the unvisited adjacent node of current node, make that node as current node
+3) Follow step-2 until we reach dead end
+4) If unvisited nodes are still remaining in graph then backtrack and take recent visited node as current node and follow step-2
+
+// We use stack to implement DFS Algorithm and one set where order of node visited is stored
+
+Method ->
+
+1) Add the starting node to nodes list, and push all the adjacent nodes of starting node to stack
+2) Pop one by one each node from stack and list
+3) the node which is popped, Push adjacent nodes of that node to Stack
+4) Follow the same process from step-2 to step-3 till stack is empty.
+
+## Why Stack is used?
+-> We need Last in first out approach and in stack all the operation is performed at one end only.
+-> here we need to pop again the pushed node to stack so we are using stack.
+
+## we are using Adjacency List operation to represent Graph operation that means we are using dictionary to store node and edge
+
+## we will write code using recursive approach first.
