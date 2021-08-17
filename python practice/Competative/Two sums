@@ -1,0 +1,14 @@
+// Print the index of element if by adding 2 number is equal to target
+
+-> The normal solution we think is off Brute-force using 2 loops but here we will solve it in single loop.
+
+// URL - https://ide.geeksforgeeks.org/I9HtZE8i9y 
+
+#code
+lst = [7, 4, 2, 6]
+target = 9
+for i in range(len(lst)):
+    diff = target - lst[i]
+    if diff in lst and i != lst.index(diff):
+        print([i, lst.index(diff)])
+        break
