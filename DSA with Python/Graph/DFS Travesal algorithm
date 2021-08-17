@@ -22,3 +22,39 @@ Method ->
 ## we are using Adjacency List operation to represent Graph operation that means we are using dictionary to store node and edge
 
 ## we will write code using recursive approach first.
+#DFS(Depth First Travelsal) Algorithm
+## using recursive approach
+def DFS(node, visited, graph):
+    #node -> starting node  to traverse
+    #visited -> set which stores the node visited
+    #graph -> dictionary
+    if node not in graph:
+        print(node, "is not present in Graph")
+        return
+    if node not in visited:
+        print(node)
+        visited.add(node)
+        for i in graph[node]:
+            DFS(i[0], visited, graph)
+            
+##DFS using iterative approach
+def DFSiterative(node, graph):
+    visited = set()
+    if node not in graph:
+        print(node, "is not present in Graph")
+        return
+    #we will use stack data structure for iterative approach
+    ##all the node willl br append in stack
+    ## one by one it is pop out and check in visited
+    stack = []
+    stack.append(node)
+    
+    while stack:
+        current = stack.pop()
+        if current not in visited:
+            print(current)
+            visited.add(current)
+            for i in graph[current]:
+                stack.append(i[0])
+
+
