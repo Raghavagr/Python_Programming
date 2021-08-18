@@ -1,0 +1,31 @@
+// Find out the 2 index of prime number whose difference is exactly 6
+
+--> Use the sieve of eratosthenes algorithm to do so
+
+// URL - https://ide.geeksforgeeks.org/zQhed0kLvj
+
+#code
+from math import sqrt
+L = int(input())
+R = int(input())
+
+def generatePrimes(n):
+    primes = [True] * (n+1)
+    primes[0] = False
+    primes[1] = False
+    
+    for i in range(2, int(sqrt(n))+1):
+        if primes[i] == True:
+            for j in range(i*i, n+1, i):
+                primes[j] = False
+                
+    return primes
+    
+myprimes = generatePrimes(R)
+
+for i in range(L, len(myprimes)-6):
+    if myprimes[i] == True:
+        x = i
+        y = x+6
+        if myprimes[y] == True:
+            print("({},{})".format(x, y))
