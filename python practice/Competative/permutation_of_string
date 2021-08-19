@@ -1,0 +1,36 @@
+// Find all possible permutations of string
+
+EG -  INPUT  =  ABC
+      OUTPUT = ['ABC', 'ACB', 'BAC', 'BCA', 'CBA', 'CAB']
+
+// URL - https://ide.geeksforgeeks.org/SRyFFHsHkP
+
+#generate all combinations of string possible = n! where n is len(str)
+#COMPLEXITY = O(n!)
+
+result = []
+#code 
+def permutation(data, i, n):
+    if i == n:
+        result.append("".join(data)) #string are immutable so taken in list
+    for j in range(i, n+1):
+        data[i], data[j] = data[j], data[i]
+        permutation(data, i+1, n)
+        #swapped values take back to original position
+        data[i], data[j] = data[j], data[i]  #backtracking
+      
+data = input()   # "ABC"
+i = 0
+n = len(data)-1
+
+permutation(list(data), i, n)
+
+print(result)
+
+## With Library Functin
+'''
+from itertools import permutations
+
+result = ["".join(x) for x in list(permutations("ABC"))]
+print(result)
+'''
