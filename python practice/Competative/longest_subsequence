@@ -1,0 +1,38 @@
+// Find the length of longest subsequence of second str present in first string
+
+-> NOTE :- Substring is different, subsequence is different. In subsequence the characters should be present is same order not necessary in continuous way.
+
+// URL - https://ide.geeksforgeeks.org/wySOJxEsz5
+
+// Approach-1 (SIMPLE) COMPLEXITY -> O(n^2)
+def LCS(i, j):
+    if i == 0 or j == 0:
+        return 0
+    elif A[i-1] == B[j-1]:
+        return 1 + LCS(i-1, j-1)
+    else:
+        return max(LCS(i, j-1), LCS(i-1, j))
+        
+print(LCS(len(A), len(B)))
+
+// Approach -2 (Optimized Solution) -> O(n)
+
+#use memoization
+memo = {}
+
+def LCS(i, j):
+    k = str(i) + str(j)
+    if k in memo:
+       return memo[k]
+    if i==0 or j == 0:
+        return 0
+    elif A[i-1] == B[j-1]:
+        value = 1 + LCS(i-1, j-1)
+    else:
+        value = max(LCS(i, j-1), LCS(i-1, j))
+        
+    memo[k] = value
+    return value
+
+
+print(LCS(len(A), len(B)))
