@@ -36,3 +36,32 @@ def LCS(i, j):
 
 
 print(LCS(len(A), len(B)))
+
+/// APPROACH - 3 (TABULAR METHOD)   -> O(n)
+
+// URL - https://ide.geeksforgeeks.org/xaOo2Uzj09
+
+#code
+A = input()
+B = input()
+
+#using Tabular approach
+
+def LCS(A, B):
+    la = len(A)
+    lb = len(B)
+    table = [[-1 for x in range(lb+1)] for x in range(la+1)]
+    
+    for i in range(la+1):
+        for j in range(lb+1):
+            if i == 0 or j == 0:
+                table[i][j] = 0
+            elif A[i-1] == B[j-1]:
+                table[i][j] = 1 + table[i-1][j-1]
+            else:
+                table[i][j] = max(table[i][j-1], table[i-1][j])
+                
+    return table[la][lb]
+    
+print(LCS(A, B))
+    
