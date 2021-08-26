@@ -1,0 +1,47 @@
+// Implementing Binary search algorithm in Python
+
+// URL - https://ide.geeksforgeeks.org/LYR4Wb6Lc1
+
+#code for BinarySearch (complexity -> O(log n))
+
+##Recursive approach
+def binarysearch(arr, beg, end, se):
+    if beg<=end:
+        mid = (beg+end)//2
+        
+        if arr[mid] == se:
+            return mid
+        
+        elif arr[mid] > se:
+            return binarysearch(arr, beg, mid-1, se)
+        
+        else:
+            return binarysearch(arr, mid+1, end, se)
+            
+    return -1
+    
+## Iterative Approach
+def binarysearch2(arr, target):
+    left = 0
+    right = len(arr)-1
+    
+    while(left <= right):
+        mid = (left+right)//2
+        
+        if arr[mid] == target:
+            return mid
+        elif target > arr[mid]:
+            left = mid+1
+        else:
+            right = mid-1
+    return -1
+
+
+arr = [2,3,5,7,9,12]
+l = len(arr)
+
+pos = binarysearch(arr, 0, l-1, 9)
+print("using recursive found at pos", pos)
+
+pos = binarysearch2(arr, 9)
+print("using Iterative found at pos", pos)
