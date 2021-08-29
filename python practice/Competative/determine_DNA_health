@@ -1,0 +1,14 @@
+// Hackerrank Problem solution
+# Problem: https://www.hackerrank.com/challenges/determining-dna-health/problem
+# Difficulty : Hard
+# Score : 50
+
+
+// Simple Logic But Time limit Exceed (Naive Approach)
+
+  // SOL URL - https://ide.geeksforgeeks.org/4HYlhAdWOx
+  
+  
+// Optimized Approach
+
+  // SOL URL - https://ide.geeksforgeeks.org/UNjj6FpjJ2
