@@ -1,0 +1,27 @@
+find frequency of element in list
+
+// there are many ways to do so
+  1) using iterations through list and create dictionary of count
+  2) using inbuilt function of python as Counter
+  3) using count() function
+  
+// SOL URL - https://ide.geeksforgeeks.org/6oLnmVVJKE
+
+#code
+arr = [10, 20, 20, 10, 10, 20, 5, 20]
+
+mydict = {}
+
+for i in arr:
+    if i in mydict.keys():
+        mydict[i] += 1
+    
+    else:
+        mydict[i] = 1
+        
+print(mydict)
+
+#using inbuilt func
+from collections import Counter
+res = Counter(arr)
+print(res)
