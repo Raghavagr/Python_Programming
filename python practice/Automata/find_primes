@@ -1,0 +1,29 @@
+Print all prime no which are below then given input no separated by comma .
+input
+20
+output
+2,3,5,7,11,13,17,19
+
+// URL - https://ide.geeksforgeeks.org/u1rHXvdFHK
+
+#code
+from math import sqrt
+
+def primes(n):
+    myprimes = [True] * (n)
+    myprimes[0] = False
+    myprimes[1] = False
+    
+    for i in range(2, int(sqrt(n))+1):
+        if myprimes[i] == True:
+            #make all its multiple as False
+            for j in range(i*i, n, i):
+                myprimes[j] = False
+            
+    return myprimes
+
+n = int(input())
+result = primes(n)
+for i in range(len(result)):
+    if result[i] == True:
+        print(i, end=" ")
