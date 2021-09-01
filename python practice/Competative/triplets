@@ -1,0 +1,19 @@
+// Find triplets in in given array. 
+
+// URL - https://ide.geeksforgeeks.org/rjVguUwNJ0
+
+#code
+from itertools import combinations
+
+lst = list(map(int, input().split()))
+
+result = list(combinations(lst, 3))
+
+for triple in result:
+    x = triple[0]**2
+    y = triple[1]**2
+    z = triple[2]**2
+    
+    if (x+y == z) or (y+z == x) or (x+z == y):
+        print(triple[0], triple[1], triple[2], "form as triplet")
+        
