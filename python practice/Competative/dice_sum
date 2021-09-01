@@ -1,0 +1,19 @@
+// You have 3 dice , you need to take input from the user whats the sum of three dice he wants .
+Program to find all the possible outcome of input..
+
+// URL - https://ide.geeksforgeeks.org/t7h6sHOtNZ
+
+#code
+n = int(input())
+
+dices = [1,2,3,4,5,6]
+count = 0
+for i in dices:
+    for j in dices:
+        for k in dices:
+            if i+j+k == n:
+                #print(i, j, k)
+                count += 1
+                
+print(count)
+            
