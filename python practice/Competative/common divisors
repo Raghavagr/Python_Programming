@@ -1,0 +1,34 @@
+// find no. of common divisors of a num
+
+// SOL1 URL - https://ide.geeksforgeeks.org/SELtyc0r2I
+
+
+// PERFECT SOLUTION AND EASY WITH GCD
+
+// URL -> https://ide.geeksforgeeks.org/kLeEfI4tVz
+
+
+# Write your code here
+from math import sqrt
+
+def GCD(a, b):
+    if a==0:
+        return b
+    return GCD(b%a, a)
+
+def commdiv(a, b):
+    n = GCD(a, b)
+    #print(n)
+    result = 0
+    for i in range(1, int(sqrt(n))+1):
+        if n%i == 0:
+            if n//i==i:
+                result += 1
+            else:
+                result += 2
+    
+    return result
+
+a, b = 10, 15
+ans = commdiv(a,b)
+print(ans)
