@@ -1,0 +1,23 @@
+// Find LCM of 2 Number using GCD
+
+# Euclid formula to find LAM of two number
+##Complexity = O(log(min(a, b))
+
+// URL - https://ide.geeksforgeeks.org/pg8Au3s0qh
+
+# Euclid formula to find LAM of two number
+##Complexity = O(log(min(a, b))
+
+def GCD(a, b):
+    if a == 0:
+        return b
+    return GCD(b%a, a)
+    
+def LCM(a, b):
+    hcf = GCD(a, b)
+    prod = a*b
+    return prod//hcf
+    
+m, n = map(int, input().split())
+print("GCD of {} and {} is {}".format(m, n, GCD(m,n)))
+print("LCM of {} and {} is {}".format(m, n, LCM(m,n)))
