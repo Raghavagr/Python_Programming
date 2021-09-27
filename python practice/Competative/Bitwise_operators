@@ -1,0 +1,48 @@
+// performing bitwise operators and what can we do with them
+
+// URL - https://ide.geeksforgeeks.org/f4uhESWDcm
+
+#       Bitwise Operators
+# bitwise operator and - &
+# bitwise operator or - |
+# bitwise operator not - ~
+# bitwise operator xor - ^
+# bitwise operator  right shift - >> 
+# bitwise operator left shift - <<
+# rightshift is divide in power of 2
+# leftshift is multiply in power of 2
+
+## AND 
+### bitwise of even and odd is even
+### bitwise of odd and odd is odd
+#print(24&1)
+#print(19&1)
+
+### using this logic we can make code of even and odd
+def evenodd(n):
+    if n&1 == 1:
+        print("odd")
+    else:
+        print("even")
+        
+evenodd(30)
+evenodd(43)
+
+## rightshift (>>) (It is divide in power of 2)
+### eg(200 >> 3) so 200//2**3 = 200//8 = 25
+print(200 >> 3)
+
+##leftshift(<<) (It is multiply in power of 2)
+### eg(200 << 3) so, 200 * (2**3) = 200 * 8 = 1600
+print(200 << 3)
+
+
+def mulpow2(x, y):  #leftshift
+    return (x<<y)
+
+def divpow2(x, y):   #rightshift
+    return (x>>y)
+    
+x, y = map(int, input().split())
+print(mulpow2(x,y))
+print(divpow2(x,y))
