@@ -1,0 +1,42 @@
+// Competative codes using bitwise operations
+
+// URL - https://ide.geeksforgeeks.org/lFHcXapJAB
+
+#convert integer n to binary
+
+def intToBin(n):
+    return str(bin(n))[2:]
+
+def BinToInt(s):
+    return int(s, base=2)
+    
+def kbitset(n, k):
+    print(intToBin(n))
+    if n & (1 << (k-1)):
+        print("SET")
+    else:
+        print("Not SET")
+        
+# [5,3,2,3,2,1,5]
+# every number occurs twice
+# we need to find the number which occurs only once
+# n^n = 0
+# n^0 = n
+def findsingleoccur(arr):
+    res = arr[0]
+    for i in range(1,len(arr)):
+        res = res ^ arr[i]
+    return res
+
+'''
+n = int(input())
+s = intToBin(n)
+print("int to bin", s)
+print("bin to int", BinToInt(s))
+'''
+
+n, k = map(int, input().split())
+kbitset(n, k)
+
+arr = [5,3,2,1,2,1,5]
+print("single element occur is", findsingleoccur(arr))
