@@ -1,0 +1,27 @@
+# Find pair whose sum equal to Target sum in sorted array
+
+// URL - https://ide.geeksforgeeks.org/FNiMFXGqgF
+
+#CODE
+def twoSum(arr, target):
+    i = 0           #start
+    j = len(arr)-1  #end
+    while i < j:
+        sm = arr[i] + arr[j]
+        if target == sm:
+            print("{} and {} is a pair".format(arr[i], arr[j]))
+            print("found at pos {} and {}".format(i, j))
+            return True
+        elif sm < target:
+            i = i+1
+        else:
+            j = j-1
+    
+    return False #Not found
+    
+t = int(input())
+while t > 0:
+    arr = list(map(int, input().split()))
+    target = int(input())
+    print(twoSum(arr, target))
+    t = t-1
