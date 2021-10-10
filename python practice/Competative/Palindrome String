@@ -1,0 +1,26 @@
+// Check string is palindrome or not
+
+// URL - https://ide.geeksforgeeks.org/O1loncupWs
+
+# Approach-1 (Two-Pointer Method)
+def isPalindrome1(s):
+    #start
+    i=0
+    #end
+    j = len(s)-1
+    while i<j:
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+  
+# Approach-2 (Reverse Method)
+def isPalindrome2(s):
+    return s == s[::-1]
+
+t = int(input())
+while t > 0:
+    s = input()
+    print(isPalindrome2(s))
+    t = t-1
