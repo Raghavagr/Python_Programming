@@ -1,0 +1,42 @@
+// Find the Pair whose sum equal to targeted sum in an unsorted array
+
+// URL - https://ide.geeksforgeeks.org/MM1i1GRSrn
+
+def binarySearch(arr, left, right, se):
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == se:
+            return mid
+        elif arr[mid] < se:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+    
+arr = [25, 35, 40, 80, 96, 200, 500]
+key = 200
+#print(binarySearch(arr, 0, len(arr)-1, key))
+
+
+#using in-built binarySearch
+import bisect
+print(bisect.bisect_left(arr, key, 0, len(arr)))
+
+
+## find target pair sum in unsorted arrray
+def findTargetPair(arr, target):
+    st = set()
+    for i in range(len(arr)):
+        complement = target - arr[i]
+        if complement in st:
+            #return [complement, arr[i]]
+            
+            print("{} and {} are req pair".format(complement, arr[i]))
+            print("index are {} and {}".format(arr.index(complement), i))
+            
+        else:
+            st.add(arr[i])
+            
+arr = [5, 10, 7, 50, 32, 105, 77, 15, 27]
+target = 57
+findTargetPair(arr, target)
