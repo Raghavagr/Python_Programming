@@ -1,0 +1,18 @@
+// Different String Sorting
+
+// URL - https://ide.geeksforgeeks.org/CiFD1CrlKU
+
+## sort the words of string by length in descending order
+
+s = "hello guys welcome to programming world of python"
+a = s.split()
+a.sort(key=len, reverse=True)
+print(a)
+
+## sort the string based on frequency and if freq is same then lexicographic sort
+from collections import Counter
+s = "programmingknowledge"
+ct = Counter(s)
+A = list(ct.items())
+A.sort(key = lambda x: [x[1], x[0]])
+print(A)
