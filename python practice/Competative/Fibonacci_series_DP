@@ -63,3 +63,30 @@ print(fib(n))
 
     
 
+// Another APPROACH USING DP (Memoization)
+
+/ URL - https://ide.geeksforgeeks.org/i4WxuKlB11
+
+# DYNAMIC PROGRAMMING (DP)
+
+## DP depends on some factors
+### 1. Overlapping subproblem (Nature of problem)
+### 2. Memoization  (1-D Array)
+### 3. Tabulation   (2-D Array)
+
+#### Fobonacci using Memoization
+Global_Binomiac = [0, 1]
+def fib(n):
+    if n < len(Global_Binomiac):
+        return Global_Binomiac[n]
+        
+    else:
+        for i in range(len(Global_Binomiac), n+1):
+            last = Global_Binomiac[-1]
+            sec_last = Global_Binomiac[-2]
+            Global_Binomiac.append(last + sec_last)
+        print(Global_Binomiac)
+        return Global_Binomiac[n]
+        
+n = int(input())
+print(fib(n))
