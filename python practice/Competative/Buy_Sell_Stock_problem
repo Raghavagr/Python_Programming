@@ -1,0 +1,33 @@
+# Buy Sell Stock Problem
+## Que) You have to buy a stock on any day(minimum) and then sell at any
+##      another daya to make a maximum profit. (Before selling buy it) 
+### GIVEN - Price of Stock on different day in array 
+
+// URL - https://ide.geeksforgeeks.org/WMROYi5BGV
+
+#code
+
+## Naive Approach (Brute-Force)
+def naive_approach(arr):
+    mxprofit=0
+    n = len(arr)
+    for i in range(n):  #Buy
+        for j in range(i+1, n): #Sell
+            if arr[j] > arr[i]:
+                mxprofit = max(mxprofit, arr[j]-arr[i])
+    print(mxprofit)
+    
+## Optimal Approach
+def Optimal_approach(arr):
+    n = len(arr)
+    mnprice = float('inf')
+    mxprofit = 0
+    for i in range(n):
+        mnprice = min(mnprice, arr[i]) #to maintain min Price
+        mxprofit = max(mxprofit, arr[i] - mnprice) #to maintain mxprofit
+        
+    print(mxprofit)
+    
+arr = [7,1,5,3,6,4]
+naive_approach(arr)
+Optimal_approach(arr)
