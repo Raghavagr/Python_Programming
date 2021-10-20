@@ -1,0 +1,53 @@
+# Title - Edit Distance
+
+##QUE
+# Given two words word1 and word2, find minimum num of operations required
+# to convert word1 to word2
+
+## You have following 3 operations permitted to a word
+#1. Insert a char
+#2. delete a char
+#3. replace a char
+
+## EXAMPLE
+#INPUT ->  word1 = horse #word2 = ros
+#OUTPUT -> 3
+
+#Explanation
+## horse -> rorse (replace h with r)
+## rorse -> rose (remove r)
+## rose -> ros (remove e)
+
+// URL - https://ide.geeksforgeeks.org/isZWVf6wZi
+
+## CODE
+
+word1 = "horse"
+word2 = "ros"
+
+r, c = len(word1), len(word2)
+dp = [[0 for j in range(c+1)] for i in range(r+1)]
+
+print(dp)
+for i in range(r+1):
+    for j in range(c+1):
+        #Case-1 = If first string is empty
+        #insert all char of word2 to word1
+        if i==0:
+            dp[i][j] = j
+            
+        #Case-2 = If sec string is empty
+        # remove all chrs of word1
+        elif j == 0:
+            dp[i][j] = i
+        
+        #Case-3 = if both the chrs are same then just ignore
+        elif word1[i-1] == word2[j-1]:
+            dp[i][j] = dp[i-1][j-1]
+            
+        #else look for min of insert, delete, replace
+        else:
+            dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1])
+            
+print(dp)
+print("Minimum ways: ",dp[r][c])
