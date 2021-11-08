@@ -1,0 +1,63 @@
+//        Hackerrank Almost Sorted Problem Statement
+
+Given an array of integers, determine whether the array can be sorted in ascending order using only one of the following operations one time.
+
+Swap two elements.
+Reverse one sub-segment.
+Determine whether one, both or neither of the operations will complete the task. Output is as follows.
+
+// SOL URL - https://ide.geeksforgeeks.org/8LQcp78RkI
+
+from copy import deepcopy
+
+def AlmostSorted(n, arr):
+    sortarr = deepcopy(arr) #copy array elements in new vars
+    #print(sortarr)
+    sortarr.sort() #sorting
+    
+    #if the arr is already sorted(print yes)
+    if sortarr == arr:
+        print("yes")
+        return
+    
+    #Now if not sorted but can be sorted using single op
+    l = r = -1
+    
+    #we finc the element index bigger than next one in arr
+    for i in range(n-1):
+        if arr[i] > arr[i+1]:
+            l = i
+            break
+        
+    #find elemenet from right smaller to previous one
+    for i in range(n-1, 0, -1):
+        if arr[i] < arr[i-1]:
+            r = i
+            break
+        
+    #check for swap
+    temp = deepcopy(arr)
+    
+    #check that on swapping does arr is sorted or not
+    temp[l], temp[r] = temp[r], temp[l]
+    
+    if temp == sortarr:
+        print("yes")
+        print("swap", l+1, r+1)
+        return
+    
+    #check for reverse condition does arr is sorted
+    temp = deepcopy(arr)
+    
+    temp = temp[:l] + temp[l:r+1][::-1] + temp[r+1:]
+    if temp == sortarr:
+        print("yes")
+        print("reverse", l+1, r+1)
+        return
+    
+    #else arr can't be sorted in single operation
+    print("no")
+    
+n = int(input())
+arr = list(map(int, input().split()))
+AlmostSorted(n, arr)
