@@ -1,0 +1,37 @@
+## Coding Ninjas Problem Statement
+Problem Statement
+Aakash is a member of Ninja club. He has a weird family structure. Every male member (M) gives birth to a male child first and then a female child,
+whereas every female (F) member gives birth to a female child first and then to a male child. 
+Aakash analyses this pattern and wants to know what will be the Kth child in his Nth generation.
+Can you help him?
+
+For each test case, print the gender of the Kth child in the Nth generation. If the gender is male, print “Male” else print “Female” (without quotes). 
+The output of each test case is printed in a separate line. 
+
+APPROACH - 1 (Naive Approach) -> (TLE IN Big Test Case)
+
+## SOL-URL -> https://ide.geeksforgeeks.org/T7sTKxWTxr
+
+#code
+from collections import defaultdict
+Gens = defaultdict(list)
+Gens[1] = ["Male"]
+def KNGen(n, k):
+    if n == 1:
+        return "Male"
+    else:
+        for i in range(2, n+1):
+            getprev = Gens[i-1]
+            for ch in getprev:
+                if ch == "Male":
+                    Gens[i].extend(["Male","Female"])
+                else:
+                    Gens[i].extend(["Female", "Male"])
+
+n = 4
+k = 4
+KNGen(n, k)
+result = Gens[n]
+print(result[k-1])
+        
+## APPROACH - 2 (EFFECTIVE APPROACH Using RECURSION)
