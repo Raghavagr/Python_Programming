@@ -35,3 +35,48 @@ result = Gens[n]
 print(result[k-1])
         
 ## APPROACH - 2 (EFFECTIVE APPROACH Using RECURSION)
+
+### Time Comp ->  O(min(N, log(K))
+### Space Comp -> O(N)
+
+### SOL-URL -> https://ide.geeksforgeeks.org/v1N3mAeYyn
+
+### APPROACH
+Recursion
+The idea is to find the gender of the parent of the Kth child in Nth generation. Now, if the Kth child of the Nth generation is the first child of its parent, then it’s gender will be the same as the parent’s gender else it will be the opposite. This can be done recursively. 
+ 
+
+Algorithm: 
+
+- The idea is to use recursion.
+- Base condition, If 'N' or 'K' is 1, return “Male”, as the first child of every generation is male.
+- Find the parent of the Kth child of Nth generation. It will be floor((K + 1) / 2). Store it in a variable “par”.
+- Note that the generation of the parent is “N - 1”. Thus, the parent will be the floor((K + 1) / 2)th child of (N - 1)th generation.
+- Recursively find the gender of the parent and store it in a string "parGender". If the Kth child of Nth generation is the first child of its parent, i.e. if 'K' is equal to (2 * par - 1), return the gender of the parent ("genParent").
+- Else, return the gender opposite of its parent’s gender. If its parent is “Male”, return “Female” else return “Male”.
+
+### CODE
+def KNGen(n, k):
+    if n==1 or k==1:
+        return "Male"
+    
+    #parent of Kth child of Nth Generation
+    par = (k+1) // 2
+    
+    #Recursively find gender of parent
+    parGender = KNGen(n-1, par)
+    
+    #If Kth child is 1st child of parent then its gender will be same as of parent
+    if(k == 2*par-1):
+        return parGender
+        
+    #else it will be opposite Gender from parent
+    else:
+        if parGender == "Male":
+            return "Female"
+        else:
+            return "Male"
+
+n = 3
+k = 3
+print(KNGen(n, k))
