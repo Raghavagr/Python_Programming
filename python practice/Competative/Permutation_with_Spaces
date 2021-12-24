@@ -1,0 +1,43 @@
+Question) 
+Given a string you need to print all possible strings that can be made by placing spaces (zero or one) in between them. 
+The output should be printed in sorted increasing order of strings
+
+EXAMPLE
+Input:
+S = "ABC"
+Output: (A B C)(A BC)(AB C)(ABC)
+Explanation:
+ABC
+AB C
+A BC
+A B C
+These are the possible combination of "ABC"
+
+SOLUTION
+
+## CODE-1 -> URL -> https://ide.geeksforgeeks.org/1Ro0Zeq66J
+
+## CODE-2 (Shot and sweet)
+
+URL -> https://ide.geeksforgeeks.org/gFKjfNVc80
+
+#code
+def findPermutation(strs):
+    buff = []
+    if len(strs) == 1:
+        buff.append(strs)
+        return buff
+        
+    strsTemp = findPermutation(strs[1:])
+    
+    for i in range(len(strsTemp)):
+        buff.append(strs[0] + strsTemp[i])
+        buff.append(strs[0] + " " + strsTemp[i])
+    
+    return buff
+    
+s = input()
+patterns = []
+patterns = findPermutation(s)
+for i in patterns:
+    print(i)
