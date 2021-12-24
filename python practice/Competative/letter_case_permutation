@@ -1,0 +1,44 @@
+// Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
+
+Return a list of all possible strings we could create. Return the output in any order.
+
+Example 1:
+  Input: s = "a1b2"
+  Output: ["a1b2","a1B2","A1b2","A1B2"]
+
+Approach -> Recursive Approach
+we follow the recursive tree approach in which we take input string, empty string as output and a list to store all permutations.
+now whenever the input is empty we get one output. now the question is how? So we take each char of string, 
+check it is it alphabetic char then keep its two different occurence in separate string as uppercase and in lowercase and delete that char from input.
+and recursive call the function by same one in uppercase permutation and one with lowercase permutation. 
+And if digit occur then we simply append it in output and delete it from input string and call the function so when input is end then we get one permutation.
+
+SOL URL - https://ide.geeksforgeeks.org/p8KnjfaCOL
+
+#code
+def FindAllPermutation(ip, op, lst):
+    if len(ip) == 0:
+        lst.append(op)
+        return
+    
+    if ip[0].isalpha():
+        op1 = op
+        op2 = op
+        op1 = op1 + ip[0].lower()
+        op2 = op2 + ip[0].upper()
+        ip = ip[1:]
+        FindAllPermutation(ip, op1, lst)
+        FindAllPermutation(ip, op2, lst)
+        
+    else:
+        op1 = op
+        op1 = op1 + ip[0]
+        ip = ip[1:]
+        FindAllPermutation(ip, op1, lst)
+    return lst
+    
+s = "a1b2"
+op=""
+res = []
+res = FindAllPermutation(s,op,res)
+print(res)
