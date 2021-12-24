@@ -1,0 +1,36 @@
+// Given a string print all the permutation of string found with uppercase and lowercase combination.
+
+Example
+ I/P = "ab"
+ O/P = ['AB', 'Ab', 'aB', 'ab']
+
+Approach - RECURSION
+
+ We take input string, empty string and a list. Now we build a recursive binary tree now the question is how?
+ we take input string. we split each char of string in 2 part as one 2 choice is there one is lowercase and uppercase 
+ SO, we create two string one with lowercase permutation and another with uppercase permutation. 
+ 
+ # SOL URL -  https://ide.geeksforgeeks.org/5Iqh14W3SL
+ 
+ def FindAllPermutation(ip, op, lst):
+    if len(ip) == 0:
+        lst.append(op)
+        return
+    
+    op1 = op
+    op2 = op
+    op1 = op1 + ip[0]
+    op2 = op2 + ip[0].upper()
+    ip = ip[1:]
+    FindAllPermutation(ip, op1, lst)
+    FindAllPermutation(ip, op2, lst)
+    
+    return lst
+    
+s = "ab"
+op=""
+res = []
+res = FindAllPermutation(s,op,res)
+res.sort()
+print(res)
+ 
