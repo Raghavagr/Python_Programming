@@ -1,0 +1,38 @@
+// Given an integer n you are supposed to generate all the possible combinations of balance parenthesis of opening and closing bracket.
+
+### Example
+ I/P -> N=3
+ O/P -> ['((()))', '(()())', '(())()', '()(())', '()()()']
+
+Approach -> RECURSION
+
+## SOL URL -> https://ide.geeksforgeeks.org/EJOUtXXV8u
+
+#code
+def BalanceParenthesis(opn, close, op, lst):
+    if opn == 0 and close == 0:
+        lst.append(op)
+        return
+    
+    if opn != 0:
+        op1 = op
+        op1 = op1 + "("
+        BalanceParenthesis(opn-1, close, op1, lst)
+        
+    if close > opn:
+        op2 = op
+        op2 = op2 + ")"
+        BalanceParenthesis(opn, close-1, op2, lst)
+    
+    return lst
+    
+def main(n):
+    opn = n
+    close = n
+    op = ""
+    res = []
+    res = BalanceParenthesis(opn, close, op, res)
+    print(res)
+    
+n = int(input())
+main(n)
