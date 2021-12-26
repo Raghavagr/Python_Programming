@@ -1,0 +1,21 @@
+// Count the number of zeros present in a number
+
+## Approach-1
+It is simple, you can convert number to string and use count function to count number of zeros
+
+## Approach-2 (RECURSION)
+In this we simply call the function multiple times by dividing the number by 10 and everytime check the last digit of number that is it 0 then we 
+increase the count by 1 and call the func again.
+
+##CODE
+def countZeros(n):
+    if n == 0:
+        return 0
+    
+    if n % 10 == 0:
+        return 1+countZeros(n//10)
+    else:
+        return countZeros(n//10)
+        
+n = 7080010
+print(countZeros(n))
