@@ -1,0 +1,35 @@
+QUE) Gievn an array of duplicate elements, find the index of first occurence of particular element
+
+EXAMPLE -> 
+I/P -> arr = [9, 8, 10, 8, 7]
+       ele = 8
+       
+O/P -> 1
+
+EXP -> 8 has two occurence among which first time 8 is seen at 1st index (0 based indexing)
+
+Approach (RECURSION)
+
+in recursion our target is to first check base element(0th index ele) and ten pass remaining array in recursion. So, we use same thing here that
+first we check if the 0th element is required to target element than we will return 0. else we pass recursively remaining array.
+if element is not present then we check that length of array is 0 then we simply return -1.
+
+SOL URL -> https://ide.geeksforgeeks.org/bqxmiCb3Es
+
+#code
+def FirstIndex(arr, ele, n):
+    if n == 0:
+        return -1
+        
+    elif arr[0] == ele:
+        return 0
+    else:
+        ans = FirstIndex(arr[1:], ele, n-1)
+        if ans == -1:
+            return -1
+        else:
+            return ans+1
+    
+arr = [9, 7, 10, 7, 8, 10]
+
+print(FirstIndex(arr, 10, len(arr)))
