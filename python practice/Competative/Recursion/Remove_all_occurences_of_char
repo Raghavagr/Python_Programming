@@ -1,0 +1,17 @@
+// Given a string and a character. return a string by removing all the ocuurences of a character
+
+// SOL-URL -> https://ide.geeksforgeeks.org/LnJokhi4TB
+
+#code
+def replaceStr(st, ch):
+    if st == "":
+        return st
+        
+    if st[0] == ch:
+        return "" + replaceStr(st[1:], ch)
+    else:
+        return st[0] + replaceStr(st[1:], ch)
+      
+st = "geeksforgeeks"
+ch = "e"
+print(replaceStr(st, ch))
