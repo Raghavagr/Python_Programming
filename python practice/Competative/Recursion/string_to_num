@@ -1,0 +1,18 @@
+// String to number using recursion
+
+// URL -> https://ide.geeksforgeeks.org/p6Jm4EUeDq
+
+#code
+def strToNum(chr_arr, last):
+    if last == 0:
+        return int(chr_arr[last])
+        
+    smallAns = strToNum(chr_arr, last-1)
+    
+    a = int(chr_arr[last])
+    return smallAns*10 + a
+    
+st = "123456"
+lst = list(st)
+
+print(strToNum(lst, len(lst)-1))
