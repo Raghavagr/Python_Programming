@@ -1,0 +1,25 @@
+// Given string str of size N.
+   The task is to write a recursive function to replace all occurrences of pi with 3.14 in the given string and print the modified string
+   
+// Example
+Input : str = “pippppiiiipi” 
+Output : 3.14ppp3.14iii3.14
+
+Input : str = “pip” 
+Output : 3.14p
+
+## SOL URL - https://ide.geeksforgeeks.org/EB877FrzOR
+
+#code
+def replaceStr(st):
+    if st == "" or len(st) == 1:
+        return st
+        
+    if st[0:2] == "pi":
+        return "3.14" + replaceStr(st[2:])
+    else:
+        return st[0] + replaceStr(st[1:])
+      
+st = "pippppiiiipi"
+#st = "xpix"
+print(replaceStr(st))
