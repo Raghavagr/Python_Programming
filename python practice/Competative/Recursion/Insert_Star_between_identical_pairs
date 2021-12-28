@@ -1,0 +1,33 @@
+##   Problem Statement
+-> Given a string with repeated characters, we have to insert a star i.e.” * “ between pair of adjacent identical characters using recursion.
+
+Problem statement and sol link -> GFG (https://www.geeksforgeeks.org/recursive-program-to-insert-a-star-between-pair-of-identical-characters/)
+
+# Example
+Input : aabb 
+Output : a*ab*b
+
+Input : xxxy
+Output : x*x*xy 
+
+Approach: 
+
+- If there is an empty string then simply return. This forms our base condition.
+- Check if the first two characters are identical. If yes, then insert ” * ” between them.
+- As we have now checked for identical characters at the first two positions of the string so we now make a recursive call without the first character of the string.
+
+SOL URL -> https://ide.geeksforgeeks.org/LIWXPGMYsN
+
+#code
+def insertStar(st, prev_ch):
+    if st == "":
+        return st
+        
+    if st[0] == prev_ch:
+        return "*" + st[0] + insertStar(st[1:], st[0])
+    else:
+        return st[0] + insertStar(st[1:], st[0])
+    
+#st = "aabb"
+st = "xxxy"
+print(insertStar(st, ""))
