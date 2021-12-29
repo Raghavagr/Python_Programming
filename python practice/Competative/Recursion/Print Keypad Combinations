@@ -1,0 +1,19 @@
+// PROBLEM STATEMENT (LINK -> https://www.geeksforgeeks.org/find-possible-words-phone-digits/)
+  Print all possible words from phone digits
+  
+// SOL-URL -> https://ide.geeksforgeeks.org/pUqH2D76ut
+
+#code
+def printWords(num, output, options):
+    if num == 0:
+        print(output)
+    
+    n1 = num % 10
+    s1 = options[n1]
+    for i in range(len(s1)):
+        printWords(num//10, s1[i]+output, options)
+        
+options = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+output = ""
+num = 23
+printWords(num, output, options)
