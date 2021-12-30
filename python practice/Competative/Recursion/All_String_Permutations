@@ -1,0 +1,21 @@
+// PROBLEM STATEMENT ( https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/ )
+
+A permutation also called an “arrangement number” or “order,” is a rearrangement of the elements of an ordered list S into a one-to-one correspondence with S itself.
+A string of length n has n! permutation. 
+
+EXAMPLE
+Below are the permutations of string ABC. 
+ABC ACB BAC BCA CBA CAB
+
+## SOL URL -> https://ide.geeksforgeeks.org/c37iwLnLhj
+
+#code
+def findStringPermu(inp, out):
+    if inp == "":
+        print(out)
+        return
+    
+    for i in range(len(inp)):
+        findStringPermu(inp[:i]+inp[i+1:], out+inp[i])
+        
+findStringPermu("cba", "")
