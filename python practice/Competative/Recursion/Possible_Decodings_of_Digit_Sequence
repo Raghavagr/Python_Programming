@@ -1,0 +1,38 @@
+// PROBLEM STATEMENT
+Given the numeric string str, where 1 represents ‘a’, 2 represents ‘b’, …, 26 represents ‘z’, the task is to print all possible alphabetical strings that can be obtained from str.
+
+Examples:  
+Input: str = “1123” 
+Output: 
+aabc 
+kbc 
+alc 
+aaw 
+kw 
+Explanation: 
+The given string can be splitted as: 
+1) “1123” = “1” + “1” + “2” + “3” = aabc 
+2) “1123” = “11” + “2” + “3” = kbc 
+3) “1123” = “1” + “12” + “3” = alc 
+4) “1123” = “1” + “1” + “23” = aaw 
+5) “1123” = “11” + “23” = aabc
+
+/// SOL URL -> https://ide.geeksforgeeks.org/qyYIhMz8Y2
+
+#code
+def printAllPossibleCodes(inp, out):
+    if inp == "":
+        print(out)
+        return
+    
+    ch1 = chr(int(inp[0]) + ord('a') - 1) #first char to add
+    b = int(inp[0:2])  #2 char string to int
+    ch2 = chr(b-1 + ord('a'))  #respective char of 2nd string
+    printAllPossibleCodes(inp[1:], out+ch1)
+    #if length of 2 is below 26 then we can make its combs
+    if b >= 10 and b <= 26:
+        printAllPossibleCodes(inp[2:], out+ch2)
+        
+#printAllPossibleCodes("1123", "")
+printAllPossibleCodes("56", "")
+    
