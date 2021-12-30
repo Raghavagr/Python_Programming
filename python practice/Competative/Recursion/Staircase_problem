@@ -1,0 +1,20 @@
+// PROBLEM STATEMENT
+
+There are n stairs, a person standing at the bottom wants to reach the top. 
+  The person can climb either 1 stair or 2 stairs at a time. Count the number of ways, the person can reach the top.
+  
+// SOL URL -> https://ide.geeksforgeeks.org/NYRV160AcQ
+
+#code
+def StairCase(n):
+    if n==0 or n==1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        return StairCase(n-3) + StairCase(n-2) + StairCase(n-1)
+        #If we can only take 1 or 2 steps then
+        ##return StairCase(n-2) + StairCase(n-1)
+        
+n = 4
+print(StairCase(n))
