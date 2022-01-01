@@ -1,0 +1,28 @@
+// Find the last index of element in an Array
+
+// Example
+I/P -> arr = [9,8,6,8,7] ele = 8
+O/P -> 3
+
+// SOL URL -> https://ide.geeksforgeeks.org/0Nzb1HSzlM
+
+#code
+def LastIndex(arr, ele, n):
+    if n == 0:
+        return -1
+    
+    #reach to last element recursively
+    ans = LastIndex(arr[1:], ele, n-1)
+        
+    if ans != -1:
+        return ans + 1
+    else:
+        if arr[0] == ele:
+            return 0
+        else:
+            return -1
+    
+#arr = [9, 7, 10, 7, 8, 10] #ele=10
+arr = [7,8,9,8]
+
+print(LastIndex(arr, 8, len(arr)))
