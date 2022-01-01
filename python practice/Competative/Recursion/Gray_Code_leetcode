@@ -1,0 +1,42 @@
+// PROBLEM STATEMENT (https://helloml.org/gray-code-solution-to-leetcode-problem/)
+
+An n-bit gray code sequence is a sequence of 2n integers where:
+
+Every integer is in the inclusive range [0, 2n - 1],
+The first integer is 0,
+An integer appears no more than once in the sequence,
+The binary representation of every pair of adjacent integers differs by exactly one bit, and
+The binary representation of the first and last integers differs by exactly one bit.
+
+Given an integer n, return any valid n-bit gray code sequence.
+
+// SOL LINK -> https://ide.geeksforgeeks.org/csFl3p9ISm
+
+#code
+def FindGrayCode(n):
+    if n == 1:
+        return ["0", "1"]
+        
+    current = FindGrayCode(n-1)
+    res = []
+    #add 0 in beg to each code in current
+    for i in range(len(current)):
+        s = current[i]
+        res.append("0" + s)
+        
+    #add 1 in beg from reverse of each code in current
+    for i in range(len(current)-1, -1, -1):
+        s = current[i]
+        res.append("1" + s)
+    
+    return res
+    
+n = 3
+res = FindGrayCode(3)
+#print(res)
+#we have to display the res in decimal form so,
+fres = []
+for i in res:
+    fres.append(int(i, 2))
+    
+print(*fres)
