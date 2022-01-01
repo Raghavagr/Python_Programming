@@ -1,0 +1,35 @@
+// PROBLEM STATEMENT (https://www.geeksforgeeks.org/remove-consecutive-duplicates-string/)
+
+Given a string S, remove all the consecutive duplicates. Note that this problem is different from Recursively remove all adjacent duplicates.
+Here we keep one character and remove all subsequent same characters.
+
+Examples
+Input  : aaaaabbbbbb
+Output : ab
+
+Input : geeksforgeeks
+Output : geksforgeks
+
+Input : aabccba
+Output : abcba
+
+// SOL URL -> https://ide.geeksforgeeks.org/5z91hB7krO
+
+#code
+def RemoveConsecutiveChar(inp):
+    if inp == "" or len(inp) == 1:
+        return inp
+    
+    n = len(inp)    
+    if inp[0] == inp[1]:
+        indx = 0
+        while indx < n and inp[0] == inp[indx]:
+            indx += 1
+        
+        return inp[0] + RemoveConsecutiveChar(inp[indx:])
+        
+    return inp[0] + RemoveConsecutiveChar(inp[1:])
+        
+    
+inp = "aabaa"
+print(RemoveConsecutiveChar(inp))
