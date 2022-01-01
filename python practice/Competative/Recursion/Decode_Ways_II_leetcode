@@ -1,0 +1,71 @@
+// PROBLEM STATEMENT (https://leetcode.com/problems/decode-ways-ii/)
+
+A message containing letters from A-Z can be encoded into numbers using the following mapping:
+
+'A' -> "1"
+'B' -> "2"
+...
+'Z' -> "26"
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
+
+"AAJF" with the grouping (1 1 10 6)
+"KJF" with the grouping (11 10 6)
+Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
+
+In addition to the mapping above, an encoded message may contain the '*' character, which can represent any digit from '1' to '9' ('0' is excluded). For example, the encoded message "1*" may represent any of the encoded messages "11", "12", "13", "14", "15", "16", "17", "18", or "19". Decoding "1*" is equivalent to decoding any of the encoded messages it can represent.
+
+Given a string s consisting of digits and '*' characters, return the number of ways to decode it.
+
+// SOL URL -> https://ide.geeksforgeeks.org/7UtuL3f7BF
+
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        memo = dict()
+        def backtrack(index):
+            #if we are at last digit then only 1
+            if index == len(s):
+                return 1
+            #if we have seen that digit decodings
+            if index in memo:
+                return memo[index]
+            #if digit is 0 then no decoding
+            if s[index] == '0':
+                return 0
+            res = 0
+            #if '*' is there then 9 possibility else only 1 decoding
+            mult = 9 if s[index] == '*' else 1
+            res += mult*backtrack(index+1)
+            if index < len(s)-1:
+                nextt = s[index+1]
+                opts = 0
+                #when we got '*' then what are possible cases with it
+                if s[index] == '*':
+                    #when there are 2 '*' cont in str then 15 decodings are possible
+                    if nextt == '*':
+                        opts = 15 
+                    else: 
+                        #after '*' there is num so check is it less than 6 because less than 26                else:
+                        if nextt <= '6':
+                            opts = 2 
+                        else:
+                            opts = 1 
+                #if less then 3
+                elif s[index] < '3':
+                    #after 1 or 2 we have '*' like 1* or 2* then
+                    if nextt == '*':
+                        if s[index] == '1':
+                            opts = 9 # 11-19
+                        else:
+                            opts = 6 # 21-26
+                    else:
+                        if int(s[index:index+2]) <= 26:
+                            opts = 1
+                #one ans at ind and one at indx +1
+                if opts:
+                    res += opts*backtrack(index+2)
+            memo[index] = res%(10**9 + 7)
+            return memo[index]
+        return backtrack(0)
+        
+ans = Solution()
+print(ans.numDecodings("1*"))
