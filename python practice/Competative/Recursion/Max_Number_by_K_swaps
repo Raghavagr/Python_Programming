@@ -1,0 +1,60 @@
+// Problem Statement
+Given a positive integer, find the maximum integer possible by doing at-most K swap operations on its digits.
+Examples: 
+
+Input: M = 254, K = 1
+Output: 524
+Swap 5 with 2 so number becomes 524
+
+Input: M = 254, K = 2
+Output: 542
+Swap 5 with 2 so number becomes 524
+Swap 4 with 2 so number becomes 542
+
+// SOL-URL -> https://ide.geeksforgeeks.org/IHTzVPpPo7
+
+#code
+def swap(st, i, idx):
+    temp = list(st)
+    temp[i], temp[idx] = temp[idx], temp[i]
+    st = ''.join(temp)
+    return st
+
+def helper(mx, st, k, idx, res):
+    #base case
+    if k == 0:
+        return
+    
+    n = len(st)
+    maxch = st[idx]
+    for i in range(idx+1, n):
+        if maxch < st[i]:
+            maxch = st[i]
+            
+    if maxch != st[idx]: #If another then ch at idx we got mx then swap possible
+        k = k-1
+        
+    for i in range(idx, n):
+        if st[i] == maxch:
+            #swap ch at i and idx
+            st = swap(st, i, idx)
+            
+            #check if new formed st is greater then curr one
+            if st > mx:
+                mx = st
+                
+            helper(mx, st, k, idx+1, res)
+            st = swap(st, i, idx)
+    res.append(mx)
+    
+def main(st, k, res):
+    mx = st
+    helper(mx, st, k, 0, res)
+    print(max(res))
+    
+global res
+res = []
+#st = "254"
+st = "1034"
+k = 2
+main(st, k, res)
