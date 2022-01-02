@@ -1,0 +1,19 @@
+// Delete middle element from stack using recursion
+
+// SOL URL -> https://ide.geeksforgeeks.org/f22584Uam9
+
+#code
+def DeleteMiddle(stack, k):
+    if k == 1:
+        stack.pop()
+        return
+    
+    val = stack.pop()
+    DeleteMiddle(stack, k-1)
+    stack.append(val)
+    
+global stack
+stack = [1,2,3,4,5]
+mid = ((len(stack)//2)+1)
+DeleteMiddle(stack, mid)
+print(stack)
