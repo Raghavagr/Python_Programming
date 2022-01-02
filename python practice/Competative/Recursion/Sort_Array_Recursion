@@ -1,0 +1,26 @@
+// Sort an Array using Recursion
+
+// SOL URL -> https://ide.geeksforgeeks.org/ZAv3aBI4gl
+
+#code
+def insert(arr, temp):
+    if len(arr) == 0 or arr[-1] <= temp:
+        arr.append(temp)
+        return
+    
+    val = arr.pop()
+    insert(arr, temp)
+    insert(arr, val)
+
+def sort(arr):
+    if len(arr) == 1:
+        return
+    
+    temp = arr.pop()
+    sort(arr)
+    insert(arr, temp)
+    
+global arr
+arr = [3, 5, 2, 4, 9, 6]
+sort(arr)
+print(arr)
