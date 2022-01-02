@@ -1,0 +1,23 @@
+// PROBLEM STATEMENT (https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/)
+
+Tower of Hanoi is a mathematical puzzle where we have three rods and n disks. The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules: 
+
+Only one disk can be moved at a time.
+Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack i.e. a disk can only be moved if it is the uppermost disk on a stack.
+No disk may be placed on top of a smaller disk.
+
+SOL URL -> https://ide.geeksforgeeks.org/86FRUEJZah
+
+#code
+def TowerOfHanoi(n, source, helper, dest):
+    if n == 0:
+        return
+    #move n-1 disk from source to helper using dest
+    TowerOfHanoi(n-1, source, dest, helper)
+    #place last to dest
+    print("Move {} from {} To {}".format(n, source, dest))
+    #Move n-1 from helper to dest using source
+    TowerOfHanoi(n-1, helper, source, dest)
+    
+n = 3
+TowerOfHanoi(n, 1, 2, 3)
