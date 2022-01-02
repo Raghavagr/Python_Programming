@@ -1,0 +1,36 @@
+Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index i, you can jump to i + arr[i] or i - arr[i], check if you can reach to any index with value 0.
+
+Notice that you can not jump outside of the array at any time.
+
+Example 1:
+Input: arr = [4,2,3,0,3,1,2], start = 5
+Output: true
+Explanation: 
+All possible ways to reach at index 3 with value 0 are: 
+index 5 -> index 4 -> index 1 -> index 3 
+index 5 -> index 6 -> index 4 -> index 1 -> index 3 
+
+// SOL-URL -> https://ide.geeksforgeeks.org/r9pCv9CXhW
+
+#code
+def helper(arr, i, visited):
+    if i < 0 or i >= len(arr):
+        return False
+        
+    if arr[i] == 0:
+        return True
+        
+    if visited[i]:
+        return False
+    
+    visited[i] = 1
+    
+    x = helper(arr, i+arr[i], visited)
+    y = helper(arr, i-arr[i], visited)
+    
+    return x or y
+    
+arr = [4,2,3,0,3,1,2]
+start = 5
+visited = [0] * len(arr)
+print(helper(arr, start, visited))
