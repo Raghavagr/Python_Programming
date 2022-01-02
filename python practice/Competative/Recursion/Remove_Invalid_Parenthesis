@@ -1,0 +1,61 @@
+// Problem Statement (https://leetcode.com/problems/remove-invalid-parentheses/)
+
+Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
+
+Return all the possible results. You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: s = "()())()"
+Output: ["(())()","()()()"]
+
+APPROACH -> 
+1) Find the minimum number of Invalid parenthesis we can remove
+  This is acheved using Stack. Traverse in string and push the opening and if closing encounter then check the top, if open is found then POP
+  else push closing and in last size of stack is invalid parenthesis
+  
+2) After that recursively call the string and remove the minimum parenthesis and check that str is valid or not.
+   we can remove minimum or less than minimum number of parenthesis.
+   
+// SOL URL -> https://ide.geeksforgeeks.org/eQNOW8o9S8
+
+#code
+res = set()
+def getMinInvalid(s):
+    stack = []
+    i=0
+    while i < len(s):
+        if s[i] == '(':
+            stack.append('(')
+        elif s[i] == ')':
+            if len(stack) > 0 and stack[-1] == '(':
+                stack.pop()
+            else:
+                stack.append(')')
+                
+        i += 1
+        
+    return len(stack)
+    
+def solve(s, minInv):
+    #Base Case
+    if minInv < 0:
+        return
+    #when str is valid so Mininvalid is 0 and its comp is 1 so, add that str
+    if minInv == 0:
+        if (not getMinInvalid(s)):
+            res.add(s)
+        return
+    
+    for i in range(len(s)):
+        left = s[0 : i]
+        right = s[i+1:]
+        solve(left+right, minInv-1) #remove 1 by 1 till min Invalid we can remove
+        #we can remove min and less that min
+    return
+
+exp = "()())()"
+solve(exp, getMinInvalid(exp))
+print(res)
