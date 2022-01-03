@@ -80,3 +80,33 @@ def KNGen(n, k):
 n = 3
 k = 3
 print(KNGen(n, k))
+
+
+// APPROACH-3 (RECURSIVE)
+
+This is also a recursive approach with a little bit change. Like if you observe the family tree structute then in next gen first half is same as
+it as of above and next half is just the complement of it. So we can find the length of elements in Nth gen using 2^N-1 and using this we can find mid position
+and if the Kth child is below mid then his gender is same as N-1 of Kth child else its just the compliment of K-midth child of n-1 generation
+so we can use recursive approach.
+// Base case always at 1st male will be there so we are assuming Male as 0 and female as 1
+
+// SOL URL -> https://ide.geeksforgeeks.org/5pmDFc1wdO
+
+#code
+def kthChildNthGeneration(n, k):
+    if n == 1 or k == 1:
+        return 0
+        
+    mid = pow(2, n-1)//2
+    if k < mid:
+        return kthChildNthGeneration(n-1, k)
+    else:
+        return not kthChildNthGeneration(n-1, k-mid)
+        
+n=3
+k=4
+res = kthChildNthGeneration(n,k)
+if res:
+    print("Female")
+else:
+    print("Male")
