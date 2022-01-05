@@ -1,0 +1,42 @@
+// Problem Statement
+
+Given a string you need to print all possible strings that can be made by placing spaces (zero or one) in between them. 
+
+Input:  str[] = "ABC"
+Output: ABC
+        AB C
+        A BC
+        A B C
+        
+
+/// APPROACH
+
+The approach is like backtracking means the total combinations that can be formed in particular input = (2^n - 1)  #n is len of inp str
+So, there can be recursive call like in left subtree we does not make any chng in str and only move with starting index.
+In right sub-tree we have choice for n-1 character to put the space or not. so for this we use backtracking like first we put the space
+Then we remove the space and bring in original state as parent (Backtracking) and then use the second choice.
+
+// SOL URL -> https://ide.geeksforgeeks.org/8JAfB0byNI
+
+#code
+def FindAllPermuWithSpace(curr_str, res, start, ln):
+    #Base case
+    if start == ln-1:
+        res.append(curr_str)
+        return
+    
+    #Left call with no change(without space combs)
+    FindAllPermuWithSpace(curr_str, res, start+1, ln)
+    
+    #Right call with space and backtracking
+    curr_str = curr_str[:start+1] + " " + curr_str[start+1:]
+    FindAllPermuWithSpace(curr_str, res, start+2, ln+1)
+    
+    #Backtrack to original position(Parent state) for next possible cases
+    curr_str = curr_str[:start+1]+curr_str[start+2:]
+        
+s = "ABC"
+global res
+res = []
+FindAllPermuWithSpace(s, res, 0, len(s))
+print(res)
