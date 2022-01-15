@@ -1,0 +1,32 @@
+# Given a array of distinct elements find all the combinations in array to whose sum is equal to target sum 
+## YOU can take or not take the elements any number of times in combinations
+
+## SOL URL -> https://ide.geeksforgeeks.org/lpApM7uWTq
+
+#code
+def combSum(arr, idx, target, sm, res, currcomb):
+    if target == sm:
+        print(currcomb)
+        res.append(currcomb)
+        return
+    
+    if idx == len(arr) or sm > target:
+        return
+        
+    sm = sm + arr[idx]
+    currcomb.append(arr[idx])
+    combSum(arr, idx, target, sm, res, currcomb)
+    
+    #Now we have to make again second call without making any chng so exclude what we added
+    sm = sm-arr[idx]
+    currcomb.pop()
+    combSum(arr, idx+1, target, sm, res, currcomb)
+    
+global res
+res = []
+currcomb = []
+arr = [1,2,3]
+target = 4
+combSum(arr, 0, target, 0, res, currcomb)
+
+#print(res)
