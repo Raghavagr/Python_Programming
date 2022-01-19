@@ -1,0 +1,43 @@
+//PROBLEM LINK
+// https://practice.geeksforgeeks.org/problems/wildcard-pattern-matching/1
+
+// SOL URL -> https://ide.geeksforgeeks.org/1bkjvY88Uh
+
+PURE BACKTRACKING
+
+#code
+
+def wildCardUtil(strng, pattern, i, j):
+    if i == len(strng) and j == len(pattern):
+        return True
+        
+    if i == len(strng):
+        for k in range(j, len(pattern)):
+            if pattern[k] != "*":
+                return False
+        return True
+        '''
+        s = pattern[j:]
+        if s == "*" * len(s):
+            return True
+        else:
+            return False
+        '''
+            
+    if j == len(pattern):
+        return False
+        
+    if pattern[j] == "?":
+        return wildCardUtil(strng, pattern, i+1, j+1)
+    
+    if pattern[j] == "*":
+        return wildCardUtil(strng, pattern, i+1, j) or wildCardUtil(strng, pattern, i, j+1)
+    
+    if strng[i] != pattern[j]:
+        return False
+    
+    return wildCardUtil(strng, pattern, i+1, j+1)
+    
+strng = "summer"
+pattern = "s*e?"
+print(wildCardUtil(strng, pattern, 0, 0))
