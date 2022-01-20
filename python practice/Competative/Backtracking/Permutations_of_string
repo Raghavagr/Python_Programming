@@ -1,0 +1,25 @@
+// Permutations of String using Backtracking
+
+// SOL URL - https://ide.geeksforgeeks.org/BENxyP9mrl
+
+## CODE
+def swap(strng, left, i):
+    lst = list(strng)
+    lst[left], lst[i] = lst[i], lst[left]
+    return "".join(lst)
+
+def findPermutation(strng, left, right):
+    if left == right:
+        print(strng) #we will get one output here
+        
+    for i in range(left, right):
+        #do so work
+        strng = swap(strng, left, i)
+        #recursive call
+        findPermutation(strng, left+1, right)
+        #undo the chnges
+        strng = swap(strng, left, i)
+        
+        
+strng = "ABC"
+findPermutation(strng, 0, len(strng))
