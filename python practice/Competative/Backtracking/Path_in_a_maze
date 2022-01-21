@@ -1,0 +1,63 @@
+    // PROBLEM STATEMENT
+You are given a 2-D matrix consisting of 0’s and 1’s with ‘N’ rows and ‘N’ columns, 
+you are supposed to find all paths from the cell (0,0) (top-left cell) to the cell (N-1, N-1)(bottom-right cell). 
+All cells with value 0 are blocked and cannot be travelled through while all cells with value 1 are open.
+
+If you are currently at cell (x,y) then you can move to (x+1,y)(denoted by ‘D’), (x-1,y)(denoted by ‘U’), (x,y+1)(denoted by ‘R’), (x,y-1)(denoted by ‘L’) in one move. You cannot move out of the grid.
+
+// SOL URL -> https://ide.geeksforgeeks.org/qdzK5Xuxxy
+
+#code
+d = ['D', 'U', 'R', 'L']
+di = [1, -1, 0, 0] #chnges in row as per direction
+dj = [0, 0, 1, -1] #chnges in col as per direction
+
+def isValidMove(arr, i, j, n, visited):
+    if i>=0 and j>=0 and i<n and j<n and visited[i][j]==False and arr[i][j]==1:
+        return True
+    return False
+
+def getAllPossiblePath(arr, n, i, j, allPaths, visited, currpath):
+    if i==n-1 and j==n-1:
+        allPaths.append(currpath)
+        return 
+    #If the path is blocked
+    if arr[i][j] == 0:
+        return
+    
+    #mark current cell as visited
+    visited[i][j] = True
+    
+    for x in range(4):
+        newI = i + di[x]
+        newJ = j + dj[x]
+        
+        if isValidMove(arr, newI, newJ, n, visited):
+            #push correcponding dir to currpath
+            currpath = currpath + d[x]
+            
+            #recursive Travel all path from i+1, j
+            getAllPossiblePath(arr, n, newI, newJ, allPaths, visited, currpath)
+    
+            #Pop D from currpath
+            currpath = currpath[:-1]
+    
+    #mark cur it as unvisited
+    visited[i][j] = False
+
+def findAllPaths(arr):
+    # Write your code here
+    # Return all paths
+    n = len(arr)
+    global allPaths
+    allPaths = []
+    #keep track of visited direction
+    visited = [[False for _ in range(n)] for _ in range(n)]
+    currpath = ""
+    
+    getAllPossiblePath(arr, n, 0, 0, allPaths, visited, currpath)
+    print(allPaths)
+    #return allPaths
+    
+arr = [[1,1,1],[1,1,1],[1,1,1]]
+findAllPaths(arr)
