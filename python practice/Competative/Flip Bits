@@ -1,0 +1,55 @@
+// PROBLEM STATEMENT
+
+You are given an array of integers ARR[] of size N consisting of zeros and ones. You have to select a subset and flip bits of that subset. 
+You have to return the count of maximum one’s that you can obtain by flipping chosen sub-array at most once.
+A flip operation is one in which you turn 1 into 0 and 0 into 1.
+
+For Example:
+If you are given an array {1, 1, 0, 0, 1} then you will have to return the count of maximum one’s you can obtain by flipping anyone chosen sub-array 
+at most once, so here you will clearly choose sub-array from the index 2 to 3 and then flip it's bits. 
+So, the final array comes out to be {1, 1, 1, 1, 1} which contains five ones and so you will return 5.
+
+// APPROACH
+
+We can use Kadane's Algorithm in the way to find total number of zeros that can be converted to one and add to initial one count to find maximum 
+one after at most one flipping.
+
+The question is asked in two way to extract total ones after frame or to return sub-array to be flipped so I mixed both in a single code.
+
+// SOL URL -> https://ide.geeksforgeeks.org/2ioCMdpkPp
+
+// code
+
+def flipBits(arr, n): 
+    # Write your code here
+    max_sm = 0
+    max_zero = 0
+    tot_1cnt = arr.count(1)
+    s, start, end = 0, 0, 0
+    
+    for i in range(n):
+        if arr[i] == 0:
+            max_zero = max_zero + 1
+        else:
+            max_zero = max_zero - 1
+            
+        if max_sm < max_zero:
+            max_sm = max_zero
+            start = s
+            end = i
+            
+        if max_zero < 0:
+            max_zero = 0
+            s = i
+    
+    print("Array between {} and {} index needs to flipped".format(start, end))        
+    return tot_1cnt + max_sm
+            
+t = int(input())
+
+while t > 0:
+    n = int(input())
+    arr = list(map(int, input().split()))
+    ans = flipBits(arr, n)
+    print("total ones after flipping is:", ans)
+    t = t-1
