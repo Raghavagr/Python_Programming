@@ -1,0 +1,55 @@
+// NQUEENS Problem to return count of all possible distinct solution
+
+// sol URL -> https://ide.geeksforgeeks.org/DFoANhidwf
+
+#CODE
+
+class Solution:
+    def totalNQueens(self, n):
+        global res
+        res = []
+        
+        def isSafe(mat, row, col):
+            #if Q in present in col then return False
+            for i in range(row):
+                if mat[i][col] == 1:
+                    return False
+                
+            #If queen is present in left diagonal
+            for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+                if mat[i][j] == 1:
+                    return False
+                
+            #If Queen is present in right diagonal
+            for i, j in zip(range(row, -1, -1), range(col, n)):
+                if mat[i][j] == 1:
+                    return False
+            
+            return True
+        
+        def addSolution(chessboard):
+            currans = []
+            for i in chessboard:
+                currans.extend(i)
+            res.append(currans)
+        
+        def NQueens(mat, row):
+            if row == len(mat):
+                addSolution(mat)
+                return
+            
+            for i in range(len(mat)):
+                if isSafe(mat, row, i):
+                    mat[row][i] = 1
+                    
+                    NQueens(mat, row+1)
+                    
+                    mat[row][i] = 0
+        
+        mat = [[0 for _ in range(n)] for _ in range(n)]
+        NQueens(mat, 0)
+        return len(res)
+        
+n = int(input())
+totQueen = Solution()
+print(totQueen.totalNQueens(n))
