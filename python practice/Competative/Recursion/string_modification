@@ -1,0 +1,34 @@
+// Given a string of digits containing star in Between. Your task is to place '+' and '-' sign in case in place of "*" and find the string
+which on evaluation gives the output equal to K.
+
+Given N(length of string), K(target value), and string find the required modified string.
+
+// SOL URL -> https://ide.geeksforgeeks.org/QRtkxUUDpx
+
+#code
+def plusMinus(inp, n, k, output, res):
+    if len(output) == n or inp == "":
+        if eval(output) == k:
+            #print(output)
+            res.append(output)
+        return
+            
+    if inp[0] == "*":
+        op1 = output + "+"
+        op2 = output + "-"
+        plusMinus(inp[1:], n, k, op1, res)
+        plusMinus(inp[1:], n, k, op2, res)
+        
+    else:
+        op3 = output + inp[0]
+        plusMinus(inp[1:], n, k, op3, res)
+        
+n = int(input())
+k = int(input())
+s = input()
+global res
+res = []
+
+plusMinus(s, n, k, "", res)
+res.sort()
+print(res)
