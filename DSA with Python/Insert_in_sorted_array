@@ -1,0 +1,33 @@
+// Problem Statement
+
+You are given a sorted array 'A' of length 'N' with distinct integers and a target integer 'M'.
+You need to return the position of 'M' if it existed in the array 'A'. 
+If it already exists in 'A', return that position. (0-based indexing)
+
+// SOL URL - https://ide.geeksforgeeks.org/GfG2giFFFS
+
+## CODE
+import bisect
+def bestInsertPos(arr, n, m):
+    # Write your code here.
+    if n == 0 or len(arr) == 0:
+        return 0
+    else:
+        if m in arr:
+            return arr.index(m)
+            #Alternate Option
+            '''
+            idx = bisect.bisect_left(arr, m)
+            return idx
+            '''
+        else:
+            idx = bisect.bisect(arr, m)
+            return idx
+        
+t = int(input())
+while t > 0:
+    n, m = map(int, input().split())
+    arr = list(map(int, input().split()))
+    idx = bestInsertPos(arr, n, m)
+    print(idx)
+    t = t-1
