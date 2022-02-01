@@ -1,0 +1,39 @@
+// Reverse Stackk using Recursion
+
+// URL -> 
+
+from sys import stdin, setrecursionlimit
+setrecursionlimit(10**7)
+
+def insert(stack, temp):
+    if len(stack) == 0:
+        stack.append(temp)
+    else:    
+        val = stack.pop()
+        insert(stack, temp)
+        stack.append(val)
+
+def reverseStack(stack):
+    if len(stack) != 0:
+        temp = stack.pop()
+        reverseStack(stack)
+        insert(stack, temp)
+
+# taking input
+def takeInput() :
+	n = int(input().strip())
+	if(n == 0) :
+		 return list(), n
+
+	stack = list(map(int,stdin.readline().strip().split(" ")))
+	return stack, n
+
+
+def printStack(stack) :
+	while(len(stack) > 0) :
+		print(stack.pop(),end = " ")
+
+# main
+stack, n = takeInput()
+reverseStack(stack)
+printStack(stack)
