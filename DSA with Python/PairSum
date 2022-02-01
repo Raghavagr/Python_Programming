@@ -1,0 +1,29 @@
+Problem Statement
+You are given an integer array 'ARR' of size 'N' and an integer 'S'.
+Your task is to return the list of all pairs of elements such that each sum of elements of each pair equals 'S'.
+
+Sample Input 1:
+5 5
+1 2 3 4 5
+Sample Output 1:
+1 4
+2 3
+
+// SOL URL -> https://ide.geeksforgeeks.org/F24pdY6bQa
+
+def pairSum(arr, s):
+    # Write your code here.
+    arr.sort()
+    res = []
+    for i in range(len(arr)):
+        diff = s - arr[i]
+        print(diff)
+        if diff in arr[i+1:]:
+            cnt = arr[i+1:].count(diff)
+            while cnt != 0:
+                res.append([arr[i], diff])
+                cnt -= 1
+    return res
+    
+arr = [2,-6,2,5,2]
+print(pairSum(arr, 4))
