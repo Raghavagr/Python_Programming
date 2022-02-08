@@ -40,3 +40,9 @@ for i in res:
     fres.append(int(i, 2))
     
 print(*fres)
+
+// A Problem statement with Little bit modification in same problem.
+
+// Problem and sol Both are in below link
+
+// URL - https://ide.geeksforgeeks.org/RbTyGta1RO
