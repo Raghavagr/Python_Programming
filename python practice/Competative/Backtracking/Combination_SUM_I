@@ -3,6 +3,9 @@
 
 ## SOL URL -> https://ide.geeksforgeeks.org/lpApM7uWTq
 
+// Update Solution Link to return all combinations in Sorted Order
+## SOL URL-2 -> https://ide.geeksforgeeks.org/v2zE2ACv53
+
 #code
 def combSum(arr, idx, target, sm, res, currcomb):
     if target == sm:
@@ -30,3 +33,5 @@ target = 4
 combSum(arr, 0, target, 0, res, currcomb)
 
 #print(res)
+
+
