@@ -1,0 +1,29 @@
+Problem Statement
+You are given a string 'STR' containing lowercase English letters from a to z inclusive.
+Your task is to find all non-empty possible subsequences of 'STR'.
+
+Sample Input 1:
+1 
+abc
+
+Sample Output 1:
+a ab abc ac b bc c
+
+// SOL-URL -> https://ide.geeksforgeeks.org/ZJruDbv8cI
+
+#code
+def subSequence(inp, output):
+    if output != "":
+        res.append(output)
+    
+    if inp == "":
+        return
+        
+    for i in range(len(inp)):
+        subSequence(inp[i+1:], output+inp[i])
+        
+global res
+res = []
+s = "abc"
+subSequence(s, "")
+print(res)
