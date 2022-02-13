@@ -1,0 +1,46 @@
+Problem Statement
+Ninja has given you a list of WORDS and a PATTERN string. Your task is to find all such words in the list which match the given pattern. 
+A valid match is found if and only if every character in the pattern is uniquely mapped to a character in a word.
+
+// SOL - URL -> https://ide.geeksforgeeks.org/ixYnwjIhY8
+
+#code
+def matchSpecificPattern(words, n, pattern):
+    # Write your code here
+    # Return a list of words
+    res = []
+    patt_map_dic = {}
+    map_pattern = ""
+    cnt = 1
+    for i in pattern:
+        if i not in patt_map_dic:
+            patt_map_dic[i] = cnt
+            cnt += 1
+            
+        map_pattern = map_pattern + str(patt_map_dic[i])
+    
+    for word in words:
+        word_pattern = ""
+        cnt = 1
+        word_dic = {}
+        for i in word:
+            if i not in word_dic:
+                word_dic[i] = cnt
+                cnt += 1
+            
+            word_pattern = word_pattern + str(word_dic[i])
+        
+        if word_pattern == map_pattern:
+            res.append(word)
+            
+    return res
+    
+    
+t = int(input())
+while t > 0:
+    n = int(input())
+    words = input().split()
+    pattern = input()
+    ans = matchSpecificPattern(words, n, pattern)
+    print(ans)
+    t = t-1
