@@ -1,0 +1,52 @@
+// Find the minimum number of flips required to change A and B equal to C Such that A OR B = C (Using Or operation)
+
+Sample input 
+A = 2
+B = 6
+C = 5
+
+Sample Output
+3
+
+Explanation
+2 = 0010
+6 = 0110
+
+5 = 0101
+
+So, 1st both are having 0, 1 need to be change to ans += 1
+    At 2nd pos we want 0 but both bit are 1 so oth need to change ans += 2
+    Rest all bit are equal ans = 3
+
+// URL -> https://ide.geeksforgeeks.org/jJaknioMfy
+
+#code
+def minFlips(A, B, C):
+    res = 0
+    
+    for i in range(32):
+        x, y, z = False, False, False
+        
+        if (A & (1 << i)):
+            x = True
+            
+        if (B & (1 << i)):
+            y = True
+            
+        if (C & (1 << i)):
+            z = True
+            
+        if z == False:
+            if x == True and y == True:
+                res += 2
+                
+            elif x == True or y == True:
+                res += 1
+                
+        else:
+            if x == False and y == False:
+                res += 1
+                
+    return res
+    
+print(minFlips(2, 6, 5))
