@@ -1,0 +1,23 @@
+// given an range A, b. your task is to perform and operation between all the number from start to end range and output the decimal formation of resultant binary representation
+
+// url -> 
+
+#code
+t = int(input())
+while t > 0:
+    a, b = map(int, input().split())
+    
+    d = b - a
+    res = 0
+    f = 1
+    
+    for i in range(32):
+        if d > (f << i):
+            continue
+        
+        else:
+            if((a & (f << i)) and (b & (f << i))):
+                res += f << i
+                
+    print(res)
+    t = t-1
