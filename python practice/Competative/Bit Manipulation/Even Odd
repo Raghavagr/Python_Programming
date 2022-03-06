@@ -1,0 +1,13 @@
+// Find the number os even or odd without modulus
+
+// Sol URL -> https://ide.geeksforgeeks.org/mGtKWO3VSG
+
+#code
+def evenOdd(num):
+    if ((num & 1) == 1):
+        return "Odd"
+    else:
+        return "Even"
+        
+num = int(input())
+print(evenOdd(num))
