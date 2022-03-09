@@ -1,0 +1,21 @@
+// Generate all the subsets of array
+
+// URL -> https://ide.geeksforgeeks.org/MllIcnzM65
+
+def generateSubsets(arr):
+    n = len(arr)
+    allsubsets = []
+    
+    for i in range(2**n):
+        curr_subset = []
+        for j in range(n):
+            if(i & (1 << j)):
+                curr_subset.append(arr[j])
+                
+        allsubsets.append(curr_subset)
+        
+    return allsubsets
+    
+arr = [1,2,3]
+ans = generateSubsets(arr)
+print(ans)
