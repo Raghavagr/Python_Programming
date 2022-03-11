@@ -1,0 +1,27 @@
+// Given a number in 32-bit update form. You have to reset all the bits after the MSB(most significant bit)
+
+In simple words you have to find most significant bit and after it rest all the bits to 0 means you have to find a small number than a given number
+that is power of 2
+
+Eg -> N = 9 (1001)
+
+At third pos there is significant bit and after resetting the number become 8 (1000) so output 8
+
+// SOL URL -> https://ide.geeksforgeeks.org/lWWCHDTKdY
+
+def resetAllExceptMSB(n):
+    # Write you code here.
+	#it basically ask to make all the bits after MSB is 0
+    #que is equal ti find a number that is small then N
+    # and is power of 2
+    if n == 0:
+        return 0
+    
+    msb = 0
+    n = int(n/2)
+    
+    while n > 0:
+        n = n//2
+        msb += 1
+        
+    return (1 << msb)
