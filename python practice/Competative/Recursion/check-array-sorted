@@ -1,0 +1,17 @@
+// check whether array is sorted or not using recursion
+
+// URL -> https://ide.geeksforgeeks.org/hyyfIKKIVH
+
+#code
+def checkArraySorted(arr, idx):
+    if idx == len(arr)-1:
+        return True
+        
+    result = checkArraySorted(arr, idx+1)
+    #print(result)
+    ans = result & (arr[idx] <= arr[idx+1])
+    
+    return ans
+    
+arr = [2,4,3,8,10]
+print(checkArraySorted(arr, 0))
