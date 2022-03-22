@@ -1,0 +1,41 @@
+// Quick Sort Algorithm
+
+// SOL URL -> https://ide.geeksforgeeks.org/i6PNo74ICs
+
+#code
+
+def Partition(arr, beg, end):
+    pivot = arr[beg]
+    i = beg + 1
+    j = end
+    
+    while i < j:
+        #find greater then pivot from left
+        while i < len(arr) and arr[i] <= pivot:
+            i += 1
+            
+        #fig lesser element then pivot from right
+        while j >= 0 and arr[j] > pivot:
+            j -= 1
+            
+        #if we get successfullt i and j bot then swap
+        if i < j:
+            arr[i], arr[j] = arr[j], arr[i]
+            
+    #we got new pivot (swap low and j) when j <= i
+    arr[beg], arr[j] = arr[j], arr[beg]
+    
+    #j is new partition idx
+    return j
+
+def quickSort(arr, beg, end):
+    if beg < end:
+        partition_idx = Partition(arr, beg, end)
+        quickSort(arr, beg, partition_idx-1)
+        quickSort(arr, partition_idx+1, end)
+        
+arr = [9,4,4,8,5,7,6]
+n = len(arr)
+quickSort(arr, 0, n-1)
+print(arr)
+
