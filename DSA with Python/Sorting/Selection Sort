@@ -1,0 +1,23 @@
+// Selection sort algorithm using Python
+
+- iT IS NOT Adaptable nither Stable algorithm
+
+- In this we iterate n-1 times and select minimum element in array and swap with 0th pos
+- Again second time iterate and select 2nd min ele and swap with 2nd pos
+- Continue loop till n-1 time and finally array witll be sorted
+
+// CODE URL -> https://ide.geeksforgeeks.org/aIAcsVvLZf
+
+def bubbleSort(arr, n):
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[min_idx] > arr[j]:
+                min_idx = j
+                
+        #swap minimum element with arr starting positions
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+arr = [6,5,2,4,8]
+bubbleSort(arr, len(arr))
+print(arr)
