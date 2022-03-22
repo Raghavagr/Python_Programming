@@ -1,0 +1,26 @@
+// Created the bubble sort algorithm
+
+In bubble sort we compare the adjacent element and swap them if next is greater then previous.
+ -> Means in N-1 passes every adjacent element from start is compared which means after each pass the the greater element will reach at last.
+ -> so we require one less pass because after n-1 passes first element will automatic come at its position.
+ 
+- Bubble sort is Stable algorithm
+- Bubble sort is not a Adaptable algorithm but we can make it adaptive and code is shown below with adaptivity
+
+// CODE URL -> https://ide.geeksforgeeks.org/tbaLRP5OMu
+
+def bubbleSort(arr, n):
+    for round in range(1, n):
+        print(f'Round No: {round}')
+        isSorted = 1
+        for i in range((n-1-round)+1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                isSorted = 0
+                
+        if isSorted:
+            break
+
+arr = [6,5,2,4,8]
+bubbleSort(arr, len(arr))
+print(arr)
