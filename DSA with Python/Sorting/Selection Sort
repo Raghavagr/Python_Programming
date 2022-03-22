@@ -8,7 +8,7 @@
 
 // CODE URL -> https://ide.geeksforgeeks.org/aIAcsVvLZf
 
-def bubbleSort(arr, n):
+def selectionSort(arr, n):
     for i in range(n):
         min_idx = i
         for j in range(i+1, n):
@@ -19,5 +19,5 @@ def bubbleSort(arr, n):
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
 arr = [6,5,2,4,8]
-bubbleSort(arr, len(arr))
+selectionSort(arr, len(arr))
 print(arr)
