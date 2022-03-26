@@ -1,0 +1,28 @@
+// Given an array of N elements and a product P. Your task is to find the minimum length of subarray whose elements product is atleast equal to P.
+
+// CODE URL -> https://ide.geeksforgeeks.org/V3FqQtcN8A
+
+def MinProductSubarray(arr, prod):
+    n = len(arr)
+    
+    i, j = 0, 0
+    ans = (10**9)+7
+    curr_prod = 1
+    
+    while i < n:
+        #print(j)
+        # while we do not reach max prod keep expanding window
+        while(j < n and curr_prod < prod):
+            curr_prod = curr_prod * arr[j]
+            j += 1
+            
+        if(curr_prod >= prod):
+            ans = min(ans, (j- (i+1)))
+            curr_prod = curr_prod // arr[i]
+            
+        i += 1
+        
+    print(ans-1)
+    
+arr = [1,2,3,4,5,6]
+MinProductSubarray(arr, 20)
