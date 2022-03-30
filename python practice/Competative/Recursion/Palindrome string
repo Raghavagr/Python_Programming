@@ -1,0 +1,12 @@
+// Check string is palindrome or not using recursion
+
+## CODE
+def isPalindrome(strng):
+    if len(strng) == 1:
+        return True
+    else:
+        if strng[0] == strng[-1]:
+            return isPalindrome(strng[1:-1])
+            
+        else:
+            return False
