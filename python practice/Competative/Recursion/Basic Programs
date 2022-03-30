@@ -1,0 +1,47 @@
+// Sum of digits using Recursion
+
+#code
+def sumOfDigits(num):
+    if num == 0:
+        return num
+        
+    return num%10 + sumOfDigits(num//10)
+    
+print(sumOfDigits(112))
+
+// Find the power of number to given exponential
+
+#code
+#code
+def FindExp(num, power):
+    assert power >=0 and int(power) == power, "negative power and non-integer power not accepted" 
+    if power == 0:
+        return 1
+        
+    if power == 1:
+        return num
+        
+    return num * FindExp(num, power-1)
+    
+print(FindExp(2, 4))
+
+// Find Greatest Common Divisor
+
+#code
+def gcd(a, b):
+    assert a == int(a) and b==int(b), "Fractions not allowed"
+    
+    if a == b:
+        return a
+        
+    elif a == 0 or b == 0:
+        return max(a, b)
+        
+    elif a>b:
+        return gcd(a-b, b)
+        
+    else:
+        return gcd(a, b-a)
+    
+print(gcd(18, 24))
+
