@@ -1,0 +1,20 @@
+// Given a decimal number, convert to binary using recursion
+
+### STEPS TO CONVERT DECIMAL TO BINARY
+
+1. Divide the number by 2
+2. Get integer quotient for next iteration
+3. Get remainder for binary digit
+4. Repeat the steps till quotient becomes 0.
+
+## CODE
+
+def DecimalToBinary(num):
+    assert num >= 0 and int(num) == num, "negative and fraction not allowed"
+    if num == 0:
+        return 0
+        
+    else:
+        return (num % 2) + 10 * DecimalToBinary(num//2)
+        
+print(DecimalToBinary(4))
