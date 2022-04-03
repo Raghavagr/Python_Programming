@@ -1,0 +1,29 @@
+// Find the subarray of size K that has maximum sum
+
+// SOL URL -> https://ide.geeksforgeeks.org/YIHtFnywbu
+
+#code
+def maxSubarraySum(arr, n, k):
+    max_sum = 0
+    
+    #first we can compute the sum of first window
+    for i in range(k):
+        max_sum = max_sum + arr[i]
+        
+    #Now increase one element from end and subtract start element
+    curr_sum = max_sum
+    for i in range(k, n):
+        curr_sum = ((curr_sum + arr[i]) - arr[i-k])
+        max_sum = max(max_sum, curr_sum)
+        
+    return max_sum
+    
+arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]
+k = 4
+n = len(arr)
+print(maxSubarraySum(arr, n, k))
+    
+    
+// MODIFIED APPROACH USING REAL SLIDING WINDOW
+
+// URL -> https://ide.geeksforgeeks.org/BJC9UTORBB
