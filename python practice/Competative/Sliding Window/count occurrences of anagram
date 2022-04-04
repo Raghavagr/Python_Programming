@@ -1,0 +1,30 @@
+// QUE
+-> Given a word and a text, return the count of the occurrences of anagrams of the word in the text(For eg: anagrams of word for are for, ofr, rof etc.))
+
+// SOL URL -> https://ide.geeksforgeeks.org/9RO1pN90O5
+
+#code
+def CountAnagram(strng, pattern, n):
+    k = len(pattern) #window size
+    start = 0
+    end = 0
+    ans = 0
+    
+    while end < n:
+        if((end - start + 1) < k):
+            end += 1
+            
+        elif ((end-start + 1) == k):
+            curr_anagram = strng[start:end+1]
+            if(sorted(curr_anagram) == sorted(pattern)):
+                ans += 1
+                
+            start += 1
+            end += 1
+            
+    return ans
+    
+s = "forxxorfxdofr" #  "aabaabaa"
+pattern = "for" # "aaba"
+n = len(s)
+print(CountAnagram(s, pattern, n))
