@@ -1,0 +1,68 @@
+// Largest Subarray of sum K |
+
+/ URL -> https://ide.geeksforgeeks.org/lw1QAFUvvt
+
+## Variable size sliding window
+
+### Longest subarray of sum k
+
+'''
+Given an array, you have to find all subarray that sum to K and return the size of 
+maximum length subarray that sum equal to k
+
+'''
+
+## Diff between fixed size and variable size window
+'''
+1) window size we not and here no window size
+2) there we know sum, here we know sum and increase the sliding window (maximize
+the condition)
+- 
+3) fixed size is little easy(moving window size is easy)
+but in variable size is little difficult
+
+'''
+
+#here we wil initially start with both from 0, and move til we does not hit sum
+#when we hit sum k then first sum we got.
+
+'''
+Identification for problem is same as fixed sixe only we will have a condition but not the size
+and we need to maximize and minimize the size
+'''
+
+'''
+EXAMPLE
+
+arr = [4,1,1,1,2,3,5] K = 5
+
+OUTPUT -> 4 [1,1,1,2] is subarray of sum 5 and length maximum
+'''
+
+def MaximumSizeSubarrayOfSumK(arr, n, k):
+    start = 0
+    end = 0
+    max_len = 0
+    curr_sum = 0
+    while end < n:
+        curr_sum = curr_sum + arr[end]
+        
+        if curr_sum < k:
+            end += 1
+        
+        elif curr_sum == k:
+            max_len = max(max_len, (end - start + 1))
+            
+            end += 1
+            
+        elif curr_sum > k:
+            curr_sum = curr_sum - arr[start]
+            start += 1
+            end += 1
+            
+    return max_len
+    
+arr = [4,1,1,1,2,3,5]
+n = len(arr)
+k = 5
+print(MaximumSizeSubarrayOfSumK(arr, n, k))
