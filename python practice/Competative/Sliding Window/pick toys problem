@@ -1,0 +1,43 @@
+// Given a string of characters, your task is to find a longest substring with unique two characters
+
+// JOHN PICK TOYS PROBLEM STATEMENT
+
+// SOL URL -> https://ide.geeksforgeeks.org/i50i626pmU
+
+def pickToys(strng, n):
+    start = 0
+    end = 0
+    hashmap = dict()
+    max_toys = 0
+    k = 2 # unique type of toys
+    
+    while end < n:
+        curr_ch = strng[end]
+        if curr_ch in hashmap:
+            hashmap[curr_ch] += 1
+            
+        else:
+            hashmap[curr_ch] = 1
+            
+        if len(hashmap) <= k:
+            max_toys = max(max_toys, (end - start + 1))
+            
+        if len(hashmap) > k:
+            while len(hashmap) > k:
+                ch_front = strng[start]
+                hashmap[ch_front] -= 1
+                
+                if hashmap[ch_front] == 0:
+                    del hashmap[ch_front]
+                    
+                start += 1
+                
+        #update end pointer
+        end += 1
+                
+    return max_toys 
+    
+
+s = "abaccab"  #O/P -> acca
+n = len(s)
+print(pickToys(s, n))
