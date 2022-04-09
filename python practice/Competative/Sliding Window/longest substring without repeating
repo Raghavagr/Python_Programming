@@ -1,0 +1,47 @@
+// Length of the longest substring without repeating characters
+
+// It basically means that you have to find a substring where all characters are unique (Occur only 1 time)
+// This simply means that hashmap length should be equal to window size
+
+// SOL URL -> https://ide.geeksforgeeks.org/TUOQr8K6JD
+
+def longestSubstrWithoutRepeating(strng, n):
+    start = 0
+    end = 0
+    hashmap = dict()
+    max_substr_len = 0
+    
+    while end < n:
+        curr_ch = strng[end]
+        if curr_ch in hashmap:
+            hashmap[curr_ch] += 1
+            
+        else:
+            hashmap[curr_ch] = 1
+            
+        #Now check that window size equal to all unique chrs
+        #It means all the char in window has cnt 1
+        if (len(hashmap) == (end - start + 1)):
+            max_substr_len = max(max_substr_len, (end - start + 1))
+        
+        #If len of hashmap is less then window size 
+        #It means we capture repeatative chrs so we need to remove them
+        if len(hashmap) < (end - start + 1):
+            while len(hashmap) < (end - start + 1):
+                ch_front = strng[start]
+                hashmap[ch_front] -= 1
+                
+                if hashmap[ch_front] == 0:
+                    del hashmap[ch_front]
+                    
+                start += 1
+                
+        #update the end pointer
+        end += 1
+        
+    return max_substr_len
+    
+#s = "pwwbe"
+s = "GEEKSFORGEEKS"
+n = len(s)
+print(longestSubstrWithoutRepeating(s, n))
