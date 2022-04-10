@@ -1,0 +1,57 @@
+# Minimum Window substring
+
+'''
+given two string S and T. You have to find minimum substring of minimum window 
+in which all the character of T occur in atleast same quantity 
+(char can be more but not less then T).
+'''
+
+// SOL URL -> https://ide.geeksforgeeks.org/ocMTXKE1VB
+
+def minimumSubstringWindow(strng, t):
+    count_map = dict()
+    n = len(strng)
+    
+    for ch in t:
+        if ch in count_map:
+            count_map[ch] += 1
+            
+        else:
+            count_map[ch] = 1
+            
+    
+    start = 0
+    end = 0
+    map_size = len(count_map)
+    min_window_len = 1000000007
+    maxStart = 0
+    maxend = 0
+    
+    while end < n:
+        if strng[end] in count_map:
+            count_map[strng[end]] -= 1
+            
+            if count_map[strng[end]] == 0:
+                map_size -= 1
+                
+        while map_size == 0:
+            min_window_len = min(min_window_len, (end - start + 1))
+            maxStart = start #substring start index
+            maxend = end+1  #substring end index
+            
+            ch_start = strng[start]
+            if ch_start in count_map:
+                count_map[ch_start] += 1
+                if count_map[ch_start] > 0:
+                    map_size += 1
+                    
+            start += 1
+            
+        end += 1
+        
+    print("substring start index {} and end index {}".format(maxStart, maxend))
+    return min_window_len
+    
+s = "TOTMTAPTAT"
+t = "TTA"
+print("Min window len: ", minimumSubstringWindow(s, t))
