@@ -14,7 +14,7 @@ maximum length subarray that sum equal to k
 
 ## Diff between fixed size and variable size window
 '''
-1) window size we not and here no window size
+1) window size is given in fixed size while in variable size window size is not given to us
 2) there we know sum, here we know sum and increase the sliding window (maximize
 the condition)
 - 
