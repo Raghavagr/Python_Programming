@@ -1,0 +1,52 @@
+// You have been given a string 'S' which only consists of lowercase English-Alphabet letters.
+Your task is to find the shortest (minimum length) substring from 'S' which contains all the characters of 'S' at least once.
+
+// SOL URL -> https://ide.geeksforgeeks.org/8zYME0yGii
+
+def shortestSubstring(s):
+    n = len(s)
+    k = len(set(s))
+    start = 0
+    end = 0
+    count = 0
+    hashmap = dict()
+    ans_str = ""
+    min_len = 10**9 + 7
+    
+    while end < n:
+        curr_ch = s[end]
+        if curr_ch in hashmap:
+            hashmap[curr_ch] += 1
+            
+        else:
+            hashmap[curr_ch] = 1
+            count += 1
+        
+        if count == k:
+            if min_len > (end - start + 1):
+                min_len = end - start + 1
+                ans_str = s[start: end+1]
+                
+        while count == k:
+            if min_len > (end - start + 1):
+                min_len = (end - start + 1)
+                ans_str = s[start: end+1]
+                
+            hashmap[s[start]] -= 1
+            
+            if hashmap[s[start]] == 0:
+                count -= 1
+                del hashmap[s[start]]
+                
+            start += 1
+                
+        end += 1
+        
+    #print(min_len)
+    return ans_str
+
+t = int(input())
+while t > 0:
+    s = input()
+    print(shortestSubstring(s))
+    t = t-1
