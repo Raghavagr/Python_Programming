@@ -1,0 +1,46 @@
+// WAP to multiply 2 Matrix
+
+// URL -> https://ide.geeksforgeeks.org/266904e4-17b4-41b6-bccd-2225fd15f899
+
+#CODE
+def matrixMultiplication(arr, brr):
+    n1 = len(arr)
+    n2 = len(brr)
+    
+    #cols
+    m1 = len(arr[0])
+    m2 = len(brr[0])
+    
+    if n1 == m2:
+        ans = []
+        for i in range(n1):
+            temp = []
+            for j in range(m1):
+                sm = 0
+                for k in range(m2):
+                    sm = sm + (arr[i][k] * arr[k][j])
+                    
+                temp.append(sm)
+                
+            ans.append(temp)
+            
+        return ans
+        
+    else:
+        print("Matrix multiplication not possible")
+        
+matrix1 = [
+            [1,2,3],
+            [1,2,3],
+            [1,2,3]
+        ]
+        
+matrix2 = [
+            [1,2,3],
+            [1,2,3],
+            [1,2,3]
+        ]
+        
+ans = matrixMultiplication(matrix1, matrix2)
+for row in ans:
+    print(*row)
