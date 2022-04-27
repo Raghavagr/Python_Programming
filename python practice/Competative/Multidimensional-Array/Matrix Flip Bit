@@ -1,0 +1,48 @@
+// PROBLEM
+
+ou have been given a binary matrix ‘MAT’ of size ‘N’ * ’N’. Let ‘i’, ’j’ denote the row and column of the matrix, respectively. 
+If ‘MAT’[i][j] is equal to 0, flip every 1 in the ‘i’th row and ‘j’th column i.e., in the same row and the column as 0.
+
+// SOL URL -> https://ide.geeksforgeeks.org/3ca6dedb-c225-4897-9775-457da165047c
+
+#code
+def countFlip(mat):
+    n = len(mat)
+    arr_row = [False] * n
+    arr_col = [False] * n
+    temp = mat.copy()
+    
+    for i in range(n):
+        for j in range(n):
+            if mat[i][j] == 0:
+                arr_row[i] = True
+                arr_col[j] = True
+                
+    #print(arr_row)
+    #print(arr_col)
+    ans = 0
+    for i in range(n):
+        if arr_row[i]:
+            for j in range(n):
+                if temp[i][j] == 1:
+                    temp[i][j] = 0
+                    ans += 1
+                    
+    for i in range(n):
+        if arr_col[i]:
+            for j in range(n):
+                if temp[j][i] == 1:
+                    temp[j][i] = 0
+                    ans += 1
+                    
+    return ans
+    
+    
+matrix = [
+            [1,0,1,1],
+            [1,1,0,1],
+            [1,1,1,1],
+            [1,1,0,1]
+        ]
+        
+print(countFlip(matrix))
