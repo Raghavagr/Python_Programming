@@ -1,0 +1,21 @@
+// Count sort algorithm
+
+def CountSort(arr, n):
+    aux_size = max(arr)
+    aux = [0] * (aux_size+1)
+    output = [0] * n
+    
+    #store freq of ele of arr[i] to aux array
+    for i in range(n):
+        aux[arr[i]] = aux[arr[i]] + 1
+        
+    #cumulative (prefix) sum on aux array
+    for idx in range(1, aux_size+1):
+        aux[idx] = aux[idx] + aux[idx-1]
+        
+    #building an output arr
+    for i in range(n):
+        output[aux[arr[i]] - 1] = arr[i]
+        aux[arr[i]] = aux[arr[i]] - 1
+        
+    return output
