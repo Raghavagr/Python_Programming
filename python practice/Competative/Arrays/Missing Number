@@ -1,0 +1,13 @@
+// Find missing number in an array where the elements in array will start from 1 to 10 and 1 number is missing that you have to find in O(1) time complexity
+
+// SOL URL -> https://ide.geeksforgeeks.org/da0c17c9-1fe1-492d-9286-ceb6166356a6
+
+def MissingNumber(arr):
+    n = len(arr)+1
+    
+    sm1 = (n * (n+1)) // 2
+    sm2 = sum(arr)
+    return sm1-sm2
+    
+arr = [1, 2, 3, 4, 5, 7, 8, 9, 10]
+print(MissingNumber(arr))
