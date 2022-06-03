@@ -1,0 +1,47 @@
+// Find the maximum subarray sum rectangle in matrix
+
+// SOL - URL -> https://ide.geeksforgeeks.org/6456297a-b26b-41d5-872c-d11406fa74fb
+
+def MaximumSubarraySum(arr, n):
+    max_sum = 0
+    curr_sum = 0
+    
+    for i in range(n):
+        curr_sum = curr_sum + arr[i]
+        
+        max_sum = max(max_sum, curr_sum)
+        
+        if curr_sum < 0:
+            curr_sum = 0
+            
+    return max_sum
+    
+def maxSumRectangle(arr, n, m):
+    temp = [0] * n
+    ans = -1
+    
+    for left in range(m):
+        for i in range(n):
+            temp[i] = 0
+            
+        for right in range(left, m):
+            for i in range(n):
+                temp[i] += arr[i][right]
+                
+            sm = MaximumSubarraySum(temp, n)
+            
+            if sm > ans:
+                ans = sm
+                
+    return ans
+    
+t = int(input())
+while t > 0:
+    n, m = map(int, input().split())
+    arr = []
+    for i in range(n):
+        lst = list(map(int, input().split()))
+        arr.append(lst)
+        
+    print(maxSumRectangle(arr, n, m))
+    t = t-1
