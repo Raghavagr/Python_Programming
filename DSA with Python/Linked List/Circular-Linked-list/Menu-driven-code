@@ -1,0 +1,115 @@
+// Implement all functions of circular linked list
+
+// URL -> https://ide.geeksforgeeks.org/53ff70be-98de-4a47-bd98-fe4c75e45e65
+
+#circular linked List
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+    
+class CircularLinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def TraverseCSLL(self):
+        if self.head is None:
+            print("List empty")
+            
+        else:
+            tempnode = self.head.next
+            while tempnode:
+                print(tempnode.data, end=" ")
+                tempnode = tempnode.next
+                if tempnode == self.head.next:
+                    break
+                
+    def InsertAtBegin(self, val):
+        newNode = Node(val)
+        if self.head is None:
+            self.head = newNode
+            self.head.next = self.head
+            
+        else:
+            #the last node will also point the first node
+            newNode.next = self.head.next
+            self.head.next = newNode
+            
+    def InsertAtLast(self, val):
+        newNode = Node(val)
+        if self.head is None:
+            self.head = newNode
+            self.head.next = self.head
+            
+        else:
+            #traverse till current last node and add new node
+            newNode.next = self.head.next
+            self.head.next = newNode
+            self.head = newNode
+            
+    def InsertAfterNode(self, val, X):
+        if self.head is None:
+            print("List is empty so cannot insert after any node")
+            
+        else:
+            temp = self.head.next
+            while temp:
+                if temp.data == X:
+                    newNode = Node(val)
+                    newNode.next = temp.next
+                    temp.next = newNode
+                    break
+                    
+                    if temp == self.head:
+                        self.head = newNode
+                        break
+                    
+                temp = temp.next    
+                if temp == self.head.next:
+                    print("Node not present after which you want to insert")
+                    break
+                
+    def DeleteAtBegin(self):
+        if self.head is None:
+            print("List is empty")
+            
+        elif self.head.next is self.head:
+            self.head = None
+            return
+        
+        else:
+            temp = self.head.next
+            while temp:
+                temp = temp.next
+                
+            #point the last node to node afer first node
+            temp.next = self.head.next
+            self.head = self.head.next
+            
+    def DeleteAtLast(self):
+        if self.head is None:
+            print("List is empty")
+            
+        elif self.head.next is self.head:
+            self.head = None
+            return
+        
+        else:
+            temp = self.head
+            #traverse till we got second last node
+            while temp.next.next is not self.head:
+                temp = temp.next
+                
+            temp.next = self.head
+            
+                        
+
+circularSLL = CircularLinkedList()
+circularSLL.InsertAtBegin(3)
+circularSLL.InsertAtLast(7)
+circularSLL.InsertAfterNode(5, 3)
+circularSLL.InsertAtLast(9)
+#circularSLL.DeleteAtBegin()
+#circularSLL.DeleteAtLast()
+circularSLL.TraverseCSLL()
