@@ -6,6 +6,8 @@
 
 ## CODE URL -> https://ide.geeksforgeeks.org/BBloGrdanw
 
+CODE URL - 2 -> https://ide.geeksforgeeks.org/82f9b7fc-54f8-439e-b0e5-e4dc68689830
+
 #code
 class Node:
     def __init__(self, data):
