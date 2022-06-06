@@ -1,0 +1,118 @@
+// Implement following functions in linked list
+
+from random import randint
+
+class Node:
+    def __init__(self, data):
+        self.value = data
+        self.next = None
+        self.prev = None
+        
+    def __str__(self):
+        return str(self.data)
+
+class LinkedList:
+    def __init__(self, value = None):
+        self.head = None
+        self.tail = None
+        
+    def __iter__(self):
+        currNode = self.head
+        while currNode:
+            yield currNode
+            currNode = currNode.next
+            
+    def __str__(self):
+        values = [str(x.value) for x in self]
+        return '->'.join(values)
+        
+    def __len__(self):
+        currNode = self.head
+        res = 0
+        while currNode:
+            res += 1
+            currNode = currNode.next
+        return res
+        
+    def add(self, val):
+        newNode = Node(val)
+        if self.head is None:
+            self.head = newNode
+            self.tail = newNode
+            
+        else:
+            self.tail.next = newNode
+            self.tail = self.tail.next
+            
+        return self.tail
+        
+    def generate(self, n, min_val, max_val):
+        self.head = None
+        self.tail = None
+        for i in range(n):
+            self.add(randint(min_val, max_val))
+        return self
+        
+    def RemoveDuplicate(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        
+        currNode = self.head
+        tempset = set([currNode.value])
+        while currNode.next:
+            if currNode.next.value in tempset:
+                #delete the next node because it is duplicate
+                currNode.next = currNode.next.next
+            else:
+                tempset.add(currNode.next.value)
+            currNode = currNode.next
+        return tempset
+        
+    #Remove duplicates without using temp set
+    def DeleteDuplicates(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        
+        currNode = self.head
+        while currNode:
+            runner = currNode
+            while runner.next:
+                if runner.next.value == currNode.value:
+                    runner.next = runner.next.next
+                    
+                else:
+                    runner = runner.next
+                    
+            currNode = currNode.next
+            
+        return self.head
+    
+    #WAF to return the nth last node from List    
+    def nthtoLast(self, n):
+        pointer1 = self.head
+        pointer2 = self.head
+        
+        for i in range(n):
+            if pointer2 is None:
+                return None
+                
+            pointer2 = pointer2.next
+            
+        #now move pointer2 till end and move pointer 1 and we get the Nth last node
+        while pointer2:
+            pointer2 = pointer2.next
+            pointer1 = pointer1.next
+            
+        return pointer1.value
+        
+        
+customLL = LinkedList()
+customLL.generate(10, 0, 90)
+#customLL.add(10)
+#customLL.add(17)
+print(customLL)
+#print(customLL.RemoveDuplicate())
+print(customLL.nthtoLast(3))
+#print(customLL)
