@@ -1,0 +1,103 @@
+// URL -> https://ide.geeksforgeeks.org/0bb24628-f255-49eb-8d59-de921c4e6e2c
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = self
+
+class CLL:
+    def __init__(self):
+        self.head = None
+        self.count = 0
+     
+    def __repr__(self):
+        string = ""
+          
+        if(self.head == None):
+            string += "Circular Linked List Empty"
+            return string
+          
+        string += f"Circular Linked List:\n{self.head.data}"      
+        temp = self.head.next
+        while(temp != self.head):
+            string += f" -> {temp.data}"
+            temp = temp.next
+        return string
+     
+    def append(self, data):
+        self.insert(data, self.count)
+        return
+     
+    def insert(self, data, index):
+        if (index > self.count) | (index < 0):
+            raise ValueError(f"Index out of range: {index}, size: {self.count}")
+             
+        if self.head == None:
+            self.head = Node(data)
+            self.count += 1
+            return
+         
+        temp = self.head
+        for _ in range(self.count - 1 if index - 1 == -1 else index - 1):
+            temp = temp.next
+             
+        aftertemp = temp.next #New node goes between temp and aftertemp
+        temp.next = Node(data)
+        temp.next.next = aftertemp
+        if(index == 0):
+            self.head = temp.next
+        self.count += 1
+        return
+     
+    def remove(self, index):
+        if (index >= self.count) | (index < 0):
+            raise ValueError(f"Index out of range: {index}, size: {self.count}")
+         
+        if self.count == 1:
+            self.head = None
+            self.count = 0
+            return
+         
+        before = self.head
+        for _ in range(self.count - 1 if index - 1 == -1 else index - 1):
+            before = before.next
+        after = before.next.next
+         
+        before.next = after
+        if(index == 0):
+            self.head = after
+        self.count -= 1
+        return
+     
+    def index(self, data):
+        temp = self.head
+        for i in range(self.count):
+            if(temp.data == data):
+                return i
+            temp = temp.next
+        return None
+     
+    def size(self):
+        return self.count
+     
+    def display(self):
+        print(self)
+    
+    
+    def Traverse(self):
+        temp = self.head
+        print(temp.data, end=" ")
+        temp = temp.next
+        while temp != self.head:
+            print(temp.data, end=" ")
+            temp = temp.next
+            
+    
+    
+Circularll = CLL()
+Circularll.append(3)
+Circularll.append(5)
+Circularll.insert(4, 1)
+Circularll.append(7)
+Circularll.remove(1)
+Circularll.Traverse()
