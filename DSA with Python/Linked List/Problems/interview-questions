@@ -1,5 +1,7 @@
 // Implement following functions in linked list
 
+// URL -> https://ide.geeksforgeeks.org/ee6aa1e0-39c1-4cee-809d-949f4425bb9a
+
 from random import randint
 
 class Node:
@@ -9,7 +11,7 @@ class Node:
         self.prev = None
         
     def __str__(self):
-        return str(self.data)
+        return str(self.value)
 
 class LinkedList:
     def __init__(self, value = None):
@@ -107,12 +109,125 @@ class LinkedList:
             
         return pointer1.value
         
+    #partition the list such that all node less then given val is on left side and
+    # all the node with larget val are on right side
+    def Partition(self, X):
+        currNode = self.head
+        self.tail = self.head
+        
+        while currNode:
+            nextNode = currNode.next
+            currNode.next = None
+            
+            if currNode.value < X:
+                currNode.next = self.head
+                self.head = currNode
+                
+            else:
+                self.tail.next = currNode
+                self.tail = currNode
+                
+            currNode = nextNode
+            
+        if self.tail.next is not None:
+            self.tail.next = None
+            
+    
+    
+            
+def sumList(lla, llb):
+    n1 = lla.head
+    n2 = llb.head
+    carry = 0
+    l1 = LinkedList()
+    
+    while n1 or n2:
+        result = carry
+        if n1:
+            result += n1.value
+            n1 = n1.next
+        if n2:
+            result += n2.value
+            n2 = n2.next
+            
+        l1.add(int(result) % 10)
+        carry = result / 10
+    return l1
+    
+#find the common point of intersection of two linked List
+def Intersection(lla, llb):
+    if lla.tail is not llb.tail:
+        return False
+        
+    lna = len(lla)
+    lnb = len(llb)
+    
+    #shorter and longer linked List
+    shorter = lla if lna < lnb else llb
+    longer = lla if lna > lnb else llb
+    longerNode = longer.head
+    shorterNode = shorter.head
+    
+    diff = len(longer) - len(shorter)
+    
+    for i in range(diff):
+        longerNode = longerNode.next
+        
+    while shorterNode is not longerNode:
+        shorterNode = shorterNode.next
+        longerNode = longerNode.next
+        
+    return longerNode
+    
+#helper function to add a common node in two list
+def addSameNode(lla, llb, value):
+    tempNode = Node(value)
+    lla.tail.next = tempNode
+    lla.tail = tempNode
+    llb.tail.next = tempNode
+    llb.tail = tempNode
+        
         
 customLL = LinkedList()
 customLL.generate(10, 0, 90)
 #customLL.add(10)
 #customLL.add(17)
-print(customLL)
+#print(customLL)
+
 #print(customLL.RemoveDuplicate())
-print(customLL.nthtoLast(3))
+#print(customLL.nthtoLast(3))
+
+#customLL.Partition(40) #less then 40 on one side and greater one side
+
+#add two linked list
+'''
+lla = LinkedList()
+lla.add(7)
+lla.add(1)
+lla.add(3)
+
+llb = LinkedList()
+llb.add(2)
+llb.add(3)
+llb.add(1)
+
+print(sumList(lla, llb))
+'''
+
+#check for Intersection
+lla = LinkedList()
+lla.generate(3, 0, 10)
+
+llb = LinkedList()
+llb.generate(4, 0, 10)
+
+
+addSameNode(lla, llb, 11)
+addSameNode(lla, llb, 14)
+
+print(lla)
+print(llb)
+
+print(Intersection(lla, llb))
+
 #print(customLL)
