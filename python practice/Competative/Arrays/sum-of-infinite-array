@@ -1,0 +1,56 @@
+Given an array “A” of N integers and you have also defined the new array “B” as a concatenation of array “A” for an infinite number of times.
+For example, if the given array “A” is [1,2,3] then, infinite array “B” is [1,2,3,1,2,3,1,2,3,.......].
+
+Now you are given Q queries, each query consists of two integers “L“ and “R”(1-based indexing). 
+Your task is to find the sum of the subarray from index “L” to “R” (both inclusive) in the infinite array “B” for each query.
+
+// SOL URL -> https://ide.geeksforgeeks.org/38bc63f6-af05-4359-88aa-bfd029f48aba
+
+def findArraySum(sumArray, x, n):
+    mod = 10**9 + 7
+    
+    count = x // n
+    
+    res = (count * sumArray[n]) % mod
+    
+    remain_idx = (x % n)
+    
+    res = (res + sumArray[remain_idx]) % mod
+    #print(res)
+    return res
+    
+
+def sumInRanges(arr, n, queries, q):
+    mod = 10 ** 9 + 7
+    ans = []
+    
+    prefix = [0] * (n+1)
+    for i in range(1, n+1):
+        prefix[i] = (prefix[i-1] + arr[i-1]) % mod
+        
+    
+    for query in queries:
+        l = query[0]
+        r = query[1]
+        
+        rsum = findArraySum(prefix, r, n)
+        
+        lsum = findArraySum(prefix, l-1, n)
+        
+        ans.append((rsum - lsum + mod) % mod)
+        
+    return ans
+    
+    
+t = int(input())
+while t > 0:
+    n = int(input())
+    arr = list(map(int, input().split()))
+    q = int(input())
+    queries = []
+    for _ in range(q):
+        query = list(map(int, input().split()))
+        queries.append(query)
+    ans = sumInRanges(arr, n, queries, q)
+    print(ans)
+    t = t-1
