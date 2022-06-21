@@ -40,3 +40,8 @@ push(stack, n)
 push(stack, n)
 print("top pos element: ", peek(stack))
 display(stack)
+
+
+// Stack Operations using class and maxsize of stack
+
+// URL -> https://ide.geeksforgeeks.org/11963182-0a77-4136-bd0b-e172286f980f
