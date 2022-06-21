@@ -1,0 +1,68 @@
+// Implement the stack with the help of Linked List
+
+// URL - https://ide.geeksforgeeks.org/b2052019-17fa-4d3a-9e86-11e28479cf2a
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def __iter__(self):
+        currNode = self.head
+        while currNode:
+            yield currNode
+            currNode = currNode.next
+        
+class Stack:
+    def __init__(self):
+        self.linkedList = LinkedList()
+        
+    def __str__(self):
+        values = [str(x.value) for x in self.linkedList]
+        return '\n'.join(values)
+        
+    def isEmpty(self):
+        if self.linkedList.head == None:
+            return True
+        else:
+            return False
+            
+    def Push(self, item):
+        #we have to insert at the beginning of linked list
+        newNode = Node(item)
+        newNode.next = self.linkedList.head
+        self.linkedList.head = newNode
+        
+    def Pop(self):
+        if self.isEmpty():
+            return 'Stack is empty'
+        else:
+            temp = self.linkedList.head.value
+            self.linkedList.head = self.linkedList.head.next
+            return temp
+            
+    def Peek(self):
+        if self.isEmpty():
+            return 'Stack is empty'
+        else:
+            nodeValue = self.linkedList.head.value
+            return nodeValue
+            
+    def Delete(self):
+        self.linkedList.head = None
+            
+currStack = Stack()
+currStack.Push(4)
+currStack.Push(6)
+currStack.Push(9)
+print(currStack)
+print("---- POP -----")
+print(f'popped {currStack.Pop()}')
+
+print(f"top element is {currStack.Peek()}")
+
+
