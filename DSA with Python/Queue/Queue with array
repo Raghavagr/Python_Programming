@@ -1,0 +1,52 @@
+// Create a Queue using array with all the operations
+
+// URL -> https://ide.geeksforgeeks.org/ac1f24a0-3aed-4282-ba25-f5b8234b0836
+
+class Queue:
+    def __init__(self):
+        self.lst = []
+        
+    def __str__(self):
+        values = [str(x) for x in self.lst]
+        return ' '.join(values)
+        
+    def isEmpty(self):
+        if self.lst == []:
+            return True
+            
+        else:
+            return False
+            
+    def Enque(self, item):
+        #always in Queue elements are added from back
+        self.lst.append(item)
+        return 'Item is added to back of queue sucessfully'
+        
+    def Deque(self):
+        if self.isEmpty():
+            return 'queue is empty, cannot perform deque operation'
+            
+        else:
+            pop_val = self.lst.pop(0)
+            return pop_val
+            
+    def Peek(self):
+        if self.isEmpty():
+            return 'queue is empty'
+            
+        else:
+            return self.lst[0]
+            
+    def Delete(self):
+        self.lst = None
+            
+myqueue = Queue()
+myqueue.Enque(3)
+myqueue.Enque(5)
+myqueue.Enque(6)
+print(myqueue)
+
+print("*** Poping element ***")
+print(f'poped element is {myqueue.Deque()}')
+
+print(myqueue)
