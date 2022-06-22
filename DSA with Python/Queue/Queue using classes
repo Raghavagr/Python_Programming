@@ -33,6 +33,7 @@ queue.appendleft(20)
 queue.appendleft(30)
 print(queue)
 
+
 #deque use popleft
 print("popping: ", queue.pop())
 print("popping: ", queue.pop())
@@ -43,7 +44,7 @@ print(queue)
 #code
 import queue
 
-que = queue.Queue()
+que = queue.Queue(maxsize=5)
 que.put(10)
 que.put(20)
 que.put(30)
@@ -52,3 +53,7 @@ print("your Queue ", que)
 print("popping: ", que.get())
 print("popping: ", que.get())
 print(que)
+
+print(que.qsize())  #to print the size of queue
+print(que.full())  #to check if queue is full of not
+print(que.empty())  #is empty function
