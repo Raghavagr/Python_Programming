@@ -1,0 +1,60 @@
+// Perform Push and pop operation in stack and keep track of minimum element node each time
+
+// URL -> https://ide.geeksforgeeks.org/64d9af9a-a8f5-46ca-bda6-754e7403043e
+
+class Node:
+    def __init__(self, value, next=None):
+        self. value = value
+        self.next = None
+        
+    def __str__(self):
+        values = str(self.value)
+        if self.next:
+            values = ', ' + str(self.next)
+            
+        return values
+        
+class Stack:
+    def __init__(self):
+        self.top = None
+        self.minNode = None
+        
+    def min(self):
+        if not self.minNode:
+            return None
+            
+        return self.minNode.value
+        
+    def Push(self, item):
+        #if item is less then min node val then it remains the same
+        if self.minNode and (self.minNode.value < item):
+            self.minNode = Node(value = self.minNode.value, next = self.minNode)
+            
+        #else item should be set as min value to min node
+        else:
+            self.minNode = Node(value = item, next = self.minNode)
+            
+        self.top = Node(value = item, next = self.top)
+        
+    def Pop(self):
+        if not self.top:
+            return None
+            
+        self.minNode = self.minNode.next
+        item = self.top.value
+        #delete the top Node
+        self.top = self.top.next
+        return item
+            
+custStack = Stack()
+custStack.Push(5)
+print(custStack.min())
+custStack.Push(3)
+print(custStack.min())
+custStack.Push(7)
+print(custStack.min())
+
+print(f"popping element- {custStack.Pop()}")
+#print(f'min element now {custStack.min()}')
+print(custStack.min())
+
