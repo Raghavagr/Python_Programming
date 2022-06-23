@@ -1,0 +1,52 @@
+// Implement a Queue which has animals of cat and dog. You have to always pop the oldest animal. If someone ask choice as cat and dog then that particular oldest
+should be poped from queue else any oldest can be poped.
+
+// URL -> https://ide.geeksforgeeks.org/7bdf0183-c205-43ae-ad5a-62dcbb1b5138
+
+class AnimalShelter:
+    def __init__(self):
+        self.cats = []
+        self.dogs = []
+        
+    def Enque(self, animal, typ):
+        if typ == 'cat':
+            self.cats.append(animal)
+            
+        else:
+            self.dogs.append(animal)
+            
+    def DequeCat(self):
+        if len(self.cats) == 0:
+            return None
+            
+        else:
+            #pop oldest
+            cat = self.cats.pop(0)
+            return cat
+            
+    def DequeDog(self):
+        if len(self.dogs) == 0:
+            return None
+            
+        else:
+            #pop oldest
+            dog = self.dogs.pop(0)
+            return dog
+        
+    def DequeAny(self):
+        if len(self.cats) == 0 and len(self.dogs) == 0:
+            return None
+            
+        elif len(self.cats) == 0:
+            result = self.dogs.pop(0)
+            
+        else:
+            result = self.cats.pop(0)
+            
+        return result
+            
+custQue = AnimalShelter()
+custQue.Enque('cat1', 'cat')
+custQue.Enque('dog1', 'dog')
+custQue.Enque('cat2', 'cat')
+print(custQue.DequeAny())
