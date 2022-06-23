@@ -1,0 +1,42 @@
+// In one stack if it overcome the size then create a new stack and perform push and pop operation
+
+// URL -> https://ide.geeksforgeeks.org/0fdcb8b9-62c6-4bcc-b0e1-973e1866a3a4
+
+
+class PlateStack:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.stacks = []
+        
+    def __str__(self):
+        return self.stacks
+        
+    def Push(self, item):
+        if len(self.stacks) > 0 and len(self.stacks[-1]) < self.capacity:
+            self.stacks[-1].append(item)
+            
+        else:
+            self.stacks.append([item])
+        
+    def Pop(self):
+        while len(self.stacks) and len(self.stacks[-1]) == 0:
+            self.stacks.pop()
+            
+        if len(self.stacks) == 0:
+            return None
+            
+        else:
+            return self.stacks[-1].pop()
+            
+    def pop_at(self, stacknum):
+        if len(self.stacks[stacknum]) > 0:
+            self.stacks[stacknum].pop()
+            
+        else:
+            return None
+            
+custStack = PlateStack(2)
+custStack.Push(2)
+custStack.Push(3)
+custStack.Push(4)
+print(custStack.Pop())
