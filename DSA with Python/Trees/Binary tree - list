@@ -1,0 +1,80 @@
+// Create a binary tree and all its functionality using Python List
+
+// URL -> https://ide.geeksforgeeks.org/68a84bc4-fe5e-4184-8086-4fb7d6e231ff
+
+class BinaryTree:
+    def __init__(self, size):
+        self.maxsize = size
+        self.customList = [None] * size
+        self.lastUsedIndex = 0
+        
+    def InsertNode(self, value):
+        if self.lastUsedIndex + 1 == self.maxsize:
+            return 'The Binary tree is full'
+        
+        self.customList[self.lastUsedIndex + 1] = value
+        self.lastUsedIndex += 1
+        return 'Node inserted sucessfully'
+        
+    def SearchNode(self, value):
+        for i in range(len(self.customList)):
+            if self.customList[i] == value:
+                return 'Sucess'
+                
+        return 'Failure'
+        
+    def preOrderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        
+        print(self.customList[index])
+        self.preOrderTraversal(index*2)
+        self.preOrderTraversal(index*2 + 1)
+        
+    def InorderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        
+        self.InorderTraversal(index*2)
+        print(self.customList[index])
+        self.InorderTraversal(index*2 + 1)
+        
+    def PostOrderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        
+        self.PostOrderTraversal(index*2)
+        self.PostOrderTraversal(index*2 + 1)
+        print(self.customList[index])
+        
+    def levelOrderTraversal(self, index):
+        for i in range(index, self.lastUsedIndex+1):
+            print(self.customList[i])
+            
+    def deleteNode(self, value):
+        if self.lastUsedIndex == 0:
+            return "There is not any node to delete"
+        for i in range(1, self.lastUsedIndex+1):
+            if self.customList[i] == value:
+                self.customList[i] = self.customList[self.lastUsedIndex]
+                self.customList[self.lastUsedIndex] = None
+                self.lastUsedIndex -= 1
+                return "The node has been successfully deleted"
+    
+    def deleteBT(self):
+       self.customList = None
+       return "The BT has been successfully deleted"
+        
+        
+newBT = BinaryTree(8)
+newBT.InsertNode("Drink")
+newBT.InsertNode("Hot")
+newBT.InsertNode("cold")
+newBT.InsertNode("tea")
+newBT.InsertNode("Coffee")
+
+#newBT.preOrderTraversal(1)
+#newBT.InorderTraversal(1)
+#newBT.PostOrderTraversal(1)
+
+newBT.levelOrderTraversal(1)
