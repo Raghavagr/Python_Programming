@@ -31,3 +31,31 @@ def Optimal_approach(arr):
 arr = [7,1,5,3,6,4]
 naive_approach(arr)
 Optimal_approach(arr)
+
+
+## OPTIMAL AND EASY SOLUTION
+
+APPROACH -> Assume the first element as minimum buy price, and start iterating from 1st index to last and
+            find the current profit which means subtract the buy value from current value. If the current profit is greater then the answer, update the answer.
+            Update the minimum buy value with minimum previous and current value
+            
+// SOL URL -> https://ide.geeksforgeeks.org/67c22e68-3172-4656-8561-d8a86bc4606f
+
+def MaxProfit(prices):
+    profit = 0
+    
+    #minimum stock price for now is first val
+    minSoFar = prices[0]
+    
+    for i in range(1, len(prices)):
+        currProfit = prices[i] - minSoFar
+        
+        if currProfit > profit:
+            profit = currProfit
+            
+        minSoFar = min(minSoFar, prices[i])
+        
+    return profit
+    
+arr = [7,1,5,3,6,4]
+print(MaxProfit(arr))
