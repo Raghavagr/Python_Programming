@@ -1,7 +1,6 @@
-// Code
+// CODE
 
-#code
-CLASS AVLNode:
+class AVLNode:
     def __init__(self. data):
         self.data = data
         self.leftchild = None
@@ -33,12 +32,41 @@ CLASS AVLNode:
         return newRoot
         
     
-    def LeftRightRotate(disbalanceNode):
-        pass
+    def getBalance(disbalanceNode):
+        if not rootNode:
+            return 0
+        return getHeight(rootNode.leftchild) - getHeight(rootNode.rightchild)
         
     
-    def RightLeftRotate(disbalanceNode):
-        pass
-    
-    def InsertNode(self, data):
-        pass
+    def InsertNode(rootNode, nodeValue):
+        if not rootNode:
+            return AVLNode(nodeValue)
+            
+        elif nodeValue < rootNode.data:
+            rootNode.leftchild = InsertNode(rootNode.leftchild, nodeValue)
+            
+        else:
+            rootNode.rightchild = InsertNode(rootNode.rightchild, nodeValue)
+            
+        rootNode.height = 1 + max(getHeight(rootNode.leftchild), getHeight(rootNode.rightchild))
+        balance = getBalance(rootNode)
+        if balance > 1 and nodeValue < rootNode.leftchild.data:
+            return RightRotate(rootNode)
+        if balance > 1 and nodeValue > rootNode.leftchild.data:
+            rootNode.leftchild = leftRotate(rootNode.leftchild)
+            return RightRotate(rootNode)
+            
+        if balance < -1 and nodeValue > rootNode.rightchild.data:
+            return leftRotate(rootNode)
+            
+        if balance < -1 and nodeValue < rootNode.rightchild.data:
+            rootNode.rightchild = RightRotate(rootNode.rightchild)
+            return leftRotate(rootNode)
+            
+        return rootNode
+        
+    def getMinValNode(rootNode):
+        if rootNode is None or rootNode.leftchild is None:
+            return rootNode
+            
+        return getMinValNode(rootNode.leftchild)
