@@ -1,6 +1,6 @@
 // Implement all operations of Binary Heap
 
-// URL -> 
+// URL -> https://ide.geeksforgeeks.org/bca85d75-c5d9-43db-9950-f48bd992740b
 
 
 #code
@@ -66,6 +66,57 @@ def InsertNode(rootNode, nodeValue, heapType):
     heapifyTreeInsert(rootNode, rootNode.heapSize, heapType)
     return "The val has been sucessfully inserted"
     
+def heapifyTreeExtract(rootNode, index, heapType):
+    leftIndex = index * 2
+    rightIndex = (index * 2) + 1
+    swapChild = 0
+    
+    if rootNode.heapSize < leftIndex:
+        return
+    
+    elif rootNode.heapSize == leftIndex:
+        if heapType == "min":
+            if rootNode.customList[index] > rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+        
+        #if max
+        else:
+            if rootNode.customList[index] < rootNode.customList[leftIndex]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+        
+    else:
+        if heapType == "min":
+            if rootNode.customList[leftIndex] < rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+                
+            if rootNode.customList[index] < rootNode.customList[swapChild]:
+                temp = rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[swapChild]
+                rootNode.customList[leftIndex] = temp
+            return
+
+def extractNode(rootNode, heapType):
+    if rootNode.heapSize == 0:
+        return
+    
+    extractedNode = rootNode.customList[1]
+    rootNode.customList[1] = rootNode.customList[rootNode.heapSize]
+    rootNode.customList[rootNode.heapSize] = None
+    rootNode.heapSize -= 1
+    heapifyTreeExtract(rootNode, 1, heapType)
+    return extractedNode
+    
+def DeleteEntireHeap(rootNode):
+    rootNode.customList = None
+    
 newBinaryHeap = Heap(5)
 #print(SizeOfHeap(newBinaryHeap)) 
 #if class then call print(newBinaryHeap.SizeOfHeap())
@@ -76,3 +127,5 @@ InsertNode(newBinaryHeap, 7, "min")
 InsertNode(newBinaryHeap, 5, "min")
 InsertNode(newBinaryHeap, 9, "min")
 levelOrderTraverse(newBinaryHeap)
+
+#print(DeleteEntireHeap(newBinaryHeap))
