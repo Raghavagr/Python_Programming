@@ -1,0 +1,78 @@
+// Implement all operations of Binary Heap
+
+// URL -> 
+
+
+#code
+class Heap:
+    def __init__(self, size):
+        self.customList = [None] * (size + 1)
+        self.heapSize = 0
+        self.maxSize = size + 1
+    
+#Time complexity of peek method is O(1)    
+def Peek(rootNode):
+    if not rootNode:
+        return
+    else:
+        return rootNode.customList[1]
+
+#Time complexity is O(1)        
+def SizeOfHeap(rootNode):
+    if not rootNode:
+        return
+    else:
+        return rootNode.heapSize
+
+#Time complexity IS O(N) and space is O(1)        
+def levelOrderTraverse(rootNode):
+    if not rootNode:
+        return
+    
+    else:
+        for i in range(1, rootNode.heapSize + 1):
+            print(rootNode.customList[i])
+            
+
+def heapifyTreeInsert(rootNode, index, heapType):
+    parentIndex = index // 2
+    if index <= 1:
+        return
+    
+    if heapType.lower() == "min":
+        #root node element shoudl always small else swap
+        if rootNode.customList[index] < rootNode.customList[parentIndex]:
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[parentIndex]
+            rootNode.customList[parentIndex] = temp
+        heapifyTreeInsert(rootNode, parentIndex, heapType)
+        
+    elif heapType.lower() == "max":
+        #root node should be greater else swap
+        if rootNode.customList[index] > rootNode.customList[parentIndex]:
+            temp = rootNode.customList[index]
+            rootNode.customList[index] = rootNode.customList[parentIndex]
+            rootNode.customList[parentIndex] = temp
+        heapifyTreeInsert(rootNode, parentIndex, heapType)
+            
+    
+#Insert function that will call heapify method
+def InsertNode(rootNode, nodeValue, heapType):
+    if rootNode.heapSize +1 == rootNode.maxSize:
+        return "The binary heap full"
+        
+    rootNode.customList[rootNode.heapSize + 1] = nodeValue
+    rootNode.heapSize += 1
+    heapifyTreeInsert(rootNode, rootNode.heapSize, heapType)
+    return "The val has been sucessfully inserted"
+    
+newBinaryHeap = Heap(5)
+#print(SizeOfHeap(newBinaryHeap)) 
+#if class then call print(newBinaryHeap.SizeOfHeap())
+
+#insert
+InsertNode(newBinaryHeap, 4, "min")
+InsertNode(newBinaryHeap, 7, "min")
+InsertNode(newBinaryHeap, 5, "min")
+InsertNode(newBinaryHeap, 9, "min")
+levelOrderTraverse(newBinaryHeap)
