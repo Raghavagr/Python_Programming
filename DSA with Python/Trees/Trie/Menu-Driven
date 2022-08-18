@@ -1,0 +1,104 @@
+// All operations of Trie implemented
+
+// URL -> https://ide.geeksforgeeks.org/c7c615c9-8f3c-46d7-b2b6-a0b931e77582
+
+#code
+class TrieNode:
+    def __init__(self):
+        self.children = {} #dict because we need to track child to their child
+        self.endOfString = False
+        
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+        
+    def InsertStr(self, word):
+        #case-1 (Tree is blank)
+        #case-2 (New string prefic is common to another string prefix)
+        #case-3 (new string prefix is already present as complete string)
+        #case-4 (string to be inserted is already present in trie)
+        
+        current = self.root
+        for i in word:
+            ch = i
+            #find that if ch is present or not in dict
+            node = current.children.get(ch)
+            
+            #if not present then create new node and insert
+            if node == None:
+                node = TrieNode()
+                current.children.update({ch:node})
+                
+            #update the current
+            current = node
+            
+        #and as we insert complete string mark as True
+        current.endOfString = True
+        print("sucessfullt inserted")
+    
+    # Time complexity - O(N)
+    
+    def SearchStr(self, word):
+        #case-1 (string does not exist in trie)
+        #case-2 (string exist) (after strng present check endOfString is true or not)
+        #case-3 (string is prefix of another string, bit does not exist)
+        
+        currentNode = self.root
+        for i in word:
+            node = currentNode.children.get(i)
+            if node == None:
+                return False
+                
+            currentNode = node
+            
+        if currentNode.endOfString == True:
+            return True
+        
+        return False
+        
+def DeleteStr(root, word, index):
+    #case-1 (some other string prefix is same as one we want to delete)
+    # ex    - (API and APPLE) (Here ap is same)
+    
+    # case-2 (The string is prefix of another string)
+    ##  In this case we just delete the endOfString so it become False
+    
+    # case-3 (other string is prefix of this string)
+    ch = word[index]
+    currentNode = root.children.get(ch)
+    canThisNodeDeleted = False
+    
+    if len(currentNode.children) > 1:
+        DeleteStr(currentNode, word, index+1)
+        return False
+        
+    if index == len(word)-1:
+        if len(currentNode.children) >= 1:
+            currentNode.endOfString = False
+            return False
+            
+        else:
+            root.children.pop(ch)
+            return True
+            
+    if currentNode.endOfString == True:
+        DeleteStr(currentNode, word, index+1)
+        return False
+        
+    canThisNodeDeleted = DeleteStr(currentNode, word, index+1)
+    if canThisNodeDeleted == True:
+        root.children.pop(ch)
+        return True
+        
+    else:
+        return False
+        
+
+newTrie = Trie()
+newTrie.InsertStr("app")
+newTrie.InsertStr("apk")
+print(newTrie.SearchStr("apk"))
+print(newTrie.SearchStr("ap"))
+DeleteStr(newTrie.root, "apk", 0)
+print(newTrie.SearchStr("apk"))
+
