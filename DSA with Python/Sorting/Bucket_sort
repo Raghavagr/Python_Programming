@@ -1,0 +1,10 @@
+// Bucket Sort
+
+- Create Buckets and distribute elements of array into buckets
+- sort buckets individually
+- Merge buckets individually
+
+
+* Number of buckets = round(sqrt(number of elements))
+* Appropriate Buckets = cell(value * number of buckets / maxValue)
+
