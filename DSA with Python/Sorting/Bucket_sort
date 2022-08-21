@@ -6,5 +6,35 @@
 
 
 * Number of buckets = round(sqrt(number of elements))
-* Appropriate Buckets = cell(value * number of buckets / maxValue)
+* Appropriate Buckets = ceil(value * number of buckets / maxValue)
 
+#code
+
+def BucketSort(customList):
+    numberOfBucket = round(math.sqrt(len(customList)))
+    maxValue = max(customList)
+    arr = []
+    
+    #create bucket
+    for i in range(numberOfBucket):
+        arr.append([])
+    
+    #inserting elements to appropriate bucket    
+    for j in customList:
+        index_b = math.ceil(j * numberOfBucket / maxValue)
+        arr[index_b - 1].append(j)
+    
+    #sort each bucket (we sort using insertion sort)
+    for i in range(numberOfBucket):
+        arr[i] = InsertionSort(arr[i])
+    
+    #print(arr)    
+    
+    #merge all bucket to get sorted arr
+    k = 0
+    for i in range(numberOfBucket):
+        for j in range(len(arr[i])):
+            customList[k] = arr[i][j]
+            k += 1
+            
+    print(customList)
