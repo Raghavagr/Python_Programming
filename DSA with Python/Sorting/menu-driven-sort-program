@@ -1,0 +1,104 @@
+// ALL Sorting algorithm in one program
+
+// URL -> https://ide.geeksforgeeks.org/bfdfdf11-9c1d-4856-9cf7-16895741fb07
+
+#code
+import math
+
+def BubbleSort(arr):
+    n = len(arr)
+    for round in range(1, n):
+        for i in range((n-1-round)+1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                
+    print(arr)
+    
+def SelectionSort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[min_idx] > arr[j]:
+                min_idx = j
+        
+        #swap min element with first pos and so on        
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        
+    print(arr)
+    
+def InsertionSort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i-1
+        
+        while j >= 0 and arr[j] > key:
+            arr[j+1] = arr[j]
+            j = j-1
+            
+        arr[j+1] = key
+        
+    return arr
+    
+def BucketSort(customList):
+    numberOfBucket = round(math.sqrt(len(customList)))
+    maxValue = max(customList)
+    arr = []
+    
+    #create bucket
+    for i in range(numberOfBucket):
+        arr.append([])
+    
+    #inserting elements to appropriate bucket    
+    for j in customList:
+        index_b = math.ceil(j * numberOfBucket / maxValue)
+        arr[index_b - 1].append(j)
+    
+    #sort each bucket (we sort using insertion sort)
+    for i in range(numberOfBucket):
+        arr[i] = InsertionSort(arr[i])
+    
+    #print(arr)    
+    
+    #merge all bucket to get sorted arr
+    k = 0
+    for i in range(numberOfBucket):
+        for j in range(len(arr[i])):
+            customList[k] = arr[i][j]
+            k += 1
+            
+    print(customList)
+    
+def Heapify(customList, n, idx):
+    smallest = idx
+    l = 2*idx + 1
+    r = 2 * idx + 2
+    
+    if l < n and customList[idx] < customList[l]:
+        smallest = l
+        
+    if r < n and customList[smallest] < customList[r]:
+        smallest = r
+        
+    if smallest != idx:
+        customList[idx], customList[smallest] = customList[smallest], customList[idx]
+        Heapify(customList, n, smallest)
+
+def HeapSort(customList):
+    n = len(customList)
+    for i in range(int(n/2)-1, -1, -1):
+        Heapify(customList, n, i)
+        
+    for i in range(n-1, 0, -1):
+        customList[i], customList[0] = customList[0], customList[i]
+        Heapify(customList, i, 0)
+        
+    print(customList)
+    
+arr = [7, 5, 3, 6, 9]
+#BubbleSort(arr)
+#SelectionSort(arr)
+#InsertionSort(arr)
+#BucketSort(arr)
+HeapSort(arr)
