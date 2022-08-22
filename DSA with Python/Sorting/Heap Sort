@@ -1,0 +1,32 @@
+Heap Sort Algorithm
+
+step-1) Insert Data to Binary Heap Tree
+step-2) Extract Data from Binary Heap
+
+It is best suited with array, it does not work with Linked list
+
+def Heapify(customList, n, idx):
+    smallest = idx
+    l = 2*idx + 1
+    r = 2 * idx + 2
+    
+    if l < n and customList[idx] < customList[l]:
+        smallest = l
+        
+    if r < n and customList[smallest] < customList[r]:
+        smallest = r
+        
+    if smallest != idx:
+        customList[idx], customList[smallest] = customList[smallest], customList[idx]
+        Heapify(customList, n, smallest)
+
+def HeapSort(customList):
+    n = len(customList)
+    for i in range(int(n/2)-1, -1, -1):
+        Heapify(customList, n, i)
+        
+    for i in range(n-1, 0, -1):
+        customList[i], customList[0] = customList[0], customList[i]
+        Heapify(customList, i, 0)
+        
+    print(customList)
