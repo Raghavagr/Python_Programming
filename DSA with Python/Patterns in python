@@ -15,3 +15,19 @@ SOL URL - https://ide.geeksforgeeks.org/90ff30ac-8172-436e-a1f9-bd3f9d6bf6c0
 
 sol url - https://ide.geeksforgeeks.org/baf8997a-952f-42cc-be2d-0b202de89219
 
+
+		*	
+	*		*	
+*				*	
+	*		*	
+		*	
+
+Logic
+
+- First print space till outer space
+- Print star
+- print inner space
+- print star (in first and last row only one star is there so put the condition)
+
+// sol URL - https://ide.geeksforgeeks.org/2d8a178a-4697-4d65-b413-eb49152198e9
+
