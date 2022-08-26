@@ -31,3 +31,17 @@ Logic
 
 // sol URL - https://ide.geeksforgeeks.org/2d8a178a-4697-4d65-b413-eb49152198e9
 
+
+1						1	
+1	2				2	1	
+1	2	3		3	2	1	
+1	2	3	4	3	2	1	
+
+
+// SOL URL -> 
+
+// LOGIC
+- first implement the complete logic for star, and you will find that in last row one star will be extra
+- Then change it to one and then increasing to remove the last extra number we have to reduce the second half star by 1 and val by 1 by comparing that the row is last
+
+
