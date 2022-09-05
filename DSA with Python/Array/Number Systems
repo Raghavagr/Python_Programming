@@ -2,3 +2,13 @@
 
 // SOL URL -> https://ide.geeksforgeeks.org/d9323359-fad5-479e-89bd-25606acec883
 
+
+2. Any Base Addition
+
+Logic
+- Basically you have to add the number in same base and return answer in same base so what we have done is add two number at back and if greater then base the 
+find the remainder and add carry as 1 to next addition because next addition is base times bigger to it which means one.
+
+sol URL -> https://ide.geeksforgeeks.org/2300795a-c65b-4a31-b1d6-0a563421b718
+
+3. Any Base Subtraction
