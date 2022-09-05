@@ -12,3 +12,16 @@ find the remainder and add carry as 1 to next addition because next addition is 
 sol URL -> https://ide.geeksforgeeks.org/2300795a-c65b-4a31-b1d6-0a563421b718
 
 3. Any Base Subtraction
+
+sol URL -> https://ide.geeksforgeeks.org/8abf5b6c-ba5c-42d7-9366-50bbfc0a34ed
+
+4. Any Base Multiplication
+
+LOGIC
+
+- Basically extract each digit of N2 and get multiply complete N1 with it in such a way that 6*4 = 24 and number is octat so it is represented as 8^3 + 0 so remainder
+  will be 0 and 3 will be added as carry next to it because next number is 8 times which represent that next num is 8*3 times of that. And we have already implemented 
+  the sum program so add the result of each digit multiplication using that function.
+
+sol url -> https://ide.geeksforgeeks.org/a57e52c0-e495-4ecd-9053-b0d97dfcadc2
+
