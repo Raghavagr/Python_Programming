@@ -1,0 +1,29 @@
+QUESTION
+
+1. You are given a number n, representing the size of array a.
+2. You are given n numbers, representing elements of array a.
+3. You are given a number k.
+4. Rotate the array a, k times to the right (for positive values of k), and to
+the left for negative values of k.
+
+Sample Input
+5
+1
+2
+3
+4
+5
+3
+
+Sample Output
+3 4 5 1 2
+
+// logic
+
+1. First reverse the array till 0 to arr.length - k
+2. then reverse the last k part of array
+3. at last reverse the complete array
+
+Before doing this to control the negative K and greater K to Length just do modulus with length and if negative then add N to K
+
+// sol URL -> https://ide.geeksforgeeks.org/15f757b8-2c0a-4c8e-b7aa-34abb4d478bc
