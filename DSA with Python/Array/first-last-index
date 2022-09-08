@@ -1,0 +1,28 @@
+// find first and last index of element in array
+
+// Naive LOGIC
+
+There are 2 logic using a simple linear search O(N) time where in single iteration we get both first and last index
+
+#code
+def FirstLastIndex(arr, n, data):
+    first = -1
+    last = -1
+    
+    for i in range(n):
+        if arr[i] == data:
+            if first == -1:
+                first = i
+                
+            last = i
+            
+    print(first)
+    print(last)
+
+// Binary search Approach
+
+In this we have to apply binary search 2 time to find first idx 1 time and second for last index.
+- When we find first idx when data is equal to mid so instead breaking we keep potential idx as first index and mark high as mid-1 to find more same element in left side
+- When we find last idx when data is equal to mid so instead breaking we keep potential idx as last index and mark low as mid+1 to find more same element in right side
+
+/// code URL -> https://ide.geeksforgeeks.org/88b83ed5-61ad-4218-9d25-ac11679e7804
