@@ -1,0 +1,28 @@
+// find all subsets of array
+
+// sol url -> https://ide.geeksforgeeks.org/1e5b0b62-884f-4b39-a265-f739cdeaaef0
+
+#code
+def Subsets(arr, n):
+    limit = 2 ** n
+    for i in range(limit):
+        temp = i
+        st = ""
+        for j in range(n-1, -1, -1):
+            r = temp % 2
+            temp = temp // 2
+            
+            if r == 0:
+                st = "-\t" + st
+                
+            else:
+                st = str(arr[j]) + "\t" + st
+                
+        print(st)
+        
+n = int(input())
+arr = []
+for _ in range(n):
+    arr.append(int(input()))
+    
+Subsets(arr, n)
