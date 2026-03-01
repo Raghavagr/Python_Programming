@@ -1,0 +1,36 @@
+// Que - I have to convert a decial to Any base. then Any base to Decimal. And a function that converts a number from any base to any other base.
+
+def DecToBase(num, base):
+    p = 1
+    res = 0
+    while num > 0:
+        rem = num % base
+        res = res + rem * p
+        num = num // base
+        p = p * 10
+    return res
+    
+
+def BaseToDec(num, base):
+    pow = 1
+    res = 0
+    while num > 0:
+        rem = num % 10
+        res = res + rem * pow
+        num = num // 10
+        pow = pow * base
+        
+    return res
+    
+
+def AnyBaseToAnyBase(num, sbase, dbase):
+    dec_num = BaseToDec(num, sbase)
+    result = DecToBase(dec_num, dbase)
+    return result
+    
+    
+print(DecToBase(57, 2))
+
+print(BaseToDec(111001, 2))
+
+print(AnyBaseToAnyBase(111001, 2, 10))
