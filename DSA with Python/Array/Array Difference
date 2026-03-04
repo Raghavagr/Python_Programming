@@ -1,0 +1,37 @@
+// Given 2 array, perform the Arr2 - Arr1 operation maintaining the borrow concept.
+
+// sol - 
+
+def getArrayDifference(arr1, arr2):
+    max_len = max(len(arr1), len(arr2))
+    res = [0] * max_len
+    
+    borrow = 0
+    k = max_len - 1
+    p1 = len(arr1) - 1
+    p2 = len(arr2) - 1
+    
+    while k >= 0:
+        d2 = (arr2[p2] if p2 >= 0 else 0) + borrow
+        d1 = arr1[p1] if p1 >= 0 else 0
+        
+        if d2 < d1:
+            d2 += 10
+            borrow = -1
+        else:
+            borrow = 0
+        
+        res[k] = d2 - d1
+        
+        k -= 1
+        p1 -= 1
+        p2 -= 1
+    
+    return res
+    
+
+arr1 = [2,6,7]
+arr2 = [1,0,0,0]
+
+result = getArrayDifference(arr1, arr2) #expected output 0733
+print(result)
