@@ -1,0 +1,47 @@
+// Que - Given 2 array, you have to perform a sum of 2 array and return a new array covering all edge cases
+
+// sol - 
+
+def getSumOfArray(arr1, arr2):
+    max_len = max(len(arr1), len(arr2))
+    # Pre-allocate list
+    res = [0] * max_len
+    
+    p1 = len(arr1) - 1
+    p2 = len(arr2) - 1
+    k = max_len - 1
+    carry = 0
+    
+    while k >= 0:
+        d = carry
+        
+        if p1 >= 0:
+            d += arr1[p1]
+            p1 -= 1
+            
+        if p2 >= 0:
+            d += arr2[p2]
+            p2 -= 1
+        
+        carry = d // 10
+        d = d % 10
+        res[k] = d
+        k -= 1
+    
+    # If carry still left, insert at front
+    if carry:
+        res = [carry] + res
+    
+    return res
+    
+# arr1 = [9,3,4,6,8]
+# arr2 = [1,9,8,8]
+
+# arr1 = [9]
+# arr2 = [1]
+
+arr1 = [9,9,9]
+arr2 = [1]
+
+result = getSumOfArray(arr1, arr2)
+print(result)
